@@ -1,0 +1,15 @@
+{
+    "company": [
+        {
+            "code" : "3",
+            "name" : "Bonyplus",
+            "url" : "http://comercial.bonyplus.com.br/scripts/cgiip.exe/WService=pdwebtst/mlapp/service/"
+        },
+        {
+            "code" : "4",
+            "name" : "SZ Solucoes",
+            "url" : "http://192.168.25.50:8089/cgi-bin/cgiip.exe/WService=pdweb/service/"
+        }
+    
+    ]
+}

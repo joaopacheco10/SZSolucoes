@@ -1,0 +1,582 @@
+{
+    "pendings": [{
+                 "type": "REQUISICAO DE ESTOQUE - ITEM",
+                 "docNumber": "3",
+                 "documents": [{
+                               "id": 171426,
+                               "docKey": "23489 10 408.0001.138",
+                               "docDate": "11/01/2016",
+                               "dueDate": "01/07/2016",
+                               "value": "7,49",
+                               "user": "Bruno Campinas",
+                               "codCCusto": "012900",
+                               "codLotac": "013100",
+                               "desLotac": "COMPRAS",
+                               "remarks": " BAIXA USO E CONSUMO",
+                               "cause": " BAIXA USO E CONSUMO",
+                               "supplier": "",
+                               "alternative": "Sim",
+                               "items": []
+                               }, {
+                               "id": 204186,
+                               "docKey": "23554 10 017.0032.17",
+                               "docDate": "25/04/2016",
+                               "dueDate": "01/07/2016",
+                               "value": "791,11",
+                               "user": "Everton Chapitel",
+                               "codCCusto": "101000",
+                               "codLotac": "013100",
+                               "desLotac": "COMPRAS",
+                               "remarks": "Baixa referente a item vencido. Autoriza",
+                               "cause": "Baixa referente a item vencido. Autoriza",
+                               "supplier": "",
+                               "alternative": "Sim",
+                               "items": []
+                               }]
+                 }, {
+                 "type": "PEDIDO DE COMPRA",
+                 "docNumber": "7",
+                 "documents": [{
+                               "id": 104957,
+                               "docKey": "134385",
+                               "docDate": "11/06/2015",
+                               "dueDate": "01/07/2016",
+                               "value": "5.703,28",
+                               "user": "Rodrigo LourenÃ§o",
+                               "codCCusto": "",
+                               "codLotac": "013000",
+                               "desLotac": "COMPRAS GERAL",
+                               "remarks": "",
+                               "cause": "",
+                               "supplier": "PAULISTA SP",
+                               "alternative": "Sim",
+                               "items": [{
+                                         "itemcode": "020.0025.00",
+                                         "description": "3722 ULTRA LED TUBULAR HO 40W 100/240V 6000K (SC)",
+                                         "quantity": "0",
+                                         "value": "94,01",
+                                         "total": "0,00"
+                                         }, {
+                                         "itemcode": "020.0026.00",
+                                         "description": "*3760 ULTRA LED A60 5W 100/240V 6500K",
+                                         "quantity": "0",
+                                         "value": "10,99",
+                                         "total": "0,00"
+                                         }, {
+                                         "itemcode": "020.0024.00",
+                                         "description": "3763 ULTRA LED A60 10W 100/240V 6500K (SC)",
+                                         "quantity": "0",
+                                         "value": "14,11",
+                                         "total": "0,00"
+                                         }, {
+                                         "itemcode": "020.0027.00",
+                                         "description": "*3765 ULTRA LED A60 12W 100/240V 6500K",
+                                         "quantity": "0",
+                                         "value": "17,48",
+                                         "total": "0,00"
+                                         }, {
+                                         "itemcode": "020.0028.00",
+                                         "description": "3682 ULTRA LED REFLETOR FIT 50W 6000K (SC)",
+                                         "quantity": "0",
+                                         "value": "78,95",
+                                         "total": "0,00"
+                                         }]
+                               }, {
+                               "id": 215219,
+                               "docKey": "149686",
+                               "docDate": "24/05/2016",
+                               "dueDate": "01/07/2016",
+                               "value": "2.369.139,52",
+                               "user": "Renato Mecatti",
+                               "codCCusto": "",
+                               "codLotac": "013100",
+                               "desLotac": "COMPRAS",
+                               "remarks": "",
+                               "cause": "",
+                               "supplier": "COMMSCOPE",
+                               "alternative": "Sim",
+                               "items": [{
+                                         "itemcode": "167.0005.171",
+                                         "description": "760109256 CASSETE C/12 ACO LC MM S/PIGT AQ 12-LC-LS-AQ ",
+                                         "quantity": "120",
+                                         "value": "22,00",
+                                         "total": "2.640,00"
+                                         }, {
+                                         "itemcode": "167.0006.171",
+                                         "description": "760109272 CASSETE C/12 ACO LC SM S/PIGT AZ 12-LC-SM-BL ",
+                                         "quantity": "4",
+                                         "value": "27,71",
+                                         "total": "110,84"
+                                         }, {
+                                         "itemcode": "216.7005.171",
+                                         "description": "CONECTOR RJ45 FEMEA 8P CAT 6A BG MGS600-246 760092411",
+                                         "quantity": "6150",
+                                         "value": "11,26",
+                                         "total": "69.239,78"
+                                         }, {
+                                         "itemcode": "221.0003.171",
+                                         "description": "760031856 BANDEJA FIX C/4K FUS RS-4AF-16SF P/MOD G2 1U ",
+                                         "quantity": "40",
+                                         "value": "24,29",
+                                         "total": "971,52"
+                                         }, {
+                                         "itemcode": "221.0004.171",
+                                         "description": "760039867 BANDEJA FIX C/2K FUS RS-2AF-16SF P/MOD G2 1U ",
+                                         "quantity": "40",
+                                         "value": "20,76",
+                                         "total": "830,28"
+                                         }, {
+                                         "itemcode": "221.0012.170",
+                                         "description": "BR700210982 CABO OP 12F 50/125 OM3IN/EXZ-012-DS-5L-FSUBK",
+                                         "quantity": "10000",
+                                         "value": "2,83",
+                                         "total": "28.290,00"
+                                         }, {
+                                         "itemcode": "221.0025.171",
+                                         "description": "760193771 DIO DESLIZANTE MOD. 360G2-1U-MOD-SD ",
+                                         "quantity": "120",
+                                         "value": "126,93",
+                                         "total": "15.231,48"
+                                         }, {
+                                         "itemcode": "221.0058.170",
+                                         "description": "FAXLCUC0C-XXF005 PATCH CORD OP LC KIT 12 PIG MM OM4 1,5M",
+                                         "quantity": "160",
+                                         "value": "109,26",
+                                         "total": "17.481,84"
+                                         }, {
+                                         "itemcode": "221.0059.170",
+                                         "description": "FAWLCUC0C-XXF005 PATCH CORD OP LC KIT 12 PIG SM OS2 1,5M",
+                                         "quantity": "4",
+                                         "value": "121,80",
+                                         "total": "487,19"
+                                         }, {
+                                         "itemcode": "221.0067.170",
+                                         "description": "PATCH CORD OPT OS2 DP PLENUM LC/LC 1,5M FDWLCLC42-JXF005",
+                                         "quantity": "12",
+                                         "value": "39,31",
+                                         "total": "471,68"
+                                         }, {
+                                         "itemcode": "221.0068.170",
+                                         "description": "PATCH CORD OPT OS2 DP PLENUM LC/LC 3M FDWLCLC42-JXF010",
+                                         "quantity": "12",
+                                         "value": "41,58",
+                                         "total": "499,01"
+                                         }, {
+                                         "itemcode": "221.0073.170",
+                                         "description": "PATCH CORD OPT OM4 DP PLENUM LC/LC 3M FDXLCLC42-MXF010",
+                                         "quantity": "150",
+                                         "value": "35,51",
+                                         "total": "5.326,80"
+                                         }, {
+                                         "itemcode": "221.0126.170",
+                                         "description": "TRAVA C/25PC P/PATCH CORD GIGASPEED SECUREMAX 760102145 ",
+                                         "quantity": "50",
+                                         "value": "78,21",
+                                         "total": "3.910,58"
+                                         }, {
+                                         "itemcode": "221.0252.171",
+                                         "description": "CABO F/UTP LSZH CAT6A 4PAR 23AWG CZ RL305M 3291B 760168377",
+                                         "quantity": "81",
+                                         "value": "287,04",
+                                         "total": "23.250,12"
+                                         }, {
+                                         "itemcode": "221.0253.171",
+                                         "description": "PATCH CORD 4PAR 24AWG RJ-45 CZ CAT6A 2,1M CPCGGJ2-03F007",
+                                         "quantity": "300",
+                                         "value": "10,03",
+                                         "total": "3.008,25"
+                                         }, {
+                                         "itemcode": "221.0254.171",
+                                         "description": "PATCH CORD 4PAR 24AWG RJ-45 CZ CAT6A 3M CPCGGJ2-03F010",
+                                         "quantity": "180",
+                                         "value": "11,17",
+                                         "total": "2.010,96"
+                                         }, {
+                                         "itemcode": "221.0255.171",
+                                         "description": "PATCH CORD 4PAR 24AWG RJ-45 CZ CAT6A 5M CPCGGJ2-03F017",
+                                         "quantity": "120",
+                                         "value": "13,83",
+                                         "total": "1.659,42"
+                                         }, {
+                                         "itemcode": "221.7002.171",
+                                         "description": "760147025 CABO UTP LSZH 4 PARES CAT6A CZ C/ 305M 3091B ",
+                                         "quantity": "592",
+                                         "value": "303,60",
+                                         "total": "179.729,42"
+                                         }, {
+                                         "itemcode": "229.0001.170",
+                                         "description": "106658149 CX SUPERFICIE 12 PORTAS M112SMB-246 BG ",
+                                         "quantity": "960",
+                                         "value": "11,71",
+                                         "total": "11.239,20"
+                                         }, {
+                                         "itemcode": "269.0013.171",
+                                         "description": "PATCH PANEL 24P CAT6A 1U 360-IPR-MFTP-E-HD6B-1U-24 760150144",
+                                         "quantity": "32",
+                                         "value": "75,01",
+                                         "total": "2.400,29"
+                                         }, {
+                                         "itemcode": "316.0001.171",
+                                         "description": "CONECTOR RJ45 FEMEA BLIND 8P CAT 6A CZ 760152801",
+                                         "quantity": "400",
+                                         "value": "10,98",
+                                         "total": "4.393,00"
+                                         }, {
+                                         "itemcode": "321.0007.171",
+                                         "description": "PATCH CORD 4PAR 24AWG RJ-45 CZ CAT6A 5,2M CPCSSX2-03F017",
+                                         "quantity": "6150",
+                                         "value": "11,33",
+                                         "total": "69.676,43"
+                                         }, {
+                                         "itemcode": "321.7006.171",
+                                         "description": "PATCH CORD 4PAR 24AWG RJ-45 CZ CAT6A 2,1M CPCSSX2-03F007",
+                                         "quantity": "2300",
+                                         "value": "8,38",
+                                         "total": "19.271,70"
+                                         }, {
+                                         "itemcode": "321.7008.171",
+                                         "description": "PATCH CORD 4PAR 24AWG RJ-45 CZ CAT6A 3M CPCSSX2-03F010",
+                                         "quantity": "3410",
+                                         "value": "8,58",
+                                         "total": "29.252,69"
+                                         }, {
+                                         "itemcode": "329.0003.170",
+                                         "description": "760082495 RACK ABERTO 45U19X84 S/ ACES RK6-45A ",
+                                         "quantity": "62",
+                                         "value": "266,18",
+                                         "total": "16.503,04"
+                                         }, {
+                                         "itemcode": "329.0010.170",
+                                         "description": "CAIXA SUPERFICIE RJ PLAST BR 1P 107984015 M101SMB-B-262",
+                                         "quantity": "400",
+                                         "value": "2,94",
+                                         "total": "1.176,00"
+                                         }, {
+                                         "itemcode": "369.0003.170",
+                                         "description": "760072793 ORGANIZ VERT 8 POL C/POR FR/TR 45U VCM-DS-84-8",
+                                         "quantity": "54",
+                                         "value": "768,69",
+                                         "total": "41.509,31"
+                                         }, {
+                                         "itemcode": "369.0005.170",
+                                         "description": "760072819 ORGANIZ VERT 12POL C/POR FR/TR 45UVCM-DS-84-12",
+                                         "quantity": "40",
+                                         "value": "1.067,62",
+                                         "total": "42.704,64"
+                                         }, {
+                                         "itemcode": "369.7003.171",
+                                         "description": "760152587 PATCH PANEL C6A 24P 360-IPR-1100-E-GS6-1U-24 ",
+                                         "quantity": "304",
+                                         "value": "217,21",
+                                         "total": "66.030,62"
+                                         }, {
+                                         "itemcode": "216.0026.170",
+                                         "description": "ADAPTADOR COLAR BR C/25PC P/PATCH HGS-A-MS-WHITE 760154187",
+                                         "quantity": "40",
+                                         "value": "16,45",
+                                         "total": "658,14"
+                                         }]
+                               }, {
+                               "id": 215845,
+                               "docKey": "151465",
+                               "docDate": "25/05/2016",
+                               "dueDate": "01/07/2016",
+                               "value": "22.104,81",
+                               "user": "Compras Marcela Sofasque",
+                               "codCCusto": "",
+                               "codLotac": "013100",
+                               "desLotac": "COMPRAS",
+                               "remarks": "",
+                               "cause": "",
+                               "supplier": "SIEMENS CA",
+                               "alternative": "Sim",
+                               "items": [{
+                                         "itemcode": "042.1060.01",
+                                         "description": "6FX8 002-2DC10-1AK0 CABO DE SINAL 9M",
+                                         "quantity": "2",
+                                         "value": "466,45",
+                                         "total": "932,90"
+                                         }, {
+                                         "itemcode": "042.10648.01",
+                                         "description": "CABO POTENCIA MOT-CON 800PLUS 10M 6FX80025DS011BA0",
+                                         "quantity": "1",
+                                         "value": "1.044,40",
+                                         "total": "1.044,40"
+                                         }, {
+                                         "itemcode": "042.10667.01",
+                                         "description": "CABO POTENCIA MOT-CON 800PLUS 12M 6FX80025CS011BC0",
+                                         "quantity": "1",
+                                         "value": "971,66",
+                                         "total": "971,66"
+                                         }, {
+                                         "itemcode": "042.10715.01",
+                                         "description": "CABO POTENCIA MOT-CON 800PLUS 15M 6FX80025DS011BF0",
+                                         "quantity": "1",
+                                         "value": "1.242,65",
+                                         "total": "1.242,65"
+                                         }, {
+                                         "itemcode": "042.10881.01",
+                                         "description": "CABO POTENCIA MOT-CON 800PLUS 4M 6FX80025CS231AE0",
+                                         "quantity": "1",
+                                         "value": "2.114,53",
+                                         "total": "2.114,53"
+                                         }, {
+                                         "itemcode": "042.11098.01",
+                                         "description": "CABO SINAL MOT-CON 800PLUS 11M 6FX80022DC101BB0",
+                                         "quantity": "2",
+                                         "value": "504,55",
+                                         "total": "1.009,11"
+                                         }, {
+                                         "itemcode": "042.11108.01",
+                                         "description": "CABO SINAL MOT-CON 800PLUS 12M 6FX80022DC101BC0",
+                                         "quantity": "1",
+                                         "value": "523,70",
+                                         "total": "523,70"
+                                         }, {
+                                         "itemcode": "042.11111.01",
+                                         "description": "CABO SINAL MOT-CON 800PLUS 13M 6FX80022DC101BD0",
+                                         "quantity": "1",
+                                         "value": "542,84",
+                                         "total": "542,84"
+                                         }, {
+                                         "itemcode": "042.11437.01",
+                                         "description": "CABO POTENCIA MOTCON 800PL 10M P/SIMOTICS 6FX80025DS211BB0",
+                                         "quantity": "1",
+                                         "value": "1.154,90",
+                                         "total": "1.154,90"
+                                         }, {
+                                         "itemcode": "042.11438.01",
+                                         "description": "CABO POTENCIA MOT-CON 800PLUS 10M P/S120 6FX80025CS231BB0",
+                                         "quantity": "1",
+                                         "value": "2.569,22",
+                                         "total": "2.569,22"
+                                         }, {
+                                         "itemcode": "042.11442.01",
+                                         "description": "SERVO MOTOR 3000RPM 12NM 2,5KW IP64 1FK70647AF711KH0",
+                                         "quantity": "1",
+                                         "value": "6.975,90",
+                                         "total": "6.975,90"
+                                         }, {
+                                         "itemcode": "042.11447.01",
+                                         "description": "CABO POTENCIA MOT-CON 800PLUS 9M 6FX80025CS231AK0 (SC)",
+                                         "quantity": "1",
+                                         "value": "2.633,40",
+                                         "total": "2.633,40"
+                                         }, {
+                                         "itemcode": "042.3643.01",
+                                         "description": "CABO SINAL MOT-CON 800 5M P/S120 6FX80022DC101AF0",
+                                         "quantity": "1",
+                                         "value": "389,60",
+                                         "total": "389,60"
+                                         }]
+                               }]
+                 }, {
+                 "type": "PEDIDO EMERGENCIAL",
+                 "docNumber": "8",
+                 "documents": [{
+                               "id": 216365,
+                               "docKey": "151191",
+                               "docDate": "30/05/2016",
+                               "dueDate": "01/07/2016",
+                               "value": "0,00",
+                               "user": "DÃ©bora NegrÃ£o",
+                               "codCCusto": "",
+                               "codLotac": "017000",
+                               "desLotac": "Ativo Fixo",
+                               "remarks": "",
+                               "cause": "",
+                               "supplier": "CASA DO TUB1",
+                               "alternative": "Sim",
+                               "items": [{
+                                         "itemcode": "Ativo",
+                                         "description": ".",
+                                         "quantity": "3",
+                                         "value": "6,74",
+                                         "total": "20,22"
+                                         }, {
+                                         "itemcode": "Ativo",
+                                         "description": ".",
+                                         "quantity": "1",
+                                         "value": "13,16",
+                                         "total": "13,16"
+                                         }, {
+                                         "itemcode": "Ativo",
+                                         "description": ".",
+                                         "quantity": "2",
+                                         "value": "59,16",
+                                         "total": "118,32"
+                                         }]
+                               }, {
+                               "id": 125838,
+                               "docKey": "137336",
+                               "docDate": "21/08/2015",
+                               "dueDate": "01/07/2016",
+                               "value": "0,00",
+                               "user": "DÃ©bora NegrÃ£o",
+                               "codCCusto": "",
+                               "codLotac": "017000",
+                               "desLotac": "Ativo Fixo",
+                               "remarks": "",
+                               "cause": "",
+                               "supplier": "LAMBERT MOVE",
+                               "alternative": "Sim",
+                               "items": [{
+                                         "itemcode": "Ativo",
+                                         "description": ".",
+                                         "quantity": "1",
+                                         "value": "587,50",
+                                         "total": "587,50"
+                                         }, {
+                                         "itemcode": "Ativo",
+                                         "description": ".",
+                                         "quantity": "1",
+                                         "value": "878,60",
+                                         "total": "878,60"
+                                         }, {
+                                         "itemcode": "Ativo",
+                                         "description": ".",
+                                         "quantity": "1",
+                                         "value": "150,00",
+                                         "total": "150,00"
+                                         }]
+                               }, {
+                               "id": 126290,
+                               "docKey": "136495",
+                               "docDate": "24/08/2015",
+                               "dueDate": "01/07/2016",
+                               "value": "0,00",
+                               "user": "DÃ©bora NegrÃ£o",
+                               "codCCusto": "",
+                               "codLotac": "017000",
+                               "desLotac": "Ativo Fixo",
+                               "remarks": "",
+                               "cause": "",
+                               "supplier": "RAMFEJ",
+                               "alternative": "Sim",
+                               "items": [{
+                                         "itemcode": "Ativo",
+                                         "description": ".",
+                                         "quantity": "100",
+                                         "value": "265,00",
+                                         "total": "26.500,00"
+                                         }, {
+                                         "itemcode": "Ativo",
+                                         "description": ".",
+                                         "quantity": "3",
+                                         "value": "6.500,00",
+                                         "total": "19.500,00"
+                                         }, {
+                                         "itemcode": "Ativo",
+                                         "description": ".",
+                                         "quantity": "3",
+                                         "value": "4.500,00",
+                                         "total": "13.500,00"
+                                         }, {
+                                         "itemcode": "Ativo",
+                                         "description": ".",
+                                         "quantity": "1",
+                                         "value": "12.000,00",
+                                         "total": "12.000,00"
+                                         }, {
+                                         "itemcode": "Ativo",
+                                         "description": ".",
+                                         "quantity": "2",
+                                         "value": "9.300,00",
+                                         "total": "18.600,00"
+                                         }, {
+                                         "itemcode": "Ativo",
+                                         "description": ".",
+                                         "quantity": "1",
+                                         "value": "7.500,00",
+                                         "total": "7.500,00"
+                                         }, {
+                                         "itemcode": "Ativo",
+                                         "description": ".",
+                                         "quantity": "100",
+                                         "value": "45,00",
+                                         "total": "4.500,00"
+                                         }, {
+                                         "itemcode": "Ativo",
+                                         "description": ".",
+                                         "quantity": "1",
+                                         "value": "2.300,00",
+                                         "total": "2.300,00"
+                                         }, {
+                                         "itemcode": "Ativo",
+                                         "description": ".",
+                                         "quantity": "2",
+                                         "value": "1.500,00",
+                                         "total": "3.000,00"
+                                         }, {
+                                         "itemcode": "Ativo",
+                                         "description": ".",
+                                         "quantity": "4",
+                                         "value": "762,50",
+                                         "total": "3.050,00"
+                                         }]
+                               }, {
+                               "id": 217263,
+                               "docKey": "151927",
+                               "docDate": "01/06/2016",
+                               "dueDate": "01/07/2016",
+                               "value": "4.776,84",
+                               "user": "Bruna Pasqualetto",
+                               "codCCusto": "101000",
+                               "codLotac": "010000",
+                               "desLotac": "Debito Direto",
+                               "remarks": "",
+                               "cause": "",
+                               "supplier": "PROWORK",
+                               "alternative": "Sim",
+                               "items": [{
+                                         "itemcode": "DB2006",
+                                         "description": "Debito Direto 2006",
+                                         "quantity": "12",
+                                         "value": "398,07",
+                                         "total": "4.776,84"
+                                         }]
+                               }, {
+                               "id": 216971,
+                               "docKey": "151890",
+                               "docDate": "31/05/2016",
+                               "dueDate": "01/07/2016",
+                               "value": "899,80",
+                               "user": "DÃ©bora NegrÃ£o",
+                               "codCCusto": "",
+                               "codLotac": "017000",
+                               "desLotac": "Ativo Fixo",
+                               "remarks": "",
+                               "cause": "",
+                               "supplier": "HARDBOX",
+                               "alternative": "Sim",
+                               "items": [{
+                                         "itemcode": "Ativo",
+                                         "description": ".",
+                                         "quantity": "2",
+                                         "value": "449,90",
+                                         "total": "899,80"
+                                         }]
+                               }, {
+                               "id": 217134,
+                               "docKey": "151909",
+                               "docDate": "01/06/2016",
+                               "dueDate": "01/07/2016",
+                               "value": "1.080,00",
+                               "user": "DÃ©bora NegrÃ£o",
+                               "codCCusto": "",
+                               "codLotac": "017000",
+                               "desLotac": "Ativo Fixo",
+                               "remarks": "",
+                               "cause": "",
+                               "supplier": "CAEMA MADEIR",
+                               "alternative": "Sim",
+                               "items": [{
+                                         "itemcode": "Ativo",
+                                         "description": ".",
+                                         "quantity": "15",
+                                         "value": "72,00",
+                                         "total": "1.080,00"
+                                         }]
+                               }]
+                 }]
+}

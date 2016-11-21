@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>473C4FF4-0F40-4C44-803B-361802BE6606</string>
+	<key>IDESourceControlProjectName</key>
+	<string>MLApp</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>F20D0D138770E3F9959795747C0326856CF4190E</key>
+		<string>https://github.com/szsolucoes/mlapp-ios</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>MLApp.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>F20D0D138770E3F9959795747C0326856CF4190E</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/szsolucoes/mlapp-ios</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>F20D0D138770E3F9959795747C0326856CF4190E</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F20D0D138770E3F9959795747C0326856CF4190E</string>
+			<key>IDESourceControlWCCName</key>
+			<string>mlapp-ios</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_1242x2208.png" translatesAutoresizingMaskIntoConstraints="NO" id="NIt-8C-PP8">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="NIt-8C-PP8" secondAttribute="bottom" id="2ob-H9-md6"/>
+                <constraint firstItem="NIt-8C-PP8" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3Y1-1x-dmJ"/>
+                <constraint firstItem="NIt-8C-PP8" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Vet-Hk-KBC"/>
+                <constraint firstAttribute="trailing" secondItem="NIt-8C-PP8" secondAttribute="trailing" id="sp4-wi-mbd"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="NIt-8C-PP8"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="2ob-H9-md6"/>
+                    <exclude reference="3Y1-1x-dmJ"/>
+                    <exclude reference="Vet-Hk-KBC"/>
+                    <exclude reference="sp4-wi-mbd"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular-widthClass=compact">
+                <mask key="subviews">
+                    <include reference="NIt-8C-PP8"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="2ob-H9-md6"/>
+                    <include reference="3Y1-1x-dmJ"/>
+                    <include reference="Vet-Hk-KBC"/>
+                    <include reference="sp4-wi-mbd"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="279" y="422"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="launch_1242x2208.png" width="1242" height="2208"/>
+    </resources>
+</document>
