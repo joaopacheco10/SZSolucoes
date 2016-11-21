@@ -1,0 +1,866 @@
+ADD TABLE "es-conf-uf-gnre"
+  AREA "Schema Area"
+  LABEL "Conf. UF"
+  DUMP-NAME "es-conf-uf-gnre"
+
+ADD FIELD "cod-uf" OF "es-conf-uf-gnre" AS character 
+  FORMAT "x(4)"
+  INITIAL ""
+  LABEL "UF"
+  POSITION 2
+  MAX-WIDTH 8
+  COLUMN-LABEL "UF"
+  HELP "UF"
+  ORDER 10
+  MANDATORY
+
+ADD FIELD "cod-receita" OF "es-conf-uf-gnre" AS integer 
+  FORMAT "999999"
+  INITIAL "0"
+  LABEL "Receita"
+  POSITION 3
+  MAX-WIDTH 4
+  HELP "C¢digo da Receita"
+  ORDER 20
+  MANDATORY
+
+ADD FIELD "uf-favor" OF "es-conf-uf-gnre" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "UF Favorecida"
+  POSITION 4
+  MAX-WIDTH 1
+  COLUMN-LABEL "UF Favorecida"
+  HELP "Informa se a Uf favorecida ‚ obrigat¢ria."
+  ORDER 30
+
+ADD FIELD "receita" OF "es-conf-uf-gnre" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "Receita"
+  POSITION 5
+  MAX-WIDTH 1
+  COLUMN-LABEL "Receita"
+  HELP "Informa se a Receita ‚ obrigat¢ria"
+  ORDER 40
+
+ADD FIELD "cont-emit" OF "es-conf-uf-gnre" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "Contribuinte Emitente"
+  POSITION 6
+  MAX-WIDTH 1
+  HELP "Informa se o contribuinte emitente ‚ obrigat¢rio."
+  ORDER 50
+
+ADD FIELD "det-receita" OF "es-conf-uf-gnre" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "Det. Receita"
+  POSITION 7
+  MAX-WIDTH 1
+  COLUMN-LABEL "Det. Receita"
+  HELP "Informa se o detalhamento da receita ‚ obrigat¢rio."
+  ORDER 60
+
+ADD FIELD "per-refer" OF "es-conf-uf-gnre" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "Per¡odo Referˆncia"
+  POSITION 8
+  MAX-WIDTH 1
+  COLUMN-LABEL "Per¡odo Referˆncia"
+  HELP "Informa se o per¡odo de referˆncia ‚ obrigat¢rio"
+  ORDER 70
+
+ADD FIELD "per-apur" OF "es-conf-uf-gnre" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "Per¡odo Apura‡Æo"
+  POSITION 9
+  MAX-WIDTH 1
+  COLUMN-LABEL "Per¡odo Apura‡Æo"
+  HELP "Informa se o per¡odo de apura‡Æo ‚ obrigat¢rio."
+  ORDER 80
+
+ADD FIELD "parcela" OF "es-conf-uf-gnre" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "Parcela"
+  POSITION 10
+  MAX-WIDTH 1
+  COLUMN-LABEL "Parcela"
+  HELP "Informa se a parcela ‚ obrigat¢ria."
+  ORDER 90
+
+ADD FIELD "tp-valor" OF "es-conf-uf-gnre" AS integer 
+  DESCRIPTION "1 - Valor Principal / 2 - Valor Total / 3 - Valor Principal ou Valor
+Total / 4 - Nenhum"
+  FORMAT "9"
+  INITIAL "0"
+  LABEL "Valor"
+  POSITION 11
+  MAX-WIDTH 4
+  COLUMN-LABEL "Valor"
+  ORDER 100
+
+ADD FIELD "doc-orig" OF "es-conf-uf-gnre" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "Documento Origem"
+  POSITION 12
+  MAX-WIDTH 1
+  COLUMN-LABEL "Documento Origem"
+  HELP "Informa se o documento de origem ‚ obrigat¢rio"
+  ORDER 110
+
+ADD FIELD "cont-dest" OF "es-conf-uf-gnre" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "Contribuinte Destinat rio"
+  POSITION 13
+  MAX-WIDTH 1
+  COLUMN-LABEL "Contribuinte Destinat rio"
+  HELP "Informa se o contribuinte destinat rio ‚ obrigat¢rio."
+  ORDER 120
+
+ADD FIELD "dat-vencto" OF "es-conf-uf-gnre" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "Data Vencimento"
+  POSITION 14
+  MAX-WIDTH 1
+  COLUMN-LABEL "Data Vencimento"
+  HELP "Informa se a data de vencimento ‚ obrigat¢ria."
+  ORDER 130
+
+ADD FIELD "dat-pagto" OF "es-conf-uf-gnre" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "Data Pagamento"
+  POSITION 15
+  MAX-WIDTH 1
+  COLUMN-LABEL "Data Pagamento"
+  HELP "Informa se a data de pagamento ‚ obrigat¢ria."
+  ORDER 140
+
+ADD FIELD "convenio" OF "es-conf-uf-gnre" AS integer 
+  DESCRIPTION "Informa se o convˆnio ‚:
+1 - NÆo exigido
+2 - Opcional
+3 - Exigido (deve-se informar)"
+  FORMAT "9"
+  INITIAL "0"
+  LABEL "Convenio"
+  POSITION 16
+  MAX-WIDTH 4
+  COLUMN-LABEL "Convenio"
+  ORDER 150
+
+ADD FIELD "chave-acesso" OF "es-conf-uf-gnre" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "Chave de Acesso NFe"
+  POSITION 17
+  MAX-WIDTH 1
+  COLUMN-LABEL "Ch. Acesso NFe"
+  HELP "Chave de Acesso da NFe"
+  ORDER 160
+
+ADD FIELD "cod-det-receita" OF "es-conf-uf-gnre" AS integer 
+  FORMAT ">>>>>9"
+  INITIAL "0"
+  LABEL "Det Receita"
+  POSITION 18
+  MAX-WIDTH 4
+  COLUMN-LABEL "Det Receita"
+  HELP "C¢digo do detalhamento da receita"
+  ORDER 170
+
+ADD FIELD "cod-produto" OF "es-conf-uf-gnre" AS integer 
+  FORMAT ">>>9"
+  INITIAL "0"
+  LABEL "Produto"
+  POSITION 19
+  MAX-WIDTH 4
+  COLUMN-LABEL "Produto"
+  HELP "C¢digo do produto"
+  ORDER 180
+
+ADD FIELD "cod-tp-docto" OF "es-conf-uf-gnre" AS integer 
+  FORMAT ">9"
+  INITIAL "0"
+  LABEL "Tipo de Documento"
+  POSITION 20
+  MAX-WIDTH 4
+  COLUMN-LABEL "Tp Documento"
+  HELP "C¢digo do tipo de documento de origem"
+  ORDER 190
+
+ADD FIELD "produto" OF "es-conf-uf-gnre" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "Produto"
+  POSITION 21
+  MAX-WIDTH 1
+  COLUMN-LABEL "Produto"
+  HELP "Informa se o produto ‚ obrigat¢rio"
+  ORDER 200
+
+ADD FIELD "cod-extra" OF "es-conf-uf-gnre" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "C¢digo Extra"
+  POSITION 22
+  MAX-WIDTH 16
+  COLUMN-LABEL "Cod. Extra"
+  HELP "C¢digo Campo Extra"
+  ORDER 210
+
+ADD FIELD "cod-fornec" OF "es-conf-uf-gnre" AS integer 
+  FORMAT ">>>>>>>>9"
+  INITIAL "0"
+  LABEL "Fornecedor"
+  POSITION 23
+  MAX-WIDTH 4
+  COLUMN-LABEL "Fornecedor"
+  HELP "Fornecedor"
+  ORDER 220
+
+ADD INDEX "id" ON "es-conf-uf-gnre" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "cod-uf" ASCENDING 
+  INDEX-FIELD "cod-receita" ASCENDING 
+
+ADD TABLE "es-det-rec-gnre"
+  AREA "Schema Area"
+  LABEL "Detalhe Receita GNRE"
+  DUMP-NAME "es-det-rec-gnre"
+
+ADD FIELD "cod-uf" OF "es-det-rec-gnre" AS character 
+  FORMAT "x(4)"
+  INITIAL ""
+  LABEL "UF"
+  POSITION 2
+  MAX-WIDTH 8
+  COLUMN-LABEL "UF"
+  HELP "UF"
+  ORDER 10
+  MANDATORY
+
+ADD FIELD "cod-receita" OF "es-det-rec-gnre" AS integer 
+  FORMAT "999999"
+  INITIAL "0"
+  LABEL "Receita"
+  POSITION 3
+  MAX-WIDTH 4
+  HELP "C¢digo da Receita"
+  ORDER 20
+  MANDATORY
+
+ADD FIELD "cod-det-receita" OF "es-det-rec-gnre" AS integer 
+  FORMAT "999999"
+  INITIAL "0"
+  LABEL "Det Receita"
+  POSITION 4
+  MAX-WIDTH 4
+  COLUMN-LABEL "Det Receita"
+  HELP "C¢digo do detalhamento da receita"
+  ORDER 170
+  MANDATORY
+
+ADD FIELD "des-det-receita" OF "es-det-rec-gnre" AS character 
+  FORMAT "x(255)"
+  INITIAL ""
+  LABEL "Descri‡Æo"
+  POSITION 5
+  MAX-WIDTH 510
+  COLUMN-LABEL "Descri‡Æo"
+  HELP "Descri‡Æo do detalhamento da receita"
+  ORDER 180
+
+ADD INDEX "id" ON "es-det-rec-gnre" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "cod-uf" ASCENDING 
+  INDEX-FIELD "cod-receita" ASCENDING 
+  INDEX-FIELD "cod-det-receita" ASCENDING 
+
+ADD TABLE "es-lote-gnre"
+  AREA "Schema Area"
+  LABEL "Lote GNRE"
+  DESCRIPTION "Lote Integra‡Æo GNRE"
+  DUMP-NAME "es-lote-gnre"
+
+ADD FIELD "cod-lote" OF "es-lote-gnre" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Lote GNRE"
+  POSITION 2
+  MAX-WIDTH 24
+  COLUMN-LABEL "Lote"
+  HELP "Lote GNRE"
+  ORDER 10
+  MANDATORY
+
+ADD FIELD "dt-lote" OF "es-lote-gnre" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data Lote"
+  POSITION 3
+  MAX-WIDTH 4
+  COLUMN-LABEL "Data"
+  HELP "Data Cria‡Æo do Lote"
+  ORDER 20
+
+ADD FIELD "cod-usuario" OF "es-lote-gnre" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Usu rio"
+  POSITION 4
+  MAX-WIDTH 24
+  COLUMN-LABEL "Usu rio"
+  HELP "Codigo do Usu rio"
+  ORDER 30
+
+ADD FIELD "num-recibo" OF "es-lote-gnre" AS integer 
+  FORMAT ">,>>>,>>>,>>9"
+  INITIAL "0"
+  POSITION 5
+  MAX-WIDTH 4
+  ORDER 40
+
+ADD FIELD "dt-proc" OF "es-lote-gnre" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "Data Processamento"
+  POSITION 6
+  MAX-WIDTH 40
+  COLUMN-LABEL "Data Proces"
+  HELP "Data e Hora do recebimento do lote"
+  ORDER 50
+
+ADD FIELD "idi-situacao" OF "es-lote-gnre" AS integer 
+  FORMAT ">9"
+  INITIAL "0"
+  LABEL "Situa‡Æo"
+  POSITION 7
+  MAX-WIDTH 4
+  COLUMN-LABEL "Situa‡Æo"
+  HELP "Situa‡Æo do Lote"
+  ORDER 60
+
+ADD FIELD "uf-gnre" OF "es-lote-gnre" AS integer 
+  DESCRIPTION "1 - Outros / 2 - Rio de Janeiro / 3 - SÆo Paulo"
+  FORMAT ">9"
+  INITIAL "0"
+  LABEL "UF"
+  POSITION 8
+  MAX-WIDTH 4
+  COLUMN-LABEL "UF"
+  ORDER 70
+
+ADD FIELD "dt-vencto" OF "es-lote-gnre" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Dt. Vencimento"
+  POSITION 9
+  MAX-WIDTH 4
+  COLUMN-LABEL "Dt. Vencto"
+  HELP "Data de Vencimento"
+  ORDER 80
+
+ADD FIELD "dt-pagto" OF "es-lote-gnre" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Dt. Pagamento"
+  POSITION 10
+  MAX-WIDTH 4
+  COLUMN-LABEL "Dt. Pagto"
+  HELP "Data de Pagamento"
+  ORDER 90
+
+ADD INDEX "id_lote" ON "es-lote-gnre" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "cod-lote" ASCENDING 
+
+ADD TABLE "es-lote-gnre-erro"
+  AREA "Schema Area"
+  DUMP-NAME "es-lote-gnre-erro"
+
+ADD FIELD "cod-lote" OF "es-lote-gnre-erro" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Lote GNRE"
+  POSITION 2
+  MAX-WIDTH 24
+  COLUMN-LABEL "Lote"
+  HELP "Lote GNRE"
+  ORDER 10
+  MANDATORY
+
+ADD FIELD "dt-proc" OF "es-lote-gnre-erro" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data"
+  POSITION 3
+  MAX-WIDTH 4
+  COLUMN-LABEL "Data"
+  HELP "Data Procesamento"
+  ORDER 20
+
+ADD FIELD "seq-erro" OF "es-lote-gnre-erro" AS integer 
+  FORMAT ">>>9"
+  INITIAL "0"
+  LABEL "Seq Erro"
+  POSITION 4
+  MAX-WIDTH 4
+  COLUMN-LABEL "Seq Erro"
+  HELP "Seq Erro"
+  ORDER 30
+  MANDATORY
+
+ADD FIELD "cod-erro" OF "es-lote-gnre-erro" AS integer 
+  FORMAT ">>>>9"
+  INITIAL "0"
+  LABEL "Cod. Erro"
+  POSITION 5
+  MAX-WIDTH 4
+  COLUMN-LABEL "Cod. Erro"
+  HELP "C¢digo do Erro"
+  ORDER 40
+
+ADD FIELD "des-erro" OF "es-lote-gnre-erro" AS character 
+  FORMAT "x(200)"
+  INITIAL ""
+  LABEL "Des. Erro"
+  POSITION 6
+  MAX-WIDTH 400
+  COLUMN-LABEL "Des. Erro"
+  HELP "Descri‡Æo do Erro"
+  ORDER 50
+
+ADD FIELD "cod-usuario" OF "es-lote-gnre-erro" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Usu rio"
+  POSITION 7
+  MAX-WIDTH 24
+  COLUMN-LABEL "Usu rio"
+  HELP "Codigo do Usu rio"
+  ORDER 60
+
+ADD FIELD "hr-proc" OF "es-lote-gnre-erro" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Hora"
+  POSITION 8
+  MAX-WIDTH 16
+  COLUMN-LABEL "Hora"
+  HELP "Hora"
+  ORDER 70
+
+ADD INDEX "id" ON "es-lote-gnre-erro" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "cod-lote" ASCENDING 
+  INDEX-FIELD "seq-erro" ASCENDING 
+
+ADD TABLE "es-nota-fiscal-gnre"
+  AREA "Schema Area"
+  DUMP-NAME "es-nota-fiscal-gnre"
+
+ADD FIELD "cod-estabel" OF "es-nota-fiscal-gnre" AS character 
+  FORMAT "X(3)"
+  INITIAL ""
+  LABEL "Estabelecimento"
+  POSITION 2
+  MAX-WIDTH 6
+  COLUMN-LABEL "Estab"
+  ORDER 10
+  MANDATORY
+
+ADD FIELD "serie" OF "es-nota-fiscal-gnre" AS character 
+  FORMAT "X(5)"
+  INITIAL ""
+  LABEL "S‚rie"
+  POSITION 3
+  MAX-WIDTH 10
+  COLUMN-LABEL "S‚rie"
+  ORDER 20
+  MANDATORY
+
+ADD FIELD "nr-nota-fis" OF "es-nota-fiscal-gnre" AS character 
+  FORMAT "X(16)"
+  INITIAL ""
+  LABEL "Nota Fiscal"
+  POSITION 4
+  MAX-WIDTH 32
+  COLUMN-LABEL "Nota Fiscal"
+  ORDER 30
+  MANDATORY
+
+ADD FIELD "cod-lote" OF "es-nota-fiscal-gnre" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Lote GNRE"
+  POSITION 8
+  MAX-WIDTH 24
+  COLUMN-LABEL "Lote"
+  HELP "Lote GNRE"
+  ORDER 40
+  MANDATORY
+
+ADD FIELD "cod-receita" OF "es-nota-fiscal-gnre" AS integer 
+  FORMAT "999999"
+  INITIAL "0"
+  LABEL "Receita"
+  POSITION 9
+  MAX-WIDTH 4
+  HELP "C¢digo da Receita"
+  ORDER 50
+  MANDATORY
+
+ADD FIELD "vl-receita" OF "es-nota-fiscal-gnre" AS decimal 
+  FORMAT "->>>,>>>,>>9.99"
+  INITIAL "0"
+  POSITION 10
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 60
+
+ADD INDEX "id" ON "es-nota-fiscal-gnre" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "cod-estabel" ASCENDING 
+  INDEX-FIELD "serie" ASCENDING 
+  INDEX-FIELD "nr-nota-fis" ASCENDING 
+  INDEX-FIELD "cod-lote" ASCENDING 
+  INDEX-FIELD "cod-receita" ASCENDING 
+
+ADD TABLE "es-param-gnre"
+  AREA "Schema Area"
+  LABEL "Parametros GNRE"
+  DESCRIPTION "Parametros GNRE"
+  DUMP-NAME "es-param-gnre"
+
+ADD FIELD "url-ws-env" OF "es-param-gnre" AS character 
+  FORMAT "x(200)"
+  INITIAL ""
+  LABEL "WS Envio"
+  POSITION 3
+  MAX-WIDTH 120
+  COLUMN-LABEL "WS Envio"
+  HELP "URL WS Envio"
+  ORDER 20
+
+ADD FIELD "ambiente" OF "es-param-gnre" AS integer 
+  DESCRIPTION "1 - Produ‡Æo / 2 - Homologa‡Æo"
+  FORMAT "9"
+  INITIAL "0"
+  LABEL "Ambiente"
+  POSITION 4
+  MAX-WIDTH 4
+  COLUMN-LABEL "Ambiente"
+  HELP "Ambiente Integra‡Æo"
+  ORDER 30
+
+ADD FIELD "cod-estabel" OF "es-param-gnre" AS character 
+  FORMAT "x(3)"
+  INITIAL ""
+  LABEL "Estabelecimento"
+  POSITION 5
+  MAX-WIDTH 6
+  COLUMN-LABEL "Estabel"
+  HELP "Estabelecimento"
+  ORDER 40
+  MANDATORY
+
+ADD FIELD "cod-certificado" OF "es-param-gnre" AS character 
+  FORMAT "x(40)"
+  INITIAL ""
+  LABEL "Certificado"
+  POSITION 6
+  MAX-WIDTH 60
+  COLUMN-LABEL "Certificado"
+  HELP "Certificado Digital"
+  ORDER 50
+
+ADD FIELD "url-ws-cons" OF "es-param-gnre" AS character 
+  FORMAT "x(200)"
+  INITIAL ""
+  LABEL "WS Consulta"
+  POSITION 7
+  MAX-WIDTH 120
+  COLUMN-LABEL "WS Consulta"
+  HELP "URL WS Consulta"
+  ORDER 60
+
+ADD FIELD "url-ws-conf" OF "es-param-gnre" AS character 
+  FORMAT "x(200)"
+  INITIAL ""
+  LABEL "WS Config UF"
+  POSITION 8
+  MAX-WIDTH 120
+  COLUMN-LABEL "WS Config UF"
+  HELP "URL WS Configura‡äes UF"
+  ORDER 70
+
+ADD FIELD "des-appserver" OF "es-param-gnre" AS character 
+  FORMAT "x(200)"
+  INITIAL ""
+  LABEL "AppServer"
+  POSITION 9
+  MAX-WIDTH 120
+  COLUMN-LABEL "AppServer"
+  HELP "AppServer Integra‡Æo"
+  ORDER 80
+
+ADD FIELD "proxy-ip" OF "es-param-gnre" AS character 
+  FORMAT "x(15)"
+  INITIAL ""
+  LABEL "Proxy"
+  POSITION 11
+  MAX-WIDTH 30
+  COLUMN-LABEL "Proxy"
+  HELP "Proxy"
+  ORDER 90
+
+ADD FIELD "proxy-porta" OF "es-param-gnre" AS character 
+  FORMAT "x(5)"
+  INITIAL ""
+  LABEL "Porta"
+  POSITION 12
+  MAX-WIDTH 10
+  COLUMN-LABEL "Porta"
+  HELP "Porta"
+  ORDER 100
+
+ADD FIELD "proxy-user" OF "es-param-gnre" AS character 
+  FORMAT "x(40)"
+  INITIAL ""
+  LABEL "Usu rio"
+  POSITION 13
+  MAX-WIDTH 80
+  COLUMN-LABEL "Usu rio"
+  HELP "Usu rio"
+  ORDER 110
+
+ADD FIELD "proxy-pass" OF "es-param-gnre" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "Senha"
+  POSITION 14
+  MAX-WIDTH 40
+  COLUMN-LABEL "Senha"
+  HELP "Senha"
+  ORDER 120
+
+ADD FIELD "cod-plano-cta-ctbl" OF "es-param-gnre" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Plano Contas"
+  POSITION 15
+  MAX-WIDTH 16
+  COLUMN-LABEL "Plano Contas"
+  HELP "Plano Contas"
+  ORDER 130
+
+ADD FIELD "cod-cta-ctbl" OF "es-param-gnre" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "Conta Cont bil"
+  POSITION 16
+  MAX-WIDTH 40
+  COLUMN-LABEL "Conta Cont bil"
+  HELP "Conta Cont bil"
+  ORDER 140
+
+ADD FIELD "cod-unid-negoc" OF "es-param-gnre" AS character 
+  FORMAT "x(3)"
+  INITIAL ""
+  LABEL "Unid Neg¢cio"
+  POSITION 17
+  MAX-WIDTH 6
+  COLUMN-LABEL "Unid Neg¢cio"
+  HELP "Unid Neg¢cio"
+  ORDER 150
+
+ADD FIELD "cod-ccusto" OF "es-param-gnre" AS character 
+  FORMAT "x(11)"
+  INITIAL ""
+  LABEL "Centro Custo"
+  POSITION 18
+  MAX-WIDTH 22
+  COLUMN-LABEL "Centro Custo"
+  HELP "Centro Custo"
+  ORDER 160
+
+ADD FIELD "cod-plano-ccusto" OF "es-param-gnre" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Plano Centros Custo"
+  POSITION 19
+  MAX-WIDTH 16
+  COLUMN-LABEL "Plano Centros Custo"
+  HELP "Plano Centros Custo"
+  ORDER 170
+
+ADD FIELD "cod-tip-fluxo-financ" OF "es-param-gnre" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Tipo Fluxo Financ"
+  POSITION 20
+  MAX-WIDTH 24
+  COLUMN-LABEL "Tipo Fluxo Financ"
+  HELP "Tipo Fluxo Financ"
+  ORDER 180
+
+ADD FIELD "cod-espec-docto" OF "es-param-gnre" AS character 
+  FORMAT "x(3)"
+  INITIAL ""
+  LABEL "Esp‚cie Documento"
+  POSITION 21
+  MAX-WIDTH 6
+  COLUMN-LABEL "Esp‚cie Documento"
+  HELP "Esp‚cie Documento"
+  ORDER 190
+
+ADD FIELD "cod-ser-docto" OF "es-param-gnre" AS character 
+  FORMAT "x(3)"
+  INITIAL ""
+  LABEL "S‚rie Documento"
+  POSITION 22
+  MAX-WIDTH 6
+  COLUMN-LABEL "S‚rie Documento"
+  HELP "S‚rie Documento"
+  ORDER 200
+
+ADD INDEX "id" ON "es-param-gnre" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "cod-estabel" ASCENDING 
+
+ADD TABLE "es-prod-gnre"
+  AREA "Schema Area"
+  LABEL "Produto GNRE"
+  DUMP-NAME "es-prod-gnre"
+
+ADD FIELD "cod-uf" OF "es-prod-gnre" AS character 
+  FORMAT "x(4)"
+  INITIAL ""
+  LABEL "UF"
+  POSITION 2
+  MAX-WIDTH 8
+  COLUMN-LABEL "UF"
+  HELP "UF"
+  ORDER 10
+  MANDATORY
+
+ADD FIELD "cod-receita" OF "es-prod-gnre" AS integer 
+  FORMAT "999999"
+  INITIAL "0"
+  LABEL "Receita"
+  POSITION 3
+  MAX-WIDTH 4
+  HELP "C¢digo da Receita"
+  ORDER 20
+  MANDATORY
+
+ADD FIELD "cod-produto" OF "es-prod-gnre" AS integer 
+  FORMAT ">>>9"
+  INITIAL "0"
+  LABEL "Produto"
+  POSITION 4
+  MAX-WIDTH 4
+  COLUMN-LABEL "Produto"
+  HELP "C¢digo do produto"
+  ORDER 180
+  MANDATORY
+
+ADD FIELD "des-produto" OF "es-prod-gnre" AS character 
+  FORMAT "x(255)"
+  INITIAL ""
+  LABEL "Descri‡Æo"
+  POSITION 5
+  MAX-WIDTH 510
+  COLUMN-LABEL "Descri‡Æo"
+  HELP "Descri‡Æo do produto"
+  ORDER 190
+
+ADD INDEX "id" ON "es-prod-gnre" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "cod-uf" ASCENDING 
+  INDEX-FIELD "cod-receita" ASCENDING 
+  INDEX-FIELD "cod-produto" ASCENDING 
+
+ADD TABLE "es-tp-docto-gnre"
+  AREA "Schema Area"
+  LABEL "Tipo de Documento GNRE"
+  DUMP-NAME "es-tp-docto-gnre"
+
+ADD FIELD "cod-uf" OF "es-tp-docto-gnre" AS character 
+  FORMAT "x(4)"
+  INITIAL ""
+  LABEL "UF"
+  POSITION 2
+  MAX-WIDTH 8
+  COLUMN-LABEL "UF"
+  HELP "UF"
+  ORDER 10
+  MANDATORY
+
+ADD FIELD "cod-receita" OF "es-tp-docto-gnre" AS integer 
+  FORMAT "999999"
+  INITIAL "0"
+  LABEL "Receita"
+  POSITION 3
+  MAX-WIDTH 4
+  HELP "C¢digo da Receita"
+  ORDER 20
+  MANDATORY
+
+ADD FIELD "cod-tp-docto" OF "es-tp-docto-gnre" AS integer 
+  FORMAT ">9"
+  INITIAL "0"
+  LABEL "Tipo de Documento"
+  POSITION 4
+  MAX-WIDTH 4
+  COLUMN-LABEL "Tp Documento"
+  HELP "C¢digo do tipo de documento de origem"
+  ORDER 30
+  MANDATORY
+
+ADD FIELD "des-tp-docto" OF "es-tp-docto-gnre" AS character 
+  FORMAT "x(60)"
+  INITIAL ""
+  LABEL "Descri‡Æo"
+  POSITION 5
+  MAX-WIDTH 120
+  COLUMN-LABEL "Descri‡Æo"
+  HELP "Descri‡Æo do tipo de documento de origem"
+  ORDER 40
+
+ADD INDEX "id" ON "es-tp-docto-gnre" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "cod-uf" ASCENDING 
+  INDEX-FIELD "cod-receita" ASCENDING 
+  INDEX-FIELD "cod-tp-docto" ASCENDING 
+
+.
+PSC
+cpstream=ibm850
+.
+0000018723

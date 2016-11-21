@@ -1,0 +1,175 @@
+ADD TABLE "ext-it-nota-fisc-fcp"
+  AREA "Schema Area"
+  DUMP-NAME "ext-it-nota-fisc-fcp"
+
+ADD FIELD "cod-estabel" OF "ext-it-nota-fisc-fcp" AS character 
+  FORMAT "X(3)"
+  INITIAL ""
+  POSITION 2
+  MAX-WIDTH 6
+  ORDER 10
+
+ADD FIELD "serie" OF "ext-it-nota-fisc-fcp" AS character 
+  FORMAT "X(5)"
+  INITIAL ""
+  POSITION 3
+  MAX-WIDTH 10
+  ORDER 20
+
+ADD FIELD "nr-nota-fis" OF "ext-it-nota-fisc-fcp" AS character 
+  FORMAT "X(16)"
+  INITIAL ""
+  POSITION 4
+  MAX-WIDTH 32
+  ORDER 30
+
+ADD FIELD "nr-seq-fat" OF "ext-it-nota-fisc-fcp" AS integer 
+  FORMAT ">>,>>>,>>9"
+  INITIAL "0"
+  LABEL "Sequˆncia"
+  POSITION 5
+  MAX-WIDTH 4
+  ORDER 40
+
+ADD FIELD "perc-fcp" OF "ext-it-nota-fisc-fcp" AS decimal 
+  FORMAT ">>9.99"
+  INITIAL "0"
+  LABEL "% FCP"
+  POSITION 6
+  MAX-WIDTH 17
+  COLUMN-LABEL "% FCP"
+  HELP "Percentual FCP"
+  DECIMALS 2
+  ORDER 50
+
+ADD FIELD "val-fcp" OF "ext-it-nota-fisc-fcp" AS decimal 
+  FORMAT "->>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Valor FCP"
+  POSITION 7
+  MAX-WIDTH 17
+  COLUMN-LABEL "Val FCP"
+  HELP "Valor FCP"
+  DECIMALS 2
+  ORDER 60
+
+ADD FIELD "it-codigo" OF "ext-it-nota-fisc-fcp" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Item"
+  POSITION 8
+  MAX-WIDTH 32
+  ORDER 70
+
+ADD FIELD "des-imp" OF "ext-it-nota-fisc-fcp" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "Descri‡Æo"
+  POSITION 9
+  MAX-WIDTH 40
+  COLUMN-LABEL "Descri‡Æo"
+  HELP "Descri‡Æo Imposto"
+  ORDER 80
+
+ADD INDEX "id" ON "ext-it-nota-fisc-fcp" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "cod-estabel" ASCENDING 
+  INDEX-FIELD "serie" ASCENDING 
+  INDEX-FIELD "nr-nota-fis" ASCENDING 
+  INDEX-FIELD "nr-seq-fat" ASCENDING 
+  INDEX-FIELD "it-codigo" ASCENDING 
+
+ADD TABLE "ext-item-uf-fcp"
+  AREA "Schema Area"
+  DUMP-NAME "ext-item-uf-fcp"
+
+ADD FIELD "it-codigo" OF "ext-item-uf-fcp" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Item"
+  POSITION 2
+  MAX-WIDTH 32
+  COLUMN-LABEL "Item"
+  HELP "Item"
+  ORDER 10
+  MANDATORY
+
+ADD FIELD "cod-estab" OF "ext-item-uf-fcp" AS character 
+  FORMAT "x(3)"
+  INITIAL ""
+  LABEL "Estabelecimento"
+  POSITION 3
+  MAX-WIDTH 6
+  COLUMN-LABEL "Est"
+  ORDER 20
+  MANDATORY
+
+ADD FIELD "cod-estado-orig" OF "ext-item-uf-fcp" AS character 
+  FORMAT "x(04)"
+  INITIAL ""
+  LABEL "UF"
+  POSITION 4
+  MAX-WIDTH 8
+  COLUMN-LABEL "UF"
+  HELP "UF"
+  ORDER 30
+  MANDATORY
+
+ADD FIELD "estado" OF "ext-item-uf-fcp" AS character 
+  FORMAT "x(04)"
+  INITIAL ""
+  LABEL "UF"
+  POSITION 5
+  MAX-WIDTH 8
+  COLUMN-LABEL "UF"
+  HELP "UF"
+  ORDER 40
+  MANDATORY
+
+ADD FIELD "perc-fcp" OF "ext-item-uf-fcp" AS decimal 
+  FORMAT ">>9.99"
+  INITIAL "0"
+  LABEL "% FCP"
+  POSITION 6
+  MAX-WIDTH 17
+  COLUMN-LABEL "% FCP"
+  HELP "Percentual FCP"
+  DECIMALS 2
+  ORDER 50
+
+ADD FIELD "des-msg-fcp" OF "ext-item-uf-fcp" AS character 
+  FORMAT "x(2000)"
+  INITIAL ""
+  LABEL "Mensagem FCP"
+  POSITION 10
+  MAX-WIDTH 4000
+  COLUMN-LABEL "Msg FCP"
+  HELP "Descri‡Æo Mensagem FCP"
+  ORDER 90
+
+ADD FIELD "des-imp" OF "ext-item-uf-fcp" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "Descri‡Æo"
+  POSITION 11
+  MAX-WIDTH 40
+  COLUMN-LABEL "Descri‡Æo"
+  HELP "Descri‡Æo Imposto"
+  ORDER 100
+
+ADD INDEX "id" ON "ext-item-uf-fcp" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "it-codigo" ASCENDING 
+  INDEX-FIELD "cod-estado-orig" ASCENDING 
+  INDEX-FIELD "estado" ASCENDING 
+  INDEX-FIELD "cod-estab" ASCENDING 
+
+.
+PSC
+cpstream=ibm850
+.
+0000003524
