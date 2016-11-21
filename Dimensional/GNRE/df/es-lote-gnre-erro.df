@@ -1,0 +1,78 @@
+ADD TABLE "es-lote-gnre-erro"
+  AREA "Schema Area"
+  DUMP-NAME "es-lote-gnre-erro"
+
+ADD FIELD "cod-lote" OF "es-lote-gnre-erro" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Lote GNRE"
+  POSITION 2
+  MAX-WIDTH 24
+  COLUMN-LABEL "Lote"
+  HELP "Lote GNRE"
+  ORDER 10
+  MANDATORY
+
+ADD FIELD "dt-proc" OF "es-lote-gnre-erro" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data"
+  POSITION 3
+  MAX-WIDTH 4
+  COLUMN-LABEL "Data"
+  HELP "Data Procesamento"
+  ORDER 20
+
+ADD FIELD "seq-erro" OF "es-lote-gnre-erro" AS integer 
+  FORMAT ">>>9"
+  INITIAL "0"
+  LABEL "Seq Erro"
+  POSITION 4
+  MAX-WIDTH 4
+  COLUMN-LABEL "Seq Erro"
+  HELP "Seq Erro"
+  ORDER 30
+  MANDATORY
+
+ADD FIELD "cod-erro" OF "es-lote-gnre-erro" AS integer 
+  FORMAT ">>>>9"
+  INITIAL "0"
+  LABEL "Cod. Erro"
+  POSITION 5
+  MAX-WIDTH 4
+  COLUMN-LABEL "Cod. Erro"
+  HELP "C¢digo do Erro"
+  ORDER 40
+
+ADD FIELD "des-erro" OF "es-lote-gnre-erro" AS character 
+  FORMAT "x(200)"
+  INITIAL ""
+  LABEL "Des. Erro"
+  POSITION 6
+  MAX-WIDTH 400
+  COLUMN-LABEL "Des. Erro"
+  HELP "Descri‡Æo do Erro"
+  ORDER 50
+
+ADD FIELD "cod-usuario" OF "es-lote-gnre-erro" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Usu rio"
+  POSITION 7
+  MAX-WIDTH 24
+  COLUMN-LABEL "Usu rio"
+  HELP "Codigo do Usu rio"
+  ORDER 60
+
+ADD INDEX "id" ON "es-lote-gnre-erro" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "cod-lote" ASCENDING 
+  INDEX-FIELD "seq-erro" ASCENDING 
+
+.
+PSC
+cpstream=ibm850
+.
+0000001504

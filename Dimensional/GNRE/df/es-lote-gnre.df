@@ -1,0 +1,75 @@
+ADD TABLE "es-lote-gnre"
+  AREA "Schema Area"
+  LABEL "Lote GNRE"
+  DESCRIPTION "Lote Integra‡Æo GNRE"
+  DUMP-NAME "es-lote-gnre"
+
+ADD FIELD "cod-lote" OF "es-lote-gnre" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Lote GNRE"
+  POSITION 2
+  MAX-WIDTH 24
+  COLUMN-LABEL "Lote"
+  HELP "Lote GNRE"
+  ORDER 10
+  MANDATORY
+
+ADD FIELD "dt-lote" OF "es-lote-gnre" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data Lote"
+  POSITION 3
+  MAX-WIDTH 4
+  COLUMN-LABEL "Data"
+  HELP "Data Cria‡Æo do Lote"
+  ORDER 20
+
+ADD FIELD "cod-usuario" OF "es-lote-gnre" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Usu rio"
+  POSITION 4
+  MAX-WIDTH 24
+  COLUMN-LABEL "Usu rio"
+  HELP "Codigo do Usu rio"
+  ORDER 30
+
+ADD FIELD "num-recibo" OF "es-lote-gnre" AS integer 
+  FORMAT ">,>>>,>>>,>>9"
+  INITIAL "0"
+  POSITION 5
+  MAX-WIDTH 4
+  ORDER 40
+
+ADD FIELD "dt-proc" OF "es-lote-gnre" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "Data Processamento"
+  POSITION 6
+  MAX-WIDTH 40
+  COLUMN-LABEL "Data Proces"
+  HELP "Data e Hora do recebimento do lote"
+  ORDER 50
+
+ADD FIELD "idi-situacao" OF "es-lote-gnre" AS integer 
+  FORMAT ">9"
+  INITIAL "0"
+  LABEL "Situa‡Æo"
+  POSITION 7
+  MAX-WIDTH 4
+  COLUMN-LABEL "Situa‡Æo"
+  HELP "Situa‡Æo do Lote"
+  ORDER 60
+
+ADD INDEX "id_lote" ON "es-lote-gnre" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "cod-lote" ASCENDING 
+
+.
+PSC
+cpstream=ibm850
+.
+0000001452

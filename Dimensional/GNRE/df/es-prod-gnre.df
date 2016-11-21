@@ -1,0 +1,60 @@
+ADD TABLE "es-prod-gnre"
+  AREA "Schema Area"
+  LABEL "Produto GNRE"
+  DUMP-NAME "es-prod-gnre"
+
+ADD FIELD "cod-uf" OF "es-prod-gnre" AS character 
+  FORMAT "x(4)"
+  INITIAL ""
+  LABEL "UF"
+  POSITION 2
+  MAX-WIDTH 8
+  COLUMN-LABEL "UF"
+  HELP "UF"
+  ORDER 10
+  MANDATORY
+
+ADD FIELD "cod-receita" OF "es-prod-gnre" AS integer 
+  FORMAT "999999"
+  INITIAL "0"
+  LABEL "Receita"
+  POSITION 3
+  MAX-WIDTH 4
+  HELP "C¢digo da Receita"
+  ORDER 20
+  MANDATORY
+
+ADD FIELD "cod-produto" OF "es-prod-gnre" AS integer 
+  FORMAT ">>>9"
+  INITIAL "0"
+  LABEL "Produto"
+  POSITION 4
+  MAX-WIDTH 4
+  COLUMN-LABEL "Produto"
+  HELP "C¢digo do produto"
+  ORDER 180
+  MANDATORY
+
+ADD FIELD "des-produto" OF "es-prod-gnre" AS character 
+  FORMAT "x(255)"
+  INITIAL ""
+  LABEL "Descri‡Æo"
+  POSITION 5
+  MAX-WIDTH 510
+  COLUMN-LABEL "Descri‡Æo"
+  HELP "Descri‡Æo do produto"
+  ORDER 190
+
+ADD INDEX "id" ON "es-prod-gnre" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "cod-uf" ASCENDING 
+  INDEX-FIELD "cod-receita" ASCENDING 
+  INDEX-FIELD "cod-produto" ASCENDING 
+
+.
+PSC
+cpstream=ibm850
+.
+0000001112

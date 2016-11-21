@@ -1,0 +1,78 @@
+ADD TABLE "es-nota-fiscal-gnre"
+  AREA "Schema Area"
+  DUMP-NAME "es-nota-fiscal-gnre"
+
+ADD FIELD "cod-estabel" OF "es-nota-fiscal-gnre" AS character 
+  FORMAT "X(3)"
+  INITIAL ""
+  LABEL "Estabelecimento"
+  POSITION 2
+  MAX-WIDTH 6
+  COLUMN-LABEL "Estab"
+  ORDER 10
+  MANDATORY
+
+ADD FIELD "serie" OF "es-nota-fiscal-gnre" AS character 
+  FORMAT "X(5)"
+  INITIAL ""
+  LABEL "S‚rie"
+  POSITION 3
+  MAX-WIDTH 10
+  COLUMN-LABEL "S‚rie"
+  ORDER 20
+  MANDATORY
+
+ADD FIELD "nr-nota-fis" OF "es-nota-fiscal-gnre" AS character 
+  FORMAT "X(16)"
+  INITIAL ""
+  LABEL "Nota Fiscal"
+  POSITION 4
+  MAX-WIDTH 32
+  COLUMN-LABEL "Nota Fiscal"
+  ORDER 30
+  MANDATORY
+
+ADD FIELD "cod-lote" OF "es-nota-fiscal-gnre" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Lote GNRE"
+  POSITION 8
+  MAX-WIDTH 24
+  COLUMN-LABEL "Lote"
+  HELP "Lote GNRE"
+  ORDER 40
+  MANDATORY
+
+ADD FIELD "cod-receita" OF "es-nota-fiscal-gnre" AS integer 
+  FORMAT ">9"
+  INITIAL "0"
+  LABEL "Receita"
+  POSITION 9
+  MAX-WIDTH 4
+  HELP "C¢digo da Receita"
+  ORDER 50
+  MANDATORY
+
+ADD FIELD "vl-receita" OF "es-nota-fiscal-gnre" AS decimal 
+  FORMAT "->>>,>>>,>>9.99"
+  INITIAL "0"
+  POSITION 10
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 60
+
+ADD INDEX "id" ON "es-nota-fiscal-gnre" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "cod-estabel" ASCENDING 
+  INDEX-FIELD "serie" ASCENDING 
+  INDEX-FIELD "nr-nota-fis" ASCENDING 
+  INDEX-FIELD "cod-lote" ASCENDING 
+  INDEX-FIELD "cod-receita" ASCENDING 
+
+.
+PSC
+cpstream=ibm850
+.
+0000001540

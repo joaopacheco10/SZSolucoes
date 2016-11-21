@@ -1,0 +1,60 @@
+ADD TABLE "es-det-rec-gnre"
+  AREA "Schema Area"
+  LABEL "Detalhe Receita GNRE"
+  DUMP-NAME "es-det-rec-gnre"
+
+ADD FIELD "cod-uf" OF "es-det-rec-gnre" AS character 
+  FORMAT "x(4)"
+  INITIAL ""
+  LABEL "UF"
+  POSITION 2
+  MAX-WIDTH 8
+  COLUMN-LABEL "UF"
+  HELP "UF"
+  ORDER 10
+  MANDATORY
+
+ADD FIELD "cod-receita" OF "es-det-rec-gnre" AS integer 
+  FORMAT "999999"
+  INITIAL "0"
+  LABEL "Receita"
+  POSITION 3
+  MAX-WIDTH 4
+  HELP "C¢digo da Receita"
+  ORDER 20
+  MANDATORY
+
+ADD FIELD "cod-det-receita" OF "es-det-rec-gnre" AS integer 
+  FORMAT "999999"
+  INITIAL "0"
+  LABEL "Det Receita"
+  POSITION 4
+  MAX-WIDTH 4
+  COLUMN-LABEL "Det Receita"
+  HELP "C¢digo do detalhamento da receita"
+  ORDER 170
+  MANDATORY
+
+ADD FIELD "des-det-receita" OF "es-det-rec-gnre" AS character 
+  FORMAT "x(255)"
+  INITIAL ""
+  LABEL "Descri‡Æo"
+  POSITION 5
+  MAX-WIDTH 510
+  COLUMN-LABEL "Descri‡Æo"
+  HELP "Descri‡Æo do detalhamento da receita"
+  ORDER 180
+
+ADD INDEX "id" ON "es-det-rec-gnre" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "cod-uf" ASCENDING 
+  INDEX-FIELD "cod-receita" ASCENDING 
+  INDEX-FIELD "cod-det-receita" ASCENDING 
+
+.
+PSC
+cpstream=ibm850
+.
+0000001195

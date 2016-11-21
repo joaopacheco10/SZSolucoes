@@ -1,0 +1,214 @@
+ADD TABLE "es-conf-uf-gnre"
+  AREA "Schema Area"
+  LABEL "Conf. UF"
+  DUMP-NAME "es-conf-uf-gnre"
+
+ADD FIELD "cod-uf" OF "es-conf-uf-gnre" AS character 
+  FORMAT "x(4)"
+  INITIAL ""
+  LABEL "UF"
+  POSITION 2
+  MAX-WIDTH 8
+  COLUMN-LABEL "UF"
+  HELP "UF"
+  ORDER 10
+  MANDATORY
+
+ADD FIELD "cod-receita" OF "es-conf-uf-gnre" AS integer 
+  FORMAT "999999"
+  INITIAL "0"
+  LABEL "Receita"
+  POSITION 3
+  MAX-WIDTH 4
+  HELP "C¢digo da Receita"
+  ORDER 20
+  MANDATORY
+
+ADD FIELD "uf-favor" OF "es-conf-uf-gnre" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "UF Favorecida"
+  POSITION 4
+  MAX-WIDTH 1
+  COLUMN-LABEL "UF Favorecida"
+  HELP "Informa se a Uf favorecida ‚ obrigat¢ria."
+  ORDER 30
+
+ADD FIELD "receita" OF "es-conf-uf-gnre" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "Receita"
+  POSITION 5
+  MAX-WIDTH 1
+  COLUMN-LABEL "Receita"
+  HELP "Informa se a Receita ‚ obrigat¢ria"
+  ORDER 40
+
+ADD FIELD "cont-emit" OF "es-conf-uf-gnre" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "Contribuinte Emitente"
+  POSITION 6
+  MAX-WIDTH 1
+  HELP "Informa se o contribuinte emitente ‚ obrigat¢rio."
+  ORDER 50
+
+ADD FIELD "det-receita" OF "es-conf-uf-gnre" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "Det. Receita"
+  POSITION 7
+  MAX-WIDTH 1
+  COLUMN-LABEL "Det. Receita"
+  HELP "Informa se o detalhamento da receita ‚ obrigat¢rio."
+  ORDER 60
+
+ADD FIELD "per-refer" OF "es-conf-uf-gnre" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "Per¡odo Referˆncia"
+  POSITION 8
+  MAX-WIDTH 1
+  COLUMN-LABEL "Per¡odo Referˆncia"
+  HELP "Informa se o per¡odo de referˆncia ‚ obrigat¢rio"
+  ORDER 70
+
+ADD FIELD "per-apur" OF "es-conf-uf-gnre" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "Per¡odo Apura‡Æo"
+  POSITION 9
+  MAX-WIDTH 1
+  COLUMN-LABEL "Per¡odo Apura‡Æo"
+  HELP "Informa se o per¡odo de apura‡Æo ‚ obrigat¢rio."
+  ORDER 80
+
+ADD FIELD "parcela" OF "es-conf-uf-gnre" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "Parcela"
+  POSITION 10
+  MAX-WIDTH 1
+  COLUMN-LABEL "Parcela"
+  HELP "Informa se a parcela ‚ obrigat¢ria."
+  ORDER 90
+
+ADD FIELD "tp-valor" OF "es-conf-uf-gnre" AS integer 
+  DESCRIPTION "1 - Valor Principal / 2 - Valor Total / 3 - Valor Principal ou Valor
+Total / 4 - Nenhum"
+  FORMAT "9"
+  INITIAL "0"
+  LABEL "Valor"
+  POSITION 11
+  MAX-WIDTH 4
+  COLUMN-LABEL "Valor"
+  ORDER 100
+
+ADD FIELD "doc-orig" OF "es-conf-uf-gnre" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "Documento Origem"
+  POSITION 12
+  MAX-WIDTH 1
+  COLUMN-LABEL "Documento Origem"
+  HELP "Informa se o documento de origem ‚ obrigat¢rio"
+  ORDER 110
+
+ADD FIELD "cont-dest" OF "es-conf-uf-gnre" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "Contribuinte Destinat rio"
+  POSITION 13
+  MAX-WIDTH 1
+  COLUMN-LABEL "Contribuinte Destinat rio"
+  HELP "Informa se o contribuinte destinat rio ‚ obrigat¢rio."
+  ORDER 120
+
+ADD FIELD "dat-vencto" OF "es-conf-uf-gnre" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "Data Vencimento"
+  POSITION 14
+  MAX-WIDTH 1
+  COLUMN-LABEL "Data Vencimento"
+  HELP "Informa se a data de vencimento ‚ obrigat¢ria."
+  ORDER 130
+
+ADD FIELD "dat-pagto" OF "es-conf-uf-gnre" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "Data Pagamento"
+  POSITION 15
+  MAX-WIDTH 1
+  COLUMN-LABEL "Data Pagamento"
+  HELP "Informa se a data de pagamento ‚ obrigat¢ria."
+  ORDER 140
+
+ADD FIELD "convenio" OF "es-conf-uf-gnre" AS integer 
+  DESCRIPTION "Informa se o convˆnio ‚:
+1 - NÆo exigido
+2 - Opcional
+3 - Exigido (deve-se informar)"
+  FORMAT "9"
+  INITIAL "0"
+  LABEL "Convenio"
+  POSITION 16
+  MAX-WIDTH 4
+  COLUMN-LABEL "Convenio"
+  ORDER 150
+
+ADD FIELD "chave-acesso" OF "es-conf-uf-gnre" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "Chave de Acesso NFe"
+  POSITION 17
+  MAX-WIDTH 1
+  COLUMN-LABEL "Ch. Acesso NFe"
+  HELP "Chave de Acesso da NFe"
+  ORDER 160
+
+ADD FIELD "cod-det-receita" OF "es-conf-uf-gnre" AS integer 
+  FORMAT ">>>>>9"
+  INITIAL "0"
+  LABEL "Det Receita"
+  POSITION 18
+  MAX-WIDTH 4
+  COLUMN-LABEL "Det Receita"
+  HELP "C¢digo do detalhamento da receita"
+  ORDER 170
+
+ADD FIELD "cod-produto" OF "es-conf-uf-gnre" AS integer 
+  FORMAT ">>>9"
+  INITIAL "0"
+  LABEL "Produto"
+  POSITION 19
+  MAX-WIDTH 4
+  COLUMN-LABEL "Produto"
+  HELP "C¢digo do produto"
+  ORDER 180
+
+ADD FIELD "cod-tp-docto" OF "es-conf-uf-gnre" AS integer 
+  FORMAT ">9"
+  INITIAL "0"
+  LABEL "Tipo de Documento"
+  POSITION 20
+  MAX-WIDTH 4
+  COLUMN-LABEL "Tp Documento"
+  HELP "C¢digo do tipo de documento de origem"
+  ORDER 190
+
+ADD FIELD "produto" OF "es-conf-uf-gnre" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "Produto"
+  POSITION 21
+  MAX-WIDTH 1
+  COLUMN-LABEL "Produto"
+  HELP "Informa se o produto ‚ obrigat¢rio"
+  ORDER 200
+
+.
+PSC
+cpstream=ibm850
+.
+0000004921
