@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<WSAD xmlns="urn:schemas-progress-com:WSAD:0009" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <AppObject>
+    <PGVersion>
+      <PXGVersion>03</PXGVersion>
+    </PGVersion>
+    <PGGenInfo isSessionFree="true">
+      <Author>Joao Pacheco</Author>
+      <VersionString>1.01</VersionString>
+      <VersionNumber>1</VersionNumber>
+      <Package />
+      <Service>asOfi</Service>
+      <WorkDir>c:\temp\joao\</WorkDir>
+      <VerboseLogging>true</VerboseLogging>
+      <SaveBeforeGen>true</SaveBeforeGen>
+      <DotNetClient>false</DotNetClient>
+      <JavaClient>false</JavaClient>
+      <WebServicesClient>true</WebServicesClient>
+      <ESBClient>false</ESBClient>
+      <ESBClient2>false</ESBClient2>
+      <UserDefinedAppService>true</UserDefinedAppService>
+      <JavaCompilerType>1</JavaCompilerType>
+      <JavaCompiler>&lt;Install Dir&gt;\jdk\bin\javac</JavaCompiler>
+      <JavaSwitches />
+      <JavaClasspathSwitch>-classpath</JavaClasspathSwitch>
+      <JavaClasspath>&lt;Proxy Dir&gt;;&lt;Install Dir&gt;\java\progress.jar;&lt;Install Dir&gt;\java\messages.jar;;&lt;Default classes.zip&gt;</JavaClasspath>
+      <DotNetCompilerType>4</DotNetCompilerType>
+      <DotNetCompiler>csc</DotNetCompiler>
+      <DotNetSwitches />
+      <DotNetXSDGenerator>xsd</DotNetXSDGenerator>
+      <DotNetNamespace />
+      <DotNetTitle />
+      <DotNetVersion />
+      <DotNetDesc />
+      <DotNetCompany />
+      <DotNetProduct />
+      <DotNetPublicKey />
+      <DotNetDelaySign>false</DotNetDelaySign>
+      <DotNetRuntime>digitally signed</DotNetRuntime>
+      <DotNetDataSetNamespace>StrongTypesNS</DotNetDataSetNamespace>
+      <DNUseDefaultDSNamespace>true</DNUseDefaultDSNamespace>
+      <DNUseNamespaceAsDirs>true</DNUseNamespaceAsDirs>
+      <DotNetUseNullableTypes>false</DotNetUseNullableTypes>
+    </PGGenInfo>
+    <DeploymentWizard>
+      <CurrentEncoding>3</CurrentEncoding>
+      <SoapEndpointURL>http://www.tempuri.org/wsa/wsa1</SoapEndpointURL>
+      <WebServiceNamespace userDefined="true">http://172.16.1.25:8080/wsaProd/wsDimensional</WebServiceNamespace>
+      <SoapAction appendToSoapAction="false" />
+      <ConnectReturnString userDefined="false" />
+      <TestWSDL bGen="true" RPCEncoded="false" RPCLiteral="false" DocLiteral="true" />
+      <ESBEncoding>3</ESBEncoding>
+      <EntryEndpoint useDefault="true" />
+      <FaultEndpoint useDefault="true" />
+      <RejectedEndpoint useDefault="true" />
+      <Container />
+      <AppserverURL>AppServerDC://localhost:3091</AppserverURL>
+      <FileName overWrite="false">wsDimensional</FileName>
+      <ResourceDirectory>/Resources/OpenEdgeServices</ResourceDirectory>
+      <SonicAppService useFileSystem="false" deployToDS="false" createXAR="false">
+        <ResourceDirectory overWrite="false" />
+        <XARName />
+      </SonicAppService>
+      <SonicConnectionInfo>
+        <SonicURL>tcp://localhost:2506</SonicURL>
+        <SonicDomain>Domain1</SonicDomain>
+        <User>Administrator</User>
+        <Password />
+      </SonicConnectionInfo>
+    </DeploymentWizard>
+    <Name>wsDimensional</Name>
+    <ProPath>\\172.16.1.24\programas\especificos\desenv\</ProPath>
+    <HelpString />
+    <ODLHelpString />
+    <ObjectType>false</ObjectType>
+    <AllowUnknown>false</AllowUnknown>
+    <IsTTResultSet>false</IsTTResultSet>
+    <WriteDatasetBeforeImage>false</WriteDatasetBeforeImage>
+    <Procedure isPersistent="false" useFullName="false">
+      <Name>getItemUniEstab</Name>
+      <ProcPath>app\</ProcPath>
+      <ProPath>\\172.16.1.24\programas\especificos\desenv\</ProPath>
+    </Procedure>
+    <Procedure isPersistent="false" useFullName="false">
+      <Name>getTitVencto</Name>
+      <ProcPath>app\</ProcPath>
+      <ProPath>\\172.16.1.24\programas\especificos\desenv\</ProPath>
+    </Procedure>
+    <Procedure isPersistent="false" useFullName="false">
+      <Name>getTrackingOrder</Name>
+      <ProcPath>app\</ProcPath>
+      <ProPath>\\172.16.1.24\programas\especificos\desenv\</ProPath>
+    </Procedure>
+  </AppObject>
+</WSAD>

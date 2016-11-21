@@ -1,0 +1,59 @@
+ADD TABLE "dw-ped-venda"
+  AREA "Schema Area"
+  LABEL "dw-ped-venda"
+  DUMP-NAME "dw-ped-venda"
+
+ADD FIELD "modal-doc-fiscal" OF "dw-ped-venda" AS character 
+  DESCRIPTION "Modalidade de Documento Fiscal"
+  FORMAT "x(3)"
+  INITIAL ""
+  LABEL "Modalidade de Documento Fiscal"
+  POSITION 5
+  MAX-WIDTH 6
+  COLUMN-LABEL "Modalidade de Documento Fiscal"
+  HELP "Modalidade de Documento Fiscal"
+  ORDER 40
+
+ADD FIELD "nr-pedido" OF "dw-ped-venda" AS integer 
+  FORMAT ">>>,>>>,>>9"
+  INITIAL "0"
+  LABEL "Numero Pedido"
+  POSITION 6
+  MAX-WIDTH 4
+  COLUMN-LABEL "Nr Pedido"
+  ORDER 10
+
+ADD FIELD "cod-prioridade" OF "dw-ped-venda" AS integer 
+  FORMAT ">>>9"
+  INITIAL "0"
+  LABEL "Prioridade"
+  POSITION 7
+  MAX-WIDTH 4
+  COLUMN-LABEL "Prioridade"
+  ORDER 20
+  MANDATORY
+
+ADD FIELD "nr-pedido-transf" OF "dw-ped-venda" AS integer 
+  FORMAT ">>>,>>>,>>9"
+  INITIAL "0"
+  LABEL "Numero Pedido Transf"
+  POSITION 8
+  MAX-WIDTH 4
+  COLUMN-LABEL "Pedido Transf"
+  ORDER 30
+
+ADD INDEX "id-dw-ped-venda" ON "dw-ped-venda" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "nr-pedido" ASCENDING 
+
+ADD INDEX "id-dw-ped-venda-transf" ON "dw-ped-venda" 
+  AREA "Schema Area"
+  INDEX-FIELD "nr-pedido-transf" ASCENDING 
+
+.
+PSC
+cpstream=ibm850
+.
+0000001255

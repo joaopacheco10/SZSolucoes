@@ -1,0 +1,219 @@
+ADD TABLE "dw-etiq-separa"
+  AREA "Schema Area"
+  LABEL "Etiquetas Batismo Separa‡Æo"
+  DUMP-NAME "dw-etiq-separa"
+  TABLE-TRIGGER "Delete" OVERRIDE PROCEDURE "database/estg/trd-dw-etiq-separa.p" CRC "?" 
+  TABLE-TRIGGER "Write" OVERRIDE PROCEDURE "database/estg/trw-dw-etiq-separa.p" CRC "?" 
+
+ADD FIELD "cod-estabel" OF "dw-etiq-separa" AS character 
+  DESCRIPTION "C¢digo do estabelecimento."
+  FORMAT "X(3)"
+  INITIAL ""
+  LABEL "Estabelecimento"
+  LABEL-SA "R18"
+  POSITION 2
+  MAX-WIDTH 6
+  COLUMN-LABEL "Estabelec"
+  COLUMN-LABEL-SA "L9"
+  HELP "C¢digo do estabelecimento."
+  ORDER 30
+  MANDATORY
+
+ADD FIELD "cod-local" OF "dw-etiq-separa" AS character 
+  DESCRIPTION "C¢digo do Local"
+  FORMAT "X(3)"
+  INITIAL ""
+  LABEL "Local"
+  LABEL-SA "R7"
+  POSITION 3
+  MAX-WIDTH 6
+  COLUMN-LABEL "Local"
+  COLUMN-LABEL-SA "L5"
+  HELP "C¢digo do Local."
+  ORDER 40
+  MANDATORY
+
+ADD FIELD "id-docto" OF "dw-etiq-separa" AS decimal 
+  FORMAT ">>>>>>>>>9"
+  INITIAL "0"
+  LABEL "Identificador Docto"
+  POSITION 4
+  MAX-WIDTH 17
+  COLUMN-LABEL "Id. Docto"
+  HELP "Identificador £nico do documento."
+  DECIMALS 2
+  ORDER 50
+
+ADD FIELD "num-seq-item" OF "dw-etiq-separa" AS integer 
+  FORMAT ">>>>>9"
+  INITIAL "0"
+  LABEL "Sequencia do Item"
+  POSITION 5
+  MAX-WIDTH 4
+  COLUMN-LABEL "Sequencia do Item"
+  HELP "Sequencia do Item no Documento WMS"
+  ORDER 60
+
+ADD FIELD "cod-etiq-batismo" OF "dw-etiq-separa" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "Etiqueta de Batismo"
+  POSITION 6
+  MAX-WIDTH 100
+  COLUMN-LABEL "Etiq Bat"
+  HELP "C¢digo da Etiqueta de Batismo Separa‡Æo"
+  ORDER 80
+
+ADD FIELD "dt-separacao" OF "dw-etiq-separa" AS date 
+  DESCRIPTION "Data Separa‡Æo Picking"
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data Separa‡Æo"
+  POSITION 7
+  MAX-WIDTH 4
+  COLUMN-LABEL "Dt Separa‡Æo"
+  HELP "Data Separa‡Æo Picking"
+  ORDER 110
+
+ADD FIELD "hr-separacao" OF "dw-etiq-separa" AS character 
+  DESCRIPTION "Hora Separa‡Æo Picking"
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Hora Separa‡Æo"
+  POSITION 8
+  MAX-WIDTH 16
+  COLUMN-LABEL "Hr Separa‡Æo"
+  HELP "Hora Separa‡Æo Picking"
+  ORDER 120
+
+ADD FIELD "user-separacao" OF "dw-etiq-separa" AS character 
+  DESCRIPTION "Usu rio Separa‡Æo Picking"
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Usu rio Separa‡Æo"
+  POSITION 9
+  MAX-WIDTH 16
+  COLUMN-LABEL "Usuar Separ"
+  HELP "Usu rio Separa‡Æo Picking"
+  ORDER 130
+
+ADD FIELD "situacao" OF "dw-etiq-separa" AS integer 
+  DESCRIPTION "1 - Separado                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+2 - Divergˆncia                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+3 - Conferido                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+3 - Divergˆncia"
+  FORMAT "9"
+  INITIAL "0"
+  LABEL "Situa‡Æo"
+  POSITION 10
+  MAX-WIDTH 4
+  COLUMN-LABEL "Sit"
+  ORDER 100
+
+ADD FIELD "cdd-embarq" OF "dw-etiq-separa" AS decimal 
+  DESCRIPTION "C¢digo Embarque"
+  FORMAT ">>>>>>>>>>>>>>>9"
+  INITIAL "0"
+  LABEL "Embarque"
+  POSITION 11
+  MAX-WIDTH 17
+  COLUMN-LABEL "Embarque"
+  HELP "C¢digo - Decimal Embarque"
+  DECIMALS 2
+  ORDER 10
+  MANDATORY
+
+ADD FIELD "qtd-separada" OF "dw-etiq-separa" AS decimal 
+  FORMAT ">>>>,>>>,>>9.9999"
+  INITIAL "0"
+  LABEL "Qtde Separada"
+  POSITION 12
+  MAX-WIDTH 19
+  COLUMN-LABEL "Qtde Separada"
+  HELP "Quantidade Separada para o Item"
+  DECIMALS 4
+  ORDER 90
+  MANDATORY
+
+ADD FIELD "id-movto" OF "dw-etiq-separa" AS decimal 
+  DESCRIPTION "Identificador £nico do Movimento"
+  FORMAT ">>>>>>>>>9"
+  INITIAL "0"
+  LABEL "Identificador Movimento"
+  LABEL-SA "R26"
+  POSITION 13
+  MAX-WIDTH 15
+  COLUMN-LABEL "Id Movimento"
+  COLUMN-LABEL-SA "R11"
+  HELP "Identificador £nico do Movimento"
+  DECIMALS 0
+  ORDER 70
+  MANDATORY
+
+ADD FIELD "seq" OF "dw-etiq-separa" AS integer 
+  DESCRIPTION "Sequenciamento Tarefas de Prioridades"
+  FORMAT ">>>>>>>>9"
+  INITIAL "0"
+  LABEL "Sequenciamento"
+  POSITION 14
+  MAX-WIDTH 4
+  COLUMN-LABEL "Seq"
+  HELP "Sequenciamento Tarefas de Prioridades"
+  ORDER 20
+
+ADD FIELD "qtd-conferida" OF "dw-etiq-separa" AS decimal 
+  FORMAT ">>>>,>>>,>>9.9999"
+  INITIAL "0"
+  LABEL "Qtde Conferida"
+  POSITION 15
+  MAX-WIDTH 19
+  COLUMN-LABEL "Qtde Conferida"
+  HELP "Quantidade Conferida para o Item"
+  DECIMALS 4
+  ORDER 140
+  MANDATORY
+
+ADD FIELD "qtd-original" OF "dw-etiq-separa" AS decimal 
+  FORMAT ">>>>,>>>,>>9.9999"
+  INITIAL "0"
+  LABEL "Qtde Original"
+  POSITION 16
+  MAX-WIDTH 19
+  COLUMN-LABEL "Qtde Original"
+  HELP "Quantidade Original do Item"
+  DECIMALS 4
+  ORDER 150
+  MANDATORY
+
+ADD INDEX "ch-uni" ON "dw-etiq-separa" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "cdd-embarq" ASCENDING 
+  INDEX-FIELD "seq" ASCENDING 
+  INDEX-FIELD "cod-estabel" ASCENDING 
+  INDEX-FIELD "cod-local" ASCENDING 
+  INDEX-FIELD "id-docto" ASCENDING 
+  INDEX-FIELD "num-seq-item" ASCENDING 
+  INDEX-FIELD "id-movto" ASCENDING 
+
+ADD INDEX "ch-docto" ON "dw-etiq-separa" 
+  AREA "Schema Area"
+  INDEX-FIELD "cod-estabel" ASCENDING 
+  INDEX-FIELD "cod-local" ASCENDING 
+  INDEX-FIELD "id-docto" ASCENDING 
+
+ADD INDEX "ch-emb" ON "dw-etiq-separa" 
+  AREA "Schema Area"
+  INDEX-FIELD "cdd-embarq" ASCENDING 
+  INDEX-FIELD "seq" ASCENDING 
+
+ADD INDEX "ch-etiq" ON "dw-etiq-separa" 
+  AREA "Schema Area"
+  INDEX-FIELD "cod-etiq-batismo" ASCENDING 
+
+.
+PSC
+cpstream=ibm850
+.
+0000007581

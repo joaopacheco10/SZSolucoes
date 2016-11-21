@@ -1,0 +1,504 @@
+ADD TABLE "dw-rastrea-transf"
+  AREA "Schema Area"
+  DUMP-NAME "dw-rastrea-transf"
+
+ADD FIELD "cod-estabel-ret-tra" OF "dw-rastrea-transf" AS character 
+  FORMAT "X(3)"
+  INITIAL ""
+  LABEL "Estab.Retorno Transf."
+  LABEL-SA "R18"
+  POSITION 2
+  MAX-WIDTH 6
+  COLUMN-LABEL "Est"
+  COLUMN-LABEL-SA "L3"
+  HELP "Estabelecimento entrada do retorno da transferˆncia"
+  ORDER 200
+  MANDATORY
+
+ADD FIELD "serie-ori" OF "dw-rastrea-transf" AS character 
+  FORMAT "x(5)"
+  INITIAL "U"
+  LABEL "S‚rie Origem"
+  LABEL-SA "R7"
+  POSITION 3
+  MAX-WIDTH 10
+  COLUMN-LABEL "Ser"
+  COLUMN-LABEL-SA "L5"
+  HELP "S‚rie da nota fiscal de origem do processo"
+  ORDER 20
+  MANDATORY
+
+ADD FIELD "nr-nota-fis-tra-ret" OF "dw-rastrea-transf" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Nr Nota Fiscal Transf. Retorno"
+  LABEL-SA "R17"
+  POSITION 4
+  MAX-WIDTH 32
+  COLUMN-LABEL "Nota Fiscal Transf. Retorno"
+  COLUMN-LABEL-SA "L16"
+  HELP "N£mero da nota fiscal de Transf. Retorno"
+  ORDER 190
+  MANDATORY
+
+ADD FIELD "serie-docto-ret-tra" OF "dw-rastrea-transf" AS character 
+  FORMAT "x(5)"
+  INITIAL ""
+  LABEL "S‚rie Retorno Transf."
+  LABEL-SA "R7"
+  POSITION 5
+  MAX-WIDTH 10
+  COLUMN-LABEL "Ser.Retorno Transf."
+  COLUMN-LABEL-SA "L5"
+  ORDER 210
+
+ADD FIELD "nro-docto-ret-tra" OF "dw-rastrea-transf" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Documento Retorno Transf."
+  LABEL-SA "R11"
+  POSITION 9
+  MAX-WIDTH 32
+  COLUMN-LABEL "Documento Retorno Transf."
+  COLUMN-LABEL-SA "L16"
+  HELP "N£mero do Documento entrada do retorno da transferˆncia"
+  ORDER 220
+
+ADD FIELD "cod-emitente-dest" OF "dw-rastrea-transf" AS integer 
+  FORMAT ">>>>>>>>9"
+  INITIAL "0"
+  LABEL "Emitente Destino"
+  LABEL-SA "R10"
+  POSITION 10
+  MAX-WIDTH 4
+  COLUMN-LABEL "Emit Destino"
+  COLUMN-LABEL-SA "R9"
+  ORDER 110
+
+ADD FIELD "nat-operacao-dest" OF "dw-rastrea-transf" AS character 
+  FORMAT "x(06)"
+  INITIAL ""
+  LABEL "Nat Opera‡Æo Destino"
+  LABEL-SA "R15"
+  POSITION 11
+  MAX-WIDTH 12
+  COLUMN-LABEL "Nat Oper Destino"
+  COLUMN-LABEL-SA "L8"
+  ORDER 120
+
+ADD FIELD "log-fat-cancelado" OF "dw-rastrea-transf" AS logical 
+  FORMAT "Sim/NÆo"
+  INITIAL "NÆo"
+  LABEL "Faturamento Cancelado"
+  POSITION 12
+  MAX-WIDTH 1
+  VIEW-AS "view-as toggle-box"
+  COLUMN-LABEL "Faturamento Cancelado"
+  ORDER 160
+
+ADD FIELD "cod-estabel-dest" OF "dw-rastrea-transf" AS character 
+  FORMAT "X(3)"
+  INITIAL ""
+  LABEL "Estab.Destino"
+  LABEL-SA "R18"
+  POSITION 13
+  MAX-WIDTH 6
+  COLUMN-LABEL "Est"
+  COLUMN-LABEL-SA "L3"
+  HELP "Estabelecimento destino documento entrada da transferˆncia"
+  ORDER 80
+  MANDATORY
+
+ADD FIELD "cod-estabel-fat" OF "dw-rastrea-transf" AS character 
+  FORMAT "X(3)"
+  INITIAL ""
+  LABEL "Estab. Faturamento"
+  LABEL-SA "R18"
+  POSITION 14
+  MAX-WIDTH 6
+  COLUMN-LABEL "Est Faturamento"
+  COLUMN-LABEL-SA "L3"
+  HELP "Estabelecimento da nota fiscal de faturamento do processo"
+  ORDER 130
+  MANDATORY
+
+ADD FIELD "cod-estabel-ori" OF "dw-rastrea-transf" AS character 
+  FORMAT "X(3)"
+  INITIAL ""
+  LABEL "Estab. Origem"
+  LABEL-SA "R18"
+  POSITION 15
+  MAX-WIDTH 6
+  COLUMN-LABEL "Est"
+  COLUMN-LABEL-SA "L3"
+  HELP "Estabelecimento da nota fiscal de origem do processo"
+  ORDER 10
+  MANDATORY
+
+ADD FIELD "cod-estabel-tra-ret" OF "dw-rastrea-transf" AS character 
+  FORMAT "X(3)"
+  INITIAL ""
+  LABEL "Estab. Transf. Retorno"
+  LABEL-SA "R18"
+  POSITION 16
+  MAX-WIDTH 6
+  COLUMN-LABEL "Est Transf. Retorno"
+  COLUMN-LABEL-SA "L3"
+  HELP "Estabelecimento da nota fiscal de Transf. Retorno do processo"
+  ORDER 170
+  MANDATORY
+
+ADD FIELD "serie-fat" OF "dw-rastrea-transf" AS character 
+  FORMAT "x(5)"
+  INITIAL "U"
+  LABEL "S‚rie Faturamento"
+  LABEL-SA "R7"
+  POSITION 17
+  MAX-WIDTH 10
+  COLUMN-LABEL "Ser Faturamento"
+  COLUMN-LABEL-SA "L5"
+  HELP "S‚rie da nota fiscal de faturamento do processo"
+  ORDER 140
+  MANDATORY
+
+ADD FIELD "serie-tra-ret" OF "dw-rastrea-transf" AS character 
+  FORMAT "x(5)"
+  INITIAL "U"
+  LABEL "S‚rie Transf. Retorno"
+  LABEL-SA "R7"
+  POSITION 18
+  MAX-WIDTH 10
+  COLUMN-LABEL "Ser Transf. Retorno"
+  COLUMN-LABEL-SA "L5"
+  HELP "S‚rie da nota fiscal de Transf. Retorno do processo"
+  ORDER 180
+  MANDATORY
+
+ADD FIELD "nr-nota-fis-ori" OF "dw-rastrea-transf" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Nr Nota Fiscal origem"
+  LABEL-SA "R17"
+  POSITION 19
+  MAX-WIDTH 32
+  COLUMN-LABEL "Nota Fiscal Origem"
+  COLUMN-LABEL-SA "L16"
+  HELP "N£mero da nota fiscal de Origem"
+  ORDER 30
+  MANDATORY
+
+ADD FIELD "nr-nota-fis-fat" OF "dw-rastrea-transf" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Nr Nota Fiscal Faturamento"
+  LABEL-SA "R17"
+  POSITION 20
+  MAX-WIDTH 32
+  COLUMN-LABEL "Nota Fiscal Faturamento"
+  COLUMN-LABEL-SA "L16"
+  HELP "N£mero da nota fiscal de Faturamento"
+  ORDER 150
+  MANDATORY
+
+ADD FIELD "serie-docto-dest" OF "dw-rastrea-transf" AS character 
+  FORMAT "x(5)"
+  INITIAL ""
+  LABEL "S‚rie Receb.Destino"
+  LABEL-SA "R7"
+  POSITION 21
+  MAX-WIDTH 10
+  COLUMN-LABEL "Ser.Receb.Destino"
+  COLUMN-LABEL-SA "L5"
+  ORDER 90
+
+ADD FIELD "nro-docto-dest" OF "dw-rastrea-transf" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Documento Destino"
+  LABEL-SA "R11"
+  POSITION 22
+  MAX-WIDTH 32
+  COLUMN-LABEL "Documento Destino"
+  COLUMN-LABEL-SA "L16"
+  HELP "N£mero do Documento Destino"
+  ORDER 100
+
+ADD FIELD "cod-emitente-ret-tra" OF "dw-rastrea-transf" AS integer 
+  FORMAT ">>>>>>>>9"
+  INITIAL "0"
+  LABEL "Emitente Retorno Transf."
+  LABEL-SA "R10"
+  POSITION 23
+  MAX-WIDTH 4
+  COLUMN-LABEL "Emit Retorno Transf."
+  COLUMN-LABEL-SA "R9"
+  ORDER 230
+
+ADD FIELD "nat-operacao-ret-tra" OF "dw-rastrea-transf" AS character 
+  FORMAT "x(06)"
+  INITIAL ""
+  LABEL "Nat Opera‡Æo Retorno Transf."
+  LABEL-SA "R15"
+  POSITION 24
+  MAX-WIDTH 12
+  COLUMN-LABEL "Nat Oper Retorno Transf."
+  COLUMN-LABEL-SA "L8"
+  ORDER 240
+
+ADD FIELD "cod-estabel-ret-canc" OF "dw-rastrea-transf" AS character 
+  FORMAT "X(3)"
+  INITIAL ""
+  LABEL "Estab.Retorno Canc."
+  LABEL-SA "R18"
+  POSITION 25
+  MAX-WIDTH 6
+  COLUMN-LABEL "Est"
+  COLUMN-LABEL-SA "L3"
+  HELP "Estabelecimento entrada do retorno da transferˆncia"
+  ORDER 310
+  MANDATORY
+
+ADD FIELD "cod-estabel-ret-dev" OF "dw-rastrea-transf" AS character 
+  FORMAT "X(3)"
+  INITIAL ""
+  LABEL "Estab.Receb.Transf.Dev."
+  LABEL-SA "R18"
+  POSITION 26
+  MAX-WIDTH 6
+  COLUMN-LABEL "Est"
+  COLUMN-LABEL-SA "L3"
+  HELP "Estabelecimento entrada do retorno da transferˆncia de devoluca"
+  ORDER 360
+  MANDATORY
+
+ADD FIELD "serie-tra-dev" OF "dw-rastrea-transf" AS character 
+  FORMAT "x(5)"
+  INITIAL "U"
+  LABEL "S‚rie.Tranf.Dev."
+  LABEL-SA "R7"
+  POSITION 27
+  MAX-WIDTH 10
+  COLUMN-LABEL "Ser.Transf.Dev."
+  COLUMN-LABEL-SA "L5"
+  HELP "S‚rie da nota fiscal de transfer‰ncia de devolu‡Æo"
+  ORDER 290
+  MANDATORY
+
+ADD FIELD "serie-tra-canc" OF "dw-rastrea-transf" AS character 
+  FORMAT "x(5)"
+  INITIAL "U"
+  LABEL "S‚rie.Tranf.Canc."
+  LABEL-SA "R7"
+  POSITION 28
+  MAX-WIDTH 10
+  COLUMN-LABEL "Ser.Transf.Canc."
+  COLUMN-LABEL-SA "L5"
+  HELP "S‚rie da nota fiscal de transfer‰ncia do cancelamento"
+  ORDER 260
+  MANDATORY
+
+ADD FIELD "serie-docto-ret-canc" OF "dw-rastrea-transf" AS character 
+  FORMAT "x(5)"
+  INITIAL ""
+  LABEL "S‚rie Retorno Canc."
+  LABEL-SA "R7"
+  POSITION 29
+  MAX-WIDTH 10
+  COLUMN-LABEL "Ser.Retorno Canc."
+  COLUMN-LABEL-SA "L5"
+  ORDER 330
+
+ADD FIELD "serie-docto-ret-dev" OF "dw-rastrea-transf" AS character 
+  FORMAT "x(5)"
+  INITIAL ""
+  LABEL "S‚rie Receb.Transf.Dev."
+  LABEL-SA "R7"
+  POSITION 30
+  MAX-WIDTH 10
+  COLUMN-LABEL "Ser.Receb.Transf.Dev."
+  COLUMN-LABEL-SA "L5"
+  ORDER 370
+
+ADD FIELD "cod-estabel-tra-canc" OF "dw-rastrea-transf" AS character 
+  FORMAT "X(3)"
+  INITIAL ""
+  LABEL "Estab.Tranf.Canc."
+  LABEL-SA "R18"
+  POSITION 31
+  MAX-WIDTH 6
+  COLUMN-LABEL "Est.Transf.Canc."
+  COLUMN-LABEL-SA "L3"
+  HELP "Estabelecimento da nota fiscal de transfer‰ncia do cancelamento"
+  ORDER 250
+  MANDATORY
+
+ADD FIELD "cod-estabel-tra-dev" OF "dw-rastrea-transf" AS character 
+  FORMAT "X(3)"
+  INITIAL ""
+  LABEL "Estab.Tranf.Dev."
+  LABEL-SA "R18"
+  POSITION 32
+  MAX-WIDTH 6
+  COLUMN-LABEL "Est.Transf.Dev."
+  COLUMN-LABEL-SA "L3"
+  HELP "Estabelecimento da nota fiscal de transfer‰ncia de devolu‡Æo"
+  ORDER 280
+  MANDATORY
+
+ADD FIELD "nr-nota-fis-tra-canc" OF "dw-rastrea-transf" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Nr Nota Fiscal.Tranf.Canc."
+  LABEL-SA "R17"
+  POSITION 33
+  MAX-WIDTH 32
+  COLUMN-LABEL "Nota Fiscal.Tranf.Canc."
+  COLUMN-LABEL-SA "L16"
+  HELP "N£mero da nota fiscal de transfer‰ncia do cancelamento"
+  ORDER 270
+  MANDATORY
+
+ADD FIELD "nr-nota-fis-tra-dev" OF "dw-rastrea-transf" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Nr Nota Fiscal.Tranf.Dev."
+  LABEL-SA "R17"
+  POSITION 34
+  MAX-WIDTH 32
+  COLUMN-LABEL "Nota Fiscal.Tranf.Dev."
+  COLUMN-LABEL-SA "L16"
+  HELP "N£mero da nota fiscal de transfer‰ncia de devolu‡Æo"
+  ORDER 300
+  MANDATORY
+
+ADD FIELD "cod-emitente-ret-dev" OF "dw-rastrea-transf" AS integer 
+  FORMAT ">>>>>>>>9"
+  INITIAL "0"
+  LABEL "Emitente Receb.Transf.Dev."
+  LABEL-SA "R10"
+  POSITION 35
+  MAX-WIDTH 4
+  COLUMN-LABEL "Emit Receb.Transf.Dev."
+  COLUMN-LABEL-SA "R9"
+  ORDER 390
+
+ADD FIELD "cod-emitente-ret-canc" OF "dw-rastrea-transf" AS integer 
+  FORMAT ">>>>>>>>9"
+  INITIAL "0"
+  LABEL "Emitente Retorno Canc."
+  LABEL-SA "R10"
+  POSITION 36
+  MAX-WIDTH 4
+  COLUMN-LABEL "Emit Retorno Canc."
+  COLUMN-LABEL-SA "R9"
+  ORDER 340
+
+ADD FIELD "nat-operacao-ret-dev" OF "dw-rastrea-transf" AS character 
+  FORMAT "x(06)"
+  INITIAL ""
+  LABEL "Nat Opera‡Æo Receb.Transf.Dev."
+  LABEL-SA "R15"
+  POSITION 37
+  MAX-WIDTH 12
+  COLUMN-LABEL "Nat Oper Receb.Transf.Dev."
+  COLUMN-LABEL-SA "L8"
+  ORDER 400
+
+ADD FIELD "nat-operacao-ret-canc" OF "dw-rastrea-transf" AS character 
+  FORMAT "x(06)"
+  INITIAL ""
+  LABEL "Nat Opera‡Æo Retorno Canc."
+  LABEL-SA "R15"
+  POSITION 38
+  MAX-WIDTH 12
+  COLUMN-LABEL "Nat Oper Retorno Canc."
+  COLUMN-LABEL-SA "L8"
+  ORDER 350
+
+ADD FIELD "nro-docto-ret-dev" OF "dw-rastrea-transf" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Documento Receb.Transf.Dev."
+  LABEL-SA "R11"
+  POSITION 39
+  MAX-WIDTH 32
+  COLUMN-LABEL "Documento Receb.Transf.Dev."
+  COLUMN-LABEL-SA "L16"
+  HELP "N£mero do Documento entrada do retorno de devolucao"
+  ORDER 380
+
+ADD FIELD "nro-docto-ret-canc" OF "dw-rastrea-transf" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Documento Retorno Canc."
+  LABEL-SA "R11"
+  POSITION 40
+  MAX-WIDTH 32
+  COLUMN-LABEL "Documento Retorno Canc."
+  COLUMN-LABEL-SA "L16"
+  HELP "N£mero do Documento entrada do retorno de cancelemento"
+  ORDER 320
+
+ADD FIELD "log-fat-completo" OF "dw-rastrea-transf" AS logical 
+  FORMAT "Sim/NÆo"
+  INITIAL "Sim"
+  LABEL "Faturamento Completo"
+  POSITION 41
+  MAX-WIDTH 1
+  VIEW-AS "view-as toggle-box"
+  COLUMN-LABEL "Faturamento Completo"
+  ORDER 50
+
+ADD FIELD "cdd-embarq" OF "dw-rastrea-transf" AS decimal 
+  DESCRIPTION "C¢digo Embarque"
+  FORMAT ">>>>>>>>>>>>>>>9"
+  INITIAL "0"
+  LABEL "Embarque"
+  POSITION 42
+  MAX-WIDTH 17
+  COLUMN-LABEL "Embarque"
+  HELP "C¢digo - Decimal Embarque"
+  DECIMALS 2
+  ORDER 40
+  MANDATORY
+
+ADD INDEX "pk-rastrea-transf" ON "dw-rastrea-transf" 
+  AREA "Schema Area"
+  PRIMARY
+  INDEX-FIELD "cod-estabel-ori" ASCENDING 
+  INDEX-FIELD "serie-ori" ASCENDING 
+  INDEX-FIELD "nr-nota-fis-ori" ASCENDING 
+  INDEX-FIELD "cod-estabel-dest" ASCENDING 
+
+ADD INDEX "ch-docum-est-dest" ON "dw-rastrea-transf" 
+  AREA "Schema Area"
+  INDEX-FIELD "serie-docto-dest" ASCENDING 
+  INDEX-FIELD "nro-docto-dest" ASCENDING 
+  INDEX-FIELD "cod-emitente-dest" ASCENDING 
+  INDEX-FIELD "nat-operacao-dest" ASCENDING 
+
+ADD INDEX "ch-docum-est-ret-tra" ON "dw-rastrea-transf" 
+  AREA "Schema Area"
+  INDEX-FIELD "cod-estabel-ret-tra" ASCENDING 
+  INDEX-FIELD "serie-docto-ret-tra" ASCENDING 
+  INDEX-FIELD "nro-docto-ret-tra" ASCENDING 
+  INDEX-FIELD "cod-emitente-ret-tra" ASCENDING 
+  INDEX-FIELD "nat-operacao-ret-tra" ASCENDING 
+
+ADD INDEX "ch-nota-fat" ON "dw-rastrea-transf" 
+  AREA "Schema Area"
+  INDEX-FIELD "cod-estabel-fat" ASCENDING 
+  INDEX-FIELD "serie-fat" ASCENDING 
+  INDEX-FIELD "nr-nota-fis-fat" ASCENDING 
+
+ADD INDEX "ch-nota-tra-ret" ON "dw-rastrea-transf" 
+  AREA "Schema Area"
+  INDEX-FIELD "cod-estabel-tra-ret" ASCENDING 
+  INDEX-FIELD "serie-tra-ret" ASCENDING 
+  INDEX-FIELD "nr-nota-fis-tra-ret" ASCENDING 
+
+.
+PSC
+cpstream=ibm850
+.
+0000012750

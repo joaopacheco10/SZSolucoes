@@ -1,0 +1,361 @@
+ADD TABLE "dw-wm-docto"
+  AREA "Schema Area"
+  LABEL "dw-wm-docto"
+  DESCRIPTION "Controle de documento do WMS conforme ondas de prioridades"
+  DUMP-NAME "dw021"
+
+ADD FIELD "nr-pedcli" OF "dw-wm-docto" AS character 
+  DESCRIPTION "N£mero do pedido do cliente"
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "N£mero do Pedido do Cliente"
+  POSITION 2
+  MAX-WIDTH 24
+  COLUMN-LABEL "Nr. Ped. Cliente"
+  HELP "N£mero do pedido do cliente"
+  ORDER 30
+  MANDATORY
+
+ADD FIELD "nome-abrev" OF "dw-wm-docto" AS character 
+  DESCRIPTION "Nome abreviado do cliente"
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Nome Abreviado"
+  POSITION 3
+  MAX-WIDTH 24
+  COLUMN-LABEL "Nome Abrev."
+  HELP "Nome abreviado do cliente"
+  ORDER 40
+  MANDATORY
+
+ADD FIELD "cod-usuario" OF "dw-wm-docto" AS character 
+  DESCRIPTION "C¢digo do Usu rio Criou Documento"
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Cod Usu rio"
+  POSITION 4
+  MAX-WIDTH 24
+  COLUMN-LABEL "Cod Usuar"
+  HELP "C¢digo do Usu rio Criou Documento"
+  ORDER 110
+
+ADD FIELD "data-criacao" OF "dw-wm-docto" AS date 
+  DESCRIPTION "Data Cria‡Æo Onda de Prioridades"
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data Cria‡Æo"
+  POSITION 5
+  MAX-WIDTH 4
+  COLUMN-LABEL "Dt Cria‡Æo"
+  HELP "Data Cria‡Æo Onda de Prioridades"
+  ORDER 60
+
+ADD FIELD "hr-criacao" OF "dw-wm-docto" AS character 
+  DESCRIPTION "Hora Cria‡Æo"
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Hora Cria‡Æo"
+  POSITION 7
+  MAX-WIDTH 16
+  COLUMN-LABEL "Hr Cria‡Æo"
+  HELP "Hora Cria‡Æo"
+  ORDER 70
+
+ADD FIELD "situacao-wms" OF "dw-wm-docto" AS integer 
+  DESCRIPTION "1 - Pendente                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+2 - Em Separa‡Æo                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+3 - Divergˆncia                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+4- Finalizado                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+5 - Cancelado"
+  FORMAT ">9"
+  INITIAL "0"
+  LABEL "Sit. Wms"
+  POSITION 8
+  MAX-WIDTH 4
+  COLUMN-LABEL "Situa‡Æo WMS"
+  HELP "Situa‡Æo Documento no WMS"
+  ORDER 50
+
+ADD FIELD "dt-embarque" OF "dw-wm-docto" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Dt Embarque"
+  POSITION 10
+  MAX-WIDTH 4
+  COLUMN-LABEL "Dt Embarque"
+  ORDER 100
+
+ADD FIELD "id-docto" OF "dw-wm-docto" AS decimal 
+  FORMAT ">>>>>>>>>9"
+  INITIAL "0"
+  LABEL "Identificador Docto"
+  POSITION 11
+  MAX-WIDTH 17
+  COLUMN-LABEL "Id. Docto"
+  HELP "Identificador £nico do documento."
+  DECIMALS 2
+  ORDER 90
+
+ADD FIELD "num-docto" OF "dw-wm-docto" AS character 
+  DESCRIPTION "N£mero documento WMS"
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "N£mero Docto"
+  POSITION 12
+  MAX-WIDTH 32
+  COLUMN-LABEL "N£m docto"
+  HELP "N£mero Documento WMS"
+  ORDER 10
+  MANDATORY
+
+ADD FIELD "UF" OF "dw-wm-docto" AS character 
+  DESCRIPTION "UF"
+  FORMAT "x(4)"
+  INITIAL ""
+  LABEL "UF"
+  POSITION 14
+  MAX-WIDTH 8
+  COLUMN-LABEL "UF"
+  HELP "UF"
+  ORDER 130
+  MANDATORY
+
+ADD FIELD "cod-prioridade" OF "dw-wm-docto" AS integer 
+  FORMAT ">>>9"
+  INITIAL "0"
+  LABEL "Prioridade"
+  POSITION 16
+  MAX-WIDTH 4
+  COLUMN-LABEL "Prioridade"
+  ORDER 140
+  MANDATORY
+
+ADD FIELD "seq" OF "dw-wm-docto" AS integer 
+  DESCRIPTION "Sequenciamento Tarefas de Prioridades"
+  FORMAT ">>>>>>>>9"
+  INITIAL "0"
+  LABEL "Sequenciamento"
+  POSITION 17
+  MAX-WIDTH 4
+  COLUMN-LABEL "Seq"
+  HELP "Sequenciamento Tarefas de Prioridades"
+  ORDER 150
+
+ADD FIELD "separador" OF "dw-wm-docto" AS character 
+  DESCRIPTION "Separador da Tarefa"
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Separador"
+  POSITION 19
+  MAX-WIDTH 24
+  COLUMN-LABEL "Separador"
+  HELP "Separador da Tarefa"
+  ORDER 160
+
+ADD FIELD "num-docto-ressup" OF "dw-wm-docto" AS character 
+  DESCRIPTION "N£mero documento WMS"
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "N£mero Docto"
+  POSITION 21
+  MAX-WIDTH 32
+  COLUMN-LABEL "N£m docto"
+  HELP "N£mero Documento WMS"
+  ORDER 170
+  MANDATORY
+
+ADD FIELD "id-docto-ressup" OF "dw-wm-docto" AS decimal 
+  FORMAT ">>>>>>>>>9"
+  INITIAL "0"
+  LABEL "Identificador Docto"
+  POSITION 22
+  MAX-WIDTH 17
+  COLUMN-LABEL "Id. Docto"
+  HELP "Identificador £nico do documento."
+  DECIMALS 2
+  ORDER 180
+
+ADD FIELD "cdd-embarq" OF "dw-wm-docto" AS decimal 
+  DESCRIPTION "C¢digo Embarque"
+  FORMAT ">>>>>>>>>>>>>>>9"
+  INITIAL "0"
+  LABEL "Embarque"
+  POSITION 23
+  MAX-WIDTH 17
+  COLUMN-LABEL "Embarque"
+  HELP "C¢digo - Decimal Embarque"
+  DECIMALS 2
+  ORDER 20
+  MANDATORY
+
+ADD FIELD "dt-separacao" OF "dw-wm-docto" AS date 
+  DESCRIPTION "Data Separa‡Æo Picking"
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data Separa‡Æo"
+  POSITION 24
+  MAX-WIDTH 4
+  COLUMN-LABEL "Dt Separa‡Æo"
+  HELP "Data Separa‡Æo Picking"
+  ORDER 190
+
+ADD FIELD "hr-separacao" OF "dw-wm-docto" AS character 
+  DESCRIPTION "Hora Separa‡Æo Picking"
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Hora Separa‡Æo"
+  POSITION 25
+  MAX-WIDTH 16
+  COLUMN-LABEL "Hr Separa‡Æo"
+  HELP "Hora Separa‡Æo Picking"
+  ORDER 200
+
+ADD FIELD "user-separacao" OF "dw-wm-docto" AS character 
+  DESCRIPTION "Usu rio Separa‡Æo Picking"
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Usu rio Separa‡Æo"
+  POSITION 26
+  MAX-WIDTH 16
+  COLUMN-LABEL "Usuar Separ"
+  HELP "Usu rio Separa‡Æo Picking"
+  ORDER 210
+
+ADD FIELD "nome-transp" OF "dw-wm-docto" AS character 
+  DESCRIPTION "Nome Transportador"
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Nome Transp"
+  POSITION 27
+  MAX-WIDTH 24
+  COLUMN-LABEL "Transp"
+  HELP "Nome Transportador"
+  ORDER 120
+
+ADD FIELD "cod-equipamento" OF "dw-wm-docto" AS character 
+  DESCRIPTION "Equipamento"
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Equipamento"
+  POSITION 28
+  MAX-WIDTH 16
+  COLUMN-LABEL "Equipt"
+  HELP "Equipamento"
+  ORDER 80
+  MANDATORY
+
+ADD FIELD "tipo" OF "dw-wm-docto" AS integer 
+  DESCRIPTION "1 = Separa‡Æo                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+2 = Conferˆncia                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+3 = Consolida‡Æo                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+4 = Conferˆncia de Volumes"
+  FORMAT ">>9"
+  INITIAL "0"
+  LABEL "Tipo"
+  POSITION 29
+  MAX-WIDTH 4
+  COLUMN-LABEL "Tipo"
+  HELP "Tipo Documento"
+  ORDER 220
+
+ADD FIELD "cidade" OF "dw-wm-docto" AS character 
+  DESCRIPTION "Nome da Cidade"
+  FORMAT "x(25)"
+  INITIAL ""
+  LABEL "Cidade"
+  POSITION 30
+  MAX-WIDTH 50
+  COLUMN-LABEL "Cidade"
+  HELP "Nome da Cidade"
+  ORDER 230
+
+ADD FIELD "urgente" OF "dw-wm-docto" AS logical 
+  DESCRIPTION "Embarque Urgente"
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "Embarque Urgente"
+  POSITION 31
+  MAX-WIDTH 1
+  COLUMN-LABEL "Embar Urgente"
+  HELP "Embarque Urgente"
+  ORDER 240
+
+ADD INDEX "id-03" ON "dw-wm-docto" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "id-docto" ASCENDING 
+  INDEX-FIELD "cod-equipamento" ASCENDING 
+
+ADD INDEX "id-01" ON "dw-wm-docto" 
+  AREA "Schema Area"
+  INDEX-FIELD "id-docto" ASCENDING 
+  INDEX-FIELD "situacao-wms" ASCENDING 
+
+ADD INDEX "id-02" ON "dw-wm-docto" 
+  AREA "Schema Area"
+  INDEX-FIELD "seq" ASCENDING 
+
+ADD INDEX "id-04" ON "dw-wm-docto" 
+  AREA "Schema Area"
+  INDEX-FIELD "id-docto" ASCENDING 
+  INDEX-FIELD "seq" ASCENDING 
+
+ADD INDEX "id-05" ON "dw-wm-docto" 
+  AREA "Schema Area"
+  INDEX-FIELD "situacao-wms" ASCENDING 
+
+ADD INDEX "id-06" ON "dw-wm-docto" 
+  AREA "Schema Area"
+  INDEX-FIELD "id-docto" ASCENDING 
+
+ADD INDEX "id-07" ON "dw-wm-docto" 
+  AREA "Schema Area"
+  INDEX-FIELD "cod-equipamento" ASCENDING 
+
+ADD INDEX "id-08" ON "dw-wm-docto" 
+  AREA "Schema Area"
+  INDEX-FIELD "id-docto" ASCENDING 
+  INDEX-FIELD "cod-equipamento" ASCENDING 
+  INDEX-FIELD "cdd-embarq" ASCENDING 
+
+ADD INDEX "id-09" ON "dw-wm-docto" 
+  AREA "Schema Area"
+  INDEX-FIELD "id-docto" ASCENDING 
+  INDEX-FIELD "cod-equipamento" ASCENDING 
+  INDEX-FIELD "nr-pedcli" ASCENDING 
+  INDEX-FIELD "nome-abrev" ASCENDING 
+
+ADD INDEX "id-10" ON "dw-wm-docto" 
+  AREA "Schema Area"
+  INDEX-FIELD "id-docto" ASCENDING 
+  INDEX-FIELD "cod-equipamento" ASCENDING 
+  INDEX-FIELD "nome-transp" ASCENDING 
+
+ADD INDEX "id-11" ON "dw-wm-docto" 
+  AREA "Schema Area"
+  INDEX-FIELD "id-docto" ASCENDING 
+  INDEX-FIELD "cod-equipamento" ASCENDING 
+  INDEX-FIELD "separador" ASCENDING 
+
+ADD INDEX "id-12" ON "dw-wm-docto" 
+  AREA "Schema Area"
+  INDEX-FIELD "id-docto" ASCENDING 
+  INDEX-FIELD "cod-equipamento" ASCENDING 
+  INDEX-FIELD "seq" ASCENDING 
+
+ADD INDEX "indice-01" ON "dw-wm-docto" 
+  AREA "Schema Area"
+  INDEX-FIELD "cod-equipamento" ASCENDING 
+  INDEX-FIELD "tipo" ASCENDING 
+
+ADD INDEX "indice-02" ON "dw-wm-docto" 
+  AREA "Schema Area"
+  INDEX-FIELD "cdd-embarq" ASCENDING 
+  INDEX-FIELD "seq" ASCENDING 
+
+.
+PSC
+cpstream=ibm850
+.
+0000013811
