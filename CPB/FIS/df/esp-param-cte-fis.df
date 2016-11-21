@@ -1,0 +1,27 @@
+ADD TABLE "esp-param-cte-fis"
+  AREA "Schema Area"
+  DUMP-NAME "esp-param-cte-fis"
+
+ADD FIELD "it-codigo" OF "esp-param-cte-fis" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Item Frete"
+  POSITION 2
+  MAX-WIDTH 32
+  COLUMN-LABEL "Item"
+  ORDER 10
+
+ADD FIELD "cod-depos" OF "esp-param-cte-fis" AS character 
+  FORMAT "x(3)"
+  INITIAL ""
+  LABEL "Dep¢sito"
+  POSITION 5
+  MAX-WIDTH 6
+  COLUMN-LABEL "Dep"
+  ORDER 40
+
+.
+PSC
+cpstream=ibm850
+.
+0000000452

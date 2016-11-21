@@ -1,0 +1,104 @@
+ADD TABLE "esp-fatura-frete"
+  AREA "Schema Area"
+  LABEL "Faturas de Frete"
+  DUMP-NAME "esftfrt-------1"
+
+ADD FIELD "nome-transp" OF "esp-fatura-frete" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Transportadora"
+  POSITION 2
+  MAX-WIDTH 24
+  COLUMN-LABEL "Transp"
+  ORDER 10
+
+ADD FIELD "ser-docto" OF "esp-fatura-frete" AS character 
+  FORMAT "x(3)"
+  INITIAL ""
+  LABEL "S‚rie"
+  POSITION 3
+  MAX-WIDTH 6
+  COLUMN-LABEL "Sr"
+  ORDER 20
+
+ADD FIELD "nr-fatura" OF "esp-fatura-frete" AS character 
+  FORMAT "x(10)"
+  INITIAL ""
+  LABEL "Nr Fatura"
+  POSITION 4
+  MAX-WIDTH 20
+  COLUMN-LABEL "Nr Fatura"
+  ORDER 30
+
+ADD FIELD "dt-emissao" OF "esp-fatura-frete" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "EmissÆo"
+  POSITION 5
+  MAX-WIDTH 4
+  COLUMN-LABEL "Emissao"
+  ORDER 40
+
+ADD FIELD "dt-vencto" OF "esp-fatura-frete" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Vencimento"
+  POSITION 6
+  MAX-WIDTH 4
+  COLUMN-LABEL "Vencto"
+  ORDER 50
+
+ADD FIELD "vl-fatura" OF "esp-fatura-frete" AS decimal 
+  FORMAT ">>>>>>>>9.99"
+  INITIAL "0"
+  LABEL "Valor Fatura"
+  POSITION 7
+  MAX-WIDTH 17
+  COLUMN-LABEL "Vl Fat"
+  DECIMALS 2
+  ORDER 60
+
+ADD FIELD "val-desconto" OF "esp-fatura-frete" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Desconto"
+  POSITION 10
+  MAX-WIDTH 17
+  COLUMN-LABEL "Desconto"
+  DECIMALS 2
+  ORDER 90
+
+ADD FIELD "usr-aprov" OF "esp-fatura-frete" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Aprovador"
+  POSITION 11
+  MAX-WIDTH 24
+  ORDER 70
+
+ADD FIELD "ind-sit-fatura" OF "esp-fatura-frete" AS integer 
+  DESCRIPTION "1 - Importada
+2 - Aprovada 
+3 - Atualizada"
+  FORMAT "9"
+  INITIAL "1"
+  LABEL "Situa‡Æo"
+  POSITION 14
+  MAX-WIDTH 4
+  VIEW-AS "VIEW-AS RADIO-SET RADIO-BUTTONS 
+""Importada"",1,""Aprovada"",2,""Atualizada"",3"
+  ORDER 80
+
+ADD INDEX "id" ON "esp-fatura-frete" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "nome-transp" ASCENDING 
+  INDEX-FIELD "ser-docto" ASCENDING 
+  INDEX-FIELD "nr-fatura" ASCENDING 
+
+.
+PSC
+cpstream=ibm850
+.
+0000002095

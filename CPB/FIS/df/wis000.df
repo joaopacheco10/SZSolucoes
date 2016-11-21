@@ -1,0 +1,38 @@
+ADD FIELD "odbc-dsn-fis" OF "esp-param-integr-wms" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "ODBC DSN"
+  POSITION 9
+  MAX-WIDTH 100
+  ORDER 80
+
+ADD FIELD "odbc-server-fis" OF "esp-param-integr-wms" AS character 
+  FORMAT "x(30)"
+  INITIAL ""
+  LABEL "ODBC SERVER"
+  POSITION 10
+  MAX-WIDTH 60
+  COLUMN-LABEL "Server"
+  ORDER 90
+
+ADD FIELD "odbc-userid-fis" OF "esp-param-integr-wms" AS character 
+  FORMAT "x(30)"
+  INITIAL ""
+  LABEL "ODBC USERID"
+  POSITION 11
+  MAX-WIDTH 60
+  ORDER 100
+
+ADD FIELD "odbc-passwd-fis" OF "esp-param-integr-wms" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "ODBC PASSWORD"
+  POSITION 12
+  MAX-WIDTH 40
+  ORDER 110
+
+.
+PSC
+cpstream=ibm850
+.
+0000002141

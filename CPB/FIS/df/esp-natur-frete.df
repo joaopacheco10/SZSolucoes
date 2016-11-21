@@ -1,0 +1,47 @@
+ADD TABLE "esp-natur-frete"
+  AREA "Schema Area"
+  LABEL "esp-natur-frete"
+  DESCRIPTION "Cadastro de naturezas espec¡ficas para frete."
+  DUMP-NAME "esp-natur-frete"
+
+ADD FIELD "nat-operacao" OF "esp-natur-frete" AS character 
+  FORMAT "x(6)"
+  INITIAL ""
+  LABEL "Natureza Opera‡Æo"
+  POSITION 2
+  MAX-WIDTH 12
+  COLUMN-LABEL "Nat.Opera‡Æo"
+  ORDER 10
+  MANDATORY
+
+ADD FIELD "nat-estadual" OF "esp-natur-frete" AS character 
+  DESCRIPTION "Natureza de Opera‡Æo para frete dentro do estado de origem."
+  FORMAT "x(6)"
+  INITIAL ""
+  LABEL "Estadual"
+  POSITION 3
+  MAX-WIDTH 12
+  COLUMN-LABEL "Estadual"
+  ORDER 20
+
+ADD FIELD "nat-interestadual" OF "esp-natur-frete" AS character 
+  DESCRIPTION "Natureza utilizada para frete fora do estado de origem."
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Interestadual"
+  POSITION 4
+  MAX-WIDTH 16
+  COLUMN-LABEL "Interestadual"
+  ORDER 30
+
+ADD INDEX "ch-natur-frete" ON "esp-natur-frete" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "nat-operacao" ASCENDING 
+
+.
+PSC
+cpstream=ibm850
+.
+0000001053

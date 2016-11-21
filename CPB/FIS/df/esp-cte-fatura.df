@@ -1,0 +1,74 @@
+ADD TABLE "esp-cte-fatura"
+  AREA "Schema Area"
+  LABEL "Faturas de Frete"
+  DUMP-NAME "esftfrt"
+
+ADD FIELD "nome-transp" OF "esp-cte-fatura" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Transportadora"
+  POSITION 2
+  MAX-WIDTH 24
+  COLUMN-LABEL "Transp"
+  ORDER 10
+
+ADD FIELD "ser-docto" OF "esp-cte-fatura" AS character 
+  FORMAT "x(3)"
+  INITIAL ""
+  LABEL "S‚rie"
+  POSITION 3
+  MAX-WIDTH 6
+  COLUMN-LABEL "Sr"
+  ORDER 20
+
+ADD FIELD "nr-fatura" OF "esp-cte-fatura" AS character 
+  FORMAT "x(10)"
+  INITIAL ""
+  LABEL "Nr Fatura"
+  POSITION 4
+  MAX-WIDTH 20
+  COLUMN-LABEL "Nr Fatura"
+  ORDER 30
+
+ADD FIELD "ser-cte" OF "esp-cte-fatura" AS character 
+  FORMAT "x(3)"
+  INITIAL ""
+  LABEL "S‚rie CTE"
+  POSITION 5
+  MAX-WIDTH 20
+  COLUMN-LABEL "Sr CTE"
+  ORDER 40
+
+ADD FIELD "nr-cte" OF "esp-cte-fatura" AS character 
+  FORMAT "x(10)"
+  INITIAL ""
+  LABEL "Nr CTE"
+  POSITION 6
+  MAX-WIDTH 20
+  COLUMN-LABEL "Nr CTE"
+  ORDER 50
+
+ADD FIELD "vlr-frete" OF "esp-cte-fatura" AS decimal 
+  FORMAT ">>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Valor Frete"
+  POSITION 7
+  MAX-WIDTH 20
+  COLUMN-LABEL "Vl Frete"
+  ORDER 60
+
+ADD INDEX "id" ON "esp-cte-fatura" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "nome-transp" ASCENDING 
+  INDEX-FIELD "ser-docto" ASCENDING 
+  INDEX-FIELD "nr-fatura" ASCENDING 
+  INDEX-FIELD "ser-cte" ASCENDING 
+  INDEX-FIELD "nr-cte" ASCENDING 
+
+.
+PSC
+cpstream=ibm850
+.
+0000001452

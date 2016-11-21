@@ -1,0 +1,34 @@
+ADD TABLE "ext-canal-venda"
+  AREA "Schema Area"
+  LABEL "Exten‡Æo Canal Venda"
+  DUMP-NAME "ext-cana"
+
+ADD FIELD "cod-canal-venda" OF "ext-canal-venda" AS integer 
+  FORMAT ">>9"
+  INITIAL "0"
+  LABEL "Canal Venda"
+  POSITION 2
+  MAX-WIDTH 4
+  COLUMN-LABEL "Canal Venda"
+  ORDER 10
+
+ADD FIELD "conta-contabil" OF "ext-canal-venda" AS character 
+  FORMAT "X(17)"
+  INITIAL ""
+  LABEL "Conta Contabil"
+  POSITION 3
+  MAX-WIDTH 34
+  COLUMN-LABEL "Conta Contabil"
+  ORDER 20
+
+ADD INDEX "pky-ext-canal-venda" ON "ext-canal-venda" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "cod-canal-venda" ASCENDING 
+  
+.
+PSC
+cpstream=ibm850
+.
+0000113432

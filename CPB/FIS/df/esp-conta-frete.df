@@ -1,0 +1,35 @@
+ADD TABLE "esp-conta-frete"
+  AREA "Schema Area"
+  LABEL "esp-conta-frete"
+  DUMP-NAME "esp-conta-frete"
+
+ADD FIELD "cod-canal-venda" OF "esp-conta-frete" AS integer 
+  FORMAT ">>9"
+  INITIAL "0"
+  LABEL "Canal Venda"
+  POSITION 2
+  MAX-WIDTH 4
+  COLUMN-LABEL "Canal"
+  ORDER 10
+  MANDATORY
+
+ADD FIELD "conta-contabil" OF "esp-conta-frete" AS character 
+  FORMAT "x(17)"
+  INITIAL ""
+  LABEL "Conta"
+  POSITION 3
+  MAX-WIDTH 34
+  COLUMN-LABEL "Conta"
+  ORDER 20
+
+ADD INDEX "ch-conta-frete" ON "esp-conta-frete" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "cod-canal-venda" ASCENDING 
+
+.
+PSC
+cpstream=ibm850
+.
+0000005672
