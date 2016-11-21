@@ -1,0 +1,102 @@
+ADD TABLE "esp-troca-lote-emb"
+  AREA "Schema Area"
+  LABEL "Troca Lotes Wis"
+  DUMP-NAME "wis005"
+
+ADD FIELD "nr-embarque" OF "esp-troca-lote-emb" AS integer 
+  FORMAT ">>>,>>>,>>9"
+  INITIAL "0"
+  LABEL "Embarque"
+  POSITION 2
+  MAX-WIDTH 4
+  COLUMN-LABEL "Emb"
+  ORDER 10
+
+ADD FIELD "cod-emitente" OF "esp-troca-lote-emb" AS integer 
+  FORMAT ">>>,>>>,>>9"
+  INITIAL "0"
+  LABEL "Cliente"
+  POSITION 3
+  MAX-WIDTH 4
+  ORDER 20
+
+ADD FIELD "nr-pedcli" OF "esp-troca-lote-emb" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Pedido Cliente"
+  POSITION 4
+  MAX-WIDTH 24
+  ORDER 30
+
+ADD FIELD "it-codigo" OF "esp-troca-lote-emb" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Item"
+  POSITION 5
+  MAX-WIDTH 32
+  ORDER 40
+
+ADD FIELD "lote" OF "esp-troca-lote-emb" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Lote"
+  POSITION 6
+  MAX-WIDTH 24
+  ORDER 50
+
+ADD FIELD "qt-alocada" OF "esp-troca-lote-emb" AS decimal 
+  FORMAT "->>>,>>9.9999"
+  INITIAL "0"
+  LABEL "Qt Alocada"
+  POSITION 7
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 60
+
+ADD FIELD "qt-troca" OF "esp-troca-lote-emb" AS decimal 
+  FORMAT "->>>,>>9.9999"
+  INITIAL "0"
+  LABEL "Qt Troca"
+  POSITION 8
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 70
+
+ADD FIELD "situacao" OF "esp-troca-lote-emb" AS integer 
+  DESCRIPTION "1-Pendente,2-Conclu¡da,3-Cancelada"
+  FORMAT "9"
+  INITIAL "0"
+  LABEL "Situa‡Æo"
+  POSITION 9
+  MAX-WIDTH 4
+  ORDER 80
+
+ADD FIELD "nu-interface" OF "esp-troca-lote-emb" AS integer 
+  FORMAT "->>>,>>>,>>9"
+  INITIAL "0"
+  LABEL "Sequˆncia"
+  POSITION 10
+  MAX-WIDTH 4
+  ORDER 90
+
+ADD INDEX "id" ON "esp-troca-lote-emb" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "nr-embarque" ASCENDING 
+  INDEX-FIELD "it-codigo" ASCENDING 
+  INDEX-FIELD "lote" ASCENDING 
+
+ADD INDEX "emb" ON "esp-troca-lote-emb" 
+  AREA "Schema Area"
+  INDEX-FIELD "nr-embarque" ASCENDING 
+
+ADD INDEX "int" ON "esp-troca-lote-emb" 
+  AREA "Schema Area"
+  INDEX-FIELD "nu-interface" ASCENDING 
+
+.
+PSC
+cpstream=ibm850
+.
+0000002057

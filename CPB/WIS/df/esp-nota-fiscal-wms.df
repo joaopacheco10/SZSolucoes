@@ -1,0 +1,48 @@
+ADD TABLE "esp-nota-fiscal-wms"
+  LABEL "Nota Fiscal WMS"
+  DUMP-NAME "wis004"
+
+ADD FIELD "cod-estabel" OF "esp-nota-fiscal-wms" AS character 
+  FORMAT "x(3)"
+  INITIAL ""
+  LABEL "Estab"
+  POSITION 2
+  MAX-WIDTH 6
+  ORDER 10
+
+ADD FIELD "serie" OF "esp-nota-fiscal-wms" AS character 
+  FORMAT "x(5)"
+  INITIAL ""
+  LABEL "S‚rie"
+  POSITION 3
+  MAX-WIDTH 10
+  ORDER 20
+
+ADD FIELD "nr-nota-fis" OF "esp-nota-fiscal-wms" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Nota Fiscal"
+  POSITION 4
+  MAX-WIDTH 32
+  ORDER 30
+
+ADD FIELD "enviada" OF "esp-nota-fiscal-wms" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "Enviada WMS"
+  POSITION 5
+  MAX-WIDTH 1
+  ORDER 40
+
+ADD INDEX "id" ON "esp-nota-fiscal-wms" 
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "cod-estabel" ASCENDING 
+  INDEX-FIELD "serie" ASCENDING 
+  INDEX-FIELD "nr-nota-fis" ASCENDING 
+
+.
+PSC
+cpstream=ibm850
+.
+0000007483

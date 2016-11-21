@@ -1,0 +1,65 @@
+ADD TABLE "esp-embarque-wms"
+  
+  LABEL "Embarque WMS"
+  DUMP-NAME "wis003"
+
+ADD FIELD "nr-embarque" OF "esp-embarque-wms" AS integer 
+  FORMAT ">>>>>>9"
+  INITIAL "0"
+  LABEL "Embarque"
+  POSITION 2
+  MAX-WIDTH 4
+  ORDER 10
+
+ADD FIELD "enviado" OF "esp-embarque-wms" AS logical 
+  FORMAT "Sim/NÆo"
+  INITIAL "NÆo"
+  LABEL "Enviado"
+  POSITION 3
+  MAX-WIDTH 1
+  ORDER 20
+
+ADD FIELD "cancelado" OF "esp-embarque-wms" AS logical 
+  FORMAT "Sim/NÆo"
+  INITIAL "NÆo"
+  LABEL "Cancelado"
+  POSITION 4
+  MAX-WIDTH 1
+  ORDER 30
+
+ADD FIELD "confirmado" OF "esp-embarque-wms" AS logical 
+  FORMAT "Sim/NÆo"
+  INITIAL "NÆo"
+  LABEL "Confirmado"
+  POSITION 5
+  MAX-WIDTH 1
+  ORDER 40
+
+ADD FIELD "dt-envio" OF "esp-embarque-wms" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data Envio"
+  POSITION 6
+  MAX-WIDTH 4
+  ORDER 50
+
+ADD FIELD "cod-usuario" OF "esp-embarque-wms" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Usu rio"
+  POSITION 7
+  MAX-WIDTH 24
+  ORDER 60
+
+ADD INDEX "id" ON "esp-embarque-wms" 
+  
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "nr-embarque" ASCENDING 
+
+
+.
+PSC
+cpstream=ibm850
+.
+0000007483

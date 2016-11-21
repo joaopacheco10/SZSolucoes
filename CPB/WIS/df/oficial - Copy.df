@@ -1,0 +1,163 @@
+ADD TABLE "esp-erro-wms"
+  AREA "Schema Area"
+  LABEL "Erro Integra‡Æo WMS"
+  DUMP-NAME "wis002"
+
+ADD FIELD "id" OF "esp-erro-wms" AS int64 
+  FORMAT ">>>>>>>>>>9"
+  INITIAL "0"
+  LABEL "ID"
+  POSITION 2
+  MAX-WIDTH 8
+  ORDER 40
+
+ADD FIELD "data-hora-erro" OF "esp-erro-wms" AS datetime 
+  FORMAT "99/99/9999 HH:MM:SS"
+  INITIAL ?
+  LABEL "Data/Hora Erro"
+  POSITION 3
+  MAX-WIDTH 8
+  ORDER 50
+
+ADD FIELD "mensagem" OF "esp-erro-wms" AS character 
+  FORMAT "x(200)"
+  INITIAL ""
+  LABEL "Mensagem"
+  POSITION 4
+  MAX-WIDTH 400
+  ORDER 60
+
+ADD INDEX "pk" ON "esp-erro-wms" 
+  AREA "Schema Area"
+  PRIMARY
+  INDEX-FIELD "id" ASCENDING 
+  INDEX-FIELD "data-hora-erro" ASCENDING 
+
+ADD TABLE "esp-fila-wms"
+  AREA "Schema Area"
+  LABEL "Fila Integra‡Æo  WIS"
+  DUMP-NAME "wis001"
+
+ADD FIELD "cod-trans" OF "esp-fila-wms" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "Transa‡Æo"
+  POSITION 2
+  MAX-WIDTH 40
+  ORDER 10
+
+ADD FIELD "data-hora-criacao" OF "esp-fila-wms" AS datetime 
+  FORMAT "99/99/9999 HH:MM:SS"
+  INITIAL ?
+  LABEL "Data/Hora Cria‡Æo"
+  POSITION 3
+  MAX-WIDTH 8
+  ORDER 20
+
+ADD FIELD "chave" OF "esp-fila-wms" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "Chave"
+  POSITION 4
+  MAX-WIDTH 100
+  ORDER 30
+
+ADD FIELD "id" OF "esp-fila-wms" AS int64 
+  FORMAT ">>>>>>>>>>9"
+  INITIAL "0"
+  LABEL "ID"
+  POSITION 5
+  MAX-WIDTH 8
+  ORDER 40
+
+ADD FIELD "data-hora-integracao" OF "esp-fila-wms" AS datetime 
+  FORMAT "99/99/9999 HH:MM:SS"
+  INITIAL ?
+  LABEL "Data/Hora Integr"
+  POSITION 6
+  MAX-WIDTH 8
+  ORDER 50
+
+ADD INDEX "trans-chave" ON "esp-fila-wms" 
+  AREA "Schema Area"
+  PRIMARY
+  INDEX-FIELD "cod-trans" ASCENDING 
+  INDEX-FIELD "chave" ASCENDING 
+
+ADD INDEX "id" ON "esp-fila-wms" 
+  AREA "Schema Area"
+  UNIQUE
+  INDEX-FIELD "id" ASCENDING 
+
+ADD TABLE "esp-param-integr-wms"
+  AREA "Schema Area"
+  LABEL "Parƒmetros Integra‡Æo WMS"
+  DUMP-NAME "wis000"
+
+ADD FIELD "odbc-dsn" OF "esp-param-integr-wms" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "ODBC DSN"
+  POSITION 2
+  MAX-WIDTH 100
+  ORDER 10
+
+ADD FIELD "odbc-server" OF "esp-param-integr-wms" AS character 
+  FORMAT "x(30)"
+  INITIAL ""
+  LABEL "ODBC SERVER"
+  POSITION 3
+  MAX-WIDTH 60
+  COLUMN-LABEL "Server"
+  ORDER 20
+
+ADD FIELD "odbc-userid" OF "esp-param-integr-wms" AS character 
+  FORMAT "x(30)"
+  INITIAL ""
+  LABEL "ODBC USERID"
+  POSITION 4
+  MAX-WIDTH 60
+  ORDER 30
+
+ADD FIELD "odbc-passwd" OF "esp-param-integr-wms" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "ODBC PASSWORD"
+  POSITION 5
+  MAX-WIDTH 40
+  ORDER 40
+
+ADD FIELD "interv-proces" OF "esp-param-integr-wms" AS integer 
+  FORMAT ">>>>9"
+  INITIAL "0"
+  LABEL "Intervalo Processo"
+  POSITION 6
+  MAX-WIDTH 4
+  HELP "Intervalo de processamento (segundos)"
+  ORDER 50
+
+ADD FIELD "lista-estab-integr" OF "esp-param-integr-wms" AS character 
+  FORMAT "x(200)"
+  INITIAL ""
+  POSITION 7
+  MAX-WIDTH 400
+  ORDER 60
+
+ADD FIELD "lista-depos-integr" OF "esp-param-integr-wms" AS character 
+  FORMAT "x(200)"
+  INITIAL ""
+  POSITION 8
+  MAX-WIDTH 400
+  ORDER 70
+
+ADD INDEX "id" ON "esp-param-integr-wms" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "odbc-dsn" ASCENDING 
+
+.
+PSC
+cpstream=ibm850
+.
+0000007483

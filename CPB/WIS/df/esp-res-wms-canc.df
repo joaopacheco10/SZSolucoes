@@ -1,0 +1,56 @@
+ADD TABLE "esp-res-wms-canc"
+  AREA "Schema Area"
+  LABEL "Cancelamento Resumo"
+  DESCRIPTION "Historico Cancelamento Resumos"
+  DUMP-NAME "esp-res-wms-canc"
+
+ADD FIELD "nr-embarque" OF "esp-res-wms-canc" AS integer 
+  FORMAT ">>>>>>9"
+  INITIAL "0"
+  LABEL "Embarque"
+  POSITION 2
+  MAX-WIDTH 4
+  ORDER 10
+  MANDATORY
+
+ADD FIELD "nr-resumo" OF "esp-res-wms-canc" AS integer 
+  FORMAT ">>>>,>>9"
+  INITIAL "0"
+  LABEL "Nr Resumo"
+  POSITION 3
+  MAX-WIDTH 4
+  ORDER 20
+  MANDATORY
+
+ADD FIELD "cod-usuario" OF "esp-res-wms-canc" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Usu rio"
+  POSITION 4
+  MAX-WIDTH 24
+  ORDER 70
+
+ADD FIELD "dt-canc" OF "esp-res-wms-canc" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data Cancelado"
+  POSITION 5
+  MAX-WIDTH 4
+  COLUMN-LABEL "Dt Canc"
+  HELP "Data em que o resumo foi cancelado"
+  ORDER 80
+
+ADD FIELD "tp-canc" OF "esp-res-wms-canc" AS integer 
+  FORMAT "9"
+  INITIAL "0"
+  LABEL "Tipo Cancelamento"
+  POSITION 6
+  MAX-WIDTH 4
+  COLUMN-LABEL "Tp Canc"
+  ORDER 90
+
+.
+PSC
+cpstream=ibm850
+.
+0000001074

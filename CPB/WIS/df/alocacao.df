@@ -1,0 +1,195 @@
+ADD TABLE "alocacao"
+  AREA "dados"
+  LABEL "Registra aloca‡äes embarque"
+  DESCRIPTION "via esaloca-ped"
+  DUMP-NAME "alocacao"
+
+ADD FIELD "cod-emitente" OF "alocacao" AS integer 
+  FORMAT ">>>>>>9"
+  INITIAL "0"
+  LABEL "Cod.Emitente"
+  POSITION 2
+  MAX-WIDTH 4
+  ORDER 10
+
+ADD FIELD "nr-pedcli" OF "alocacao" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Nr.Pedido"
+  POSITION 3
+  MAX-WIDTH 24
+  ORDER 20
+
+ADD FIELD "nr-seq" OF "alocacao" AS integer 
+  FORMAT ">>>9"
+  INITIAL "0"
+  LABEL "Sequencia"
+  POSITION 4
+  MAX-WIDTH 4
+  ORDER 30
+
+ADD FIELD "it-codigo" OF "alocacao" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Item"
+  POSITION 5
+  MAX-WIDTH 32
+  ORDER 40
+
+ADD FIELD "qtde-embarcada" OF "alocacao" AS decimal 
+  FORMAT "->>>,>>9.99"
+  INITIAL "0"
+  LABEL "Qtde Embarcada"
+  POSITION 6
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 50
+
+ADD FIELD "nr-alocacao" OF "alocacao" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  LABEL "Nr.Aloca‡Æo"
+  POSITION 7
+  MAX-WIDTH 4
+  ORDER 60
+
+ADD FIELD "l-impresso" OF "alocacao" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  POSITION 8
+  MAX-WIDTH 1
+  ORDER 70
+
+ADD FIELD "l-cancelado" OF "alocacao" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  POSITION 9
+  MAX-WIDTH 1
+  ORDER 80
+
+ADD FIELD "data" OF "alocacao" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data Aloca‡Æo"
+  POSITION 10
+  MAX-WIDTH 4
+  ORDER 90
+
+ADD FIELD "cod-localiz" OF "alocacao" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Localiza‡Æo"
+  POSITION 11
+  MAX-WIDTH 32
+  ORDER 100
+
+ADD FIELD "usuario" OF "alocacao" AS character 
+  FORMAT "x(14)"
+  INITIAL ""
+  LABEL "Usuario Aloca‡Æo"
+  POSITION 12
+  MAX-WIDTH 28
+  ORDER 110
+
+ADD FIELD "usuario-separador" OF "alocacao" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Usuario Separador"
+  POSITION 13
+  MAX-WIDTH 24
+  ORDER 120
+
+ADD FIELD "usuario-conferencia" OF "alocacao" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Usuario Conferencista"
+  POSITION 14
+  MAX-WIDTH 24
+  ORDER 130
+
+ADD FIELD "qtde-digitada" OF "alocacao" AS decimal 
+  FORMAT "->>>,>>9.99"
+  INITIAL "0"
+  LABEL "Qtde Digitada"
+  POSITION 15
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 140
+
+ADD FIELD "nr-caixa" OF "alocacao" AS integer 
+  FORMAT ">>,>>9"
+  INITIAL "0"
+  LABEL "Nr. Caixa"
+  POSITION 16
+  MAX-WIDTH 4
+  ORDER 150
+
+ADD FIELD "qtde-recontagem" OF "alocacao" AS decimal 
+  FORMAT "->>>,>>9.99"
+  INITIAL "0"
+  LABEL "Qtde Recontagem"
+  POSITION 17
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 160
+
+ADD FIELD "embarcado" OF "alocacao" AS logical 
+  FORMAT "Sim/NÆo"
+  INITIAL "NÆo"
+  LABEL "Embarcado ?"
+  POSITION 18
+  MAX-WIDTH 1
+  ORDER 170
+
+ADD FIELD "identifica-erro" OF "alocacao" AS integer 
+  FORMAT "9"
+  INITIAL "0"
+  LABEL "Identifica‡Æo Erro"
+  POSITION 19
+  MAX-WIDTH 4
+  VIEW-AS "VIEW-AS RADIO-SET
+  RADIO-BUTTONS Nenhum,0,Separador,1,Conferencista,2, Ambos,3"
+  ORDER 180
+
+ADD FIELD "nr-embarque" OF "alocacao" AS integer 
+  FORMAT ">>>>>9"
+  INITIAL "0"
+  LABEL "Nr.Embarque"
+  POSITION 20
+  MAX-WIDTH 4
+  ORDER 190
+
+ADD FIELD "localizacao" OF "alocacao" AS character 
+  FORMAT "x(10)"
+  INITIAL ""
+  LABEL "Localiza‡Æo"
+  POSITION 21
+  MAX-WIDTH 24
+  ORDER 200
+
+ADD INDEX "idx3" ON "alocacao" 
+  AREA "indices"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "data" ASCENDING 
+  INDEX-FIELD "cod-emitente" ASCENDING 
+  INDEX-FIELD "nr-pedcli" ASCENDING 
+  INDEX-FIELD "nr-seq" ASCENDING 
+  INDEX-FIELD "nr-alocacao" ASCENDING 
+
+ADD INDEX "idx1" ON "alocacao" 
+  AREA "indices"
+  INDEX-FIELD "cod-emitente" ASCENDING 
+  INDEX-FIELD "nr-pedcli" ASCENDING 
+  INDEX-FIELD "nr-seq" ASCENDING 
+  INDEX-FIELD "nr-alocacao" ASCENDING 
+
+ADD INDEX "idx2" ON "alocacao" 
+  AREA "indices"
+  INDEX-FIELD "nr-alocacao" ASCENDING 
+
+.
+PSC
+cpstream=ibm850
+.
+0000003889

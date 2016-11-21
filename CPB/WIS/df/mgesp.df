@@ -1,0 +1,4036 @@
+ADD SEQUENCE "seq-alocacao"
+  INITIAL 0
+  INCREMENT 1
+  CYCLE-ON-LIMIT no
+  MIN-VAL 0
+
+ADD TABLE "alocacao"
+  AREA "dados"
+  LABEL "Registra alocaá‰es embarque"
+  DESCRIPTION "via esaloca-ped"
+  DUMP-NAME "alocacao"
+
+ADD FIELD "cod-emitente" OF "alocacao" AS integer 
+  FORMAT ">>>>>>9"
+  INITIAL "0"
+  LABEL "Cod.Emitente"
+  POSITION 2
+  MAX-WIDTH 4
+  ORDER 10
+
+ADD FIELD "nr-pedcli" OF "alocacao" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Nr.Pedido"
+  POSITION 3
+  MAX-WIDTH 24
+  ORDER 20
+
+ADD FIELD "nr-seq" OF "alocacao" AS integer 
+  FORMAT ">>>9"
+  INITIAL "0"
+  LABEL "Sequencia"
+  POSITION 4
+  MAX-WIDTH 4
+  ORDER 30
+
+ADD FIELD "it-codigo" OF "alocacao" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Item"
+  POSITION 5
+  MAX-WIDTH 32
+  ORDER 40
+
+ADD FIELD "qtde-embarcada" OF "alocacao" AS decimal 
+  FORMAT "->>>,>>9.99"
+  INITIAL "0"
+  LABEL "Qtde Embarcada"
+  POSITION 6
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 50
+
+ADD FIELD "nr-alocacao" OF "alocacao" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  LABEL "Nr.Alocaá∆o"
+  POSITION 7
+  MAX-WIDTH 4
+  ORDER 60
+
+ADD FIELD "l-impresso" OF "alocacao" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  POSITION 8
+  MAX-WIDTH 1
+  ORDER 70
+
+ADD FIELD "l-cancelado" OF "alocacao" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  POSITION 9
+  MAX-WIDTH 1
+  ORDER 80
+
+ADD FIELD "data" OF "alocacao" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data Alocaá∆o"
+  POSITION 10
+  MAX-WIDTH 4
+  ORDER 90
+
+ADD FIELD "cod-localiz" OF "alocacao" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Localizaá∆o"
+  POSITION 11
+  MAX-WIDTH 32
+  ORDER 100
+
+ADD FIELD "usuario" OF "alocacao" AS character 
+  FORMAT "x(14)"
+  INITIAL ""
+  LABEL "Usuario Alocaá∆o"
+  POSITION 12
+  MAX-WIDTH 28
+  ORDER 110
+
+ADD FIELD "usuario-separador" OF "alocacao" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Usuario Separador"
+  POSITION 13
+  MAX-WIDTH 24
+  ORDER 120
+
+ADD FIELD "usuario-conferencia" OF "alocacao" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Usuario Conferencista"
+  POSITION 14
+  MAX-WIDTH 24
+  ORDER 130
+
+ADD FIELD "qtde-digitada" OF "alocacao" AS decimal 
+  FORMAT "->>>,>>9.99"
+  INITIAL "0"
+  LABEL "Qtde Digitada"
+  POSITION 15
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 140
+
+ADD FIELD "nr-caixa" OF "alocacao" AS integer 
+  FORMAT ">>,>>9"
+  INITIAL "0"
+  LABEL "Nr. Caixa"
+  POSITION 16
+  MAX-WIDTH 4
+  ORDER 150
+
+ADD FIELD "qtde-recontagem" OF "alocacao" AS decimal 
+  FORMAT "->>>,>>9.99"
+  INITIAL "0"
+  LABEL "Qtde Recontagem"
+  POSITION 17
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 160
+
+ADD FIELD "embarcado" OF "alocacao" AS logical 
+  FORMAT "Sim/N∆o"
+  INITIAL "N∆o"
+  LABEL "Embarcado ?"
+  POSITION 18
+  MAX-WIDTH 1
+  ORDER 170
+
+ADD FIELD "identifica-erro" OF "alocacao" AS integer 
+  FORMAT "9"
+  INITIAL "0"
+  LABEL "Identificaá∆o Erro"
+  POSITION 19
+  MAX-WIDTH 4
+  VIEW-AS "VIEW-AS RADIO-SET
+  RADIO-BUTTONS Nenhum,0,Separador,1,Conferencista,2, Ambos,3"
+  ORDER 180
+
+ADD FIELD "nr-embarque" OF "alocacao" AS integer 
+  FORMAT ">>>>>9"
+  INITIAL "0"
+  LABEL "Nr.Embarque"
+  POSITION 20
+  MAX-WIDTH 4
+  ORDER 190
+
+ADD FIELD "localizacao" OF "alocacao" AS character 
+  FORMAT "x(10)"
+  INITIAL ""
+  LABEL "Localizaá∆o"
+  POSITION 21
+  MAX-WIDTH 24
+  ORDER 200
+
+ADD INDEX "idx3" ON "alocacao" 
+  AREA "indices"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "data" ASCENDING 
+  INDEX-FIELD "cod-emitente" ASCENDING 
+  INDEX-FIELD "nr-pedcli" ASCENDING 
+  INDEX-FIELD "nr-seq" ASCENDING 
+  INDEX-FIELD "nr-alocacao" ASCENDING 
+
+ADD INDEX "idx1" ON "alocacao" 
+  AREA "indices"
+  INDEX-FIELD "cod-emitente" ASCENDING 
+  INDEX-FIELD "nr-pedcli" ASCENDING 
+  INDEX-FIELD "nr-seq" ASCENDING 
+  INDEX-FIELD "nr-alocacao" ASCENDING 
+
+ADD INDEX "idx2" ON "alocacao" 
+  AREA "indices"
+  INDEX-FIELD "nr-alocacao" ASCENDING 
+
+ADD TABLE "alocacao-localiz"
+  AREA "dados"
+  DESCRIPTION "Grava a localizaá∆o do Item alocado"
+  DUMP-NAME "alocacao-localiz"
+
+ADD FIELD "nr-pedcli" OF "alocacao-localiz" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Nr.Pedido"
+  POSITION 2
+  MAX-WIDTH 24
+  ORDER 20
+
+ADD FIELD "nr-alocacao" OF "alocacao-localiz" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  LABEL "Nr.Alocaá∆o"
+  POSITION 3
+  MAX-WIDTH 4
+  ORDER 30
+
+ADD FIELD "cod-estabel" OF "alocacao-localiz" AS character 
+  FORMAT "x(3)"
+  INITIAL ""
+  LABEL "Estabelecimento"
+  POSITION 4
+  MAX-WIDTH 6
+  ORDER 40
+
+ADD FIELD "cod-depos" OF "alocacao-localiz" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Deposito"
+  POSITION 5
+  MAX-WIDTH 16
+  ORDER 50
+
+ADD FIELD "cod-localiz" OF "alocacao-localiz" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Localizaá∆o"
+  POSITION 6
+  MAX-WIDTH 24
+  ORDER 60
+
+ADD FIELD "lote" OF "alocacao-localiz" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Lote"
+  POSITION 7
+  MAX-WIDTH 24
+  ORDER 70
+
+ADD FIELD "nome-abrev" OF "alocacao-localiz" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Nome Abrev"
+  POSITION 8
+  MAX-WIDTH 24
+  ORDER 80
+
+ADD FIELD "nr-seq-item" OF "alocacao-localiz" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  LABEL "Nr.Seq.Item"
+  POSITION 9
+  MAX-WIDTH 4
+  ORDER 90
+
+ADD FIELD "it-codigo" OF "alocacao-localiz" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Item"
+  POSITION 10
+  MAX-WIDTH 32
+  ORDER 100
+
+ADD FIELD "cod-refer" OF "alocacao-localiz" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Cod.Refer"
+  POSITION 11
+  MAX-WIDTH 16
+  ORDER 110
+
+ADD FIELD "nr-entrega" OF "alocacao-localiz" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  LABEL "Nr.Entrega"
+  POSITION 12
+  MAX-WIDTH 4
+  ORDER 120
+
+ADD FIELD "quantidade" OF "alocacao-localiz" AS decimal 
+  FORMAT "->>>,>>9.99"
+  INITIAL "0"
+  LABEL "Quantidade"
+  POSITION 13
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 130
+
+ADD INDEX "idx1" ON "alocacao-localiz" 
+  AREA "dados"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "cod-depos" ASCENDING 
+  INDEX-FIELD "cod-estabel" ASCENDING 
+  INDEX-FIELD "cod-localiz" ASCENDING 
+  INDEX-FIELD "lote" ASCENDING 
+  INDEX-FIELD "nome-abrev" ASCENDING 
+  INDEX-FIELD "nr-pedcli" ASCENDING 
+  INDEX-FIELD "nr-seq-item" ASCENDING 
+  INDEX-FIELD "it-codigo" ASCENDING 
+  INDEX-FIELD "cod-refer" ASCENDING 
+  INDEX-FIELD "nr-entrega" ASCENDING 
+  INDEX-FIELD "nr-alocacao" ASCENDING 
+
+ADD TABLE "confere-embarq"
+  AREA "dados"
+  LABEL "Tabela Conferencia do Embarque"
+  DUMP-NAME "confere-"
+
+ADD FIELD "nr-embarque" OF "confere-embarq" AS integer 
+  FORMAT ">>>>>9"
+  INITIAL "0"
+  LABEL "Nr.Embarque"
+  POSITION 2
+  MAX-WIDTH 4
+  ORDER 190
+
+ADD FIELD "nr-pedcli" OF "confere-embarq" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Nr.Pedido"
+  POSITION 3
+  MAX-WIDTH 24
+  ORDER 200
+
+ADD FIELD "nr-seq" OF "confere-embarq" AS integer 
+  FORMAT ">>>9"
+  INITIAL "0"
+  LABEL "Sequencia"
+  POSITION 4
+  MAX-WIDTH 4
+  ORDER 210
+
+ADD FIELD "it-codigo" OF "confere-embarq" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Item"
+  POSITION 5
+  MAX-WIDTH 32
+  ORDER 220
+
+ADD FIELD "qtde-embarcada" OF "confere-embarq" AS decimal 
+  FORMAT "->>>,>>9.99"
+  INITIAL "0"
+  LABEL "Qtde Embarcada"
+  POSITION 6
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 230
+
+ADD FIELD "data" OF "confere-embarq" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data Alocaá∆o"
+  POSITION 7
+  MAX-WIDTH 4
+  ORDER 240
+
+ADD FIELD "usuario" OF "confere-embarq" AS character 
+  FORMAT "x(14)"
+  INITIAL ""
+  LABEL "Usuario Alocaá∆o"
+  POSITION 8
+  MAX-WIDTH 28
+  ORDER 250
+
+ADD FIELD "usuario-separador" OF "confere-embarq" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Usuario Separador"
+  POSITION 9
+  MAX-WIDTH 24
+  ORDER 260
+
+ADD FIELD "usuario-conferencia" OF "confere-embarq" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Usuario Conferencista"
+  POSITION 10
+  MAX-WIDTH 24
+  ORDER 270
+
+ADD FIELD "qtde-digitada" OF "confere-embarq" AS decimal 
+  FORMAT "->>>,>>9.99"
+  INITIAL "0"
+  LABEL "Qtde Digitada"
+  POSITION 11
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 280
+
+ADD FIELD "nr-caixa" OF "confere-embarq" AS integer 
+  FORMAT ">>,>>9"
+  INITIAL "0"
+  LABEL "Nr. Caixa"
+  POSITION 12
+  MAX-WIDTH 4
+  ORDER 290
+
+ADD FIELD "qtde-recontagem" OF "confere-embarq" AS decimal 
+  FORMAT "->>>,>>9.99"
+  INITIAL "0"
+  LABEL "Qtde Recontagem"
+  POSITION 13
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 300
+
+ADD FIELD "embarcado" OF "confere-embarq" AS logical 
+  FORMAT "Sim/N∆o"
+  INITIAL "N∆o"
+  LABEL "Embarcado ?"
+  POSITION 14
+  MAX-WIDTH 1
+  ORDER 310
+
+ADD FIELD "identifica-erro" OF "confere-embarq" AS integer 
+  FORMAT "9"
+  INITIAL "0"
+  LABEL "Identificaá∆o Erro"
+  POSITION 15
+  MAX-WIDTH 4
+  VIEW-AS "VIEW-AS RADIO-SET
+  RADIO-BUTTONS Nenhum,0,Separador,1,Conferencista,2, Ambos,3"
+  ORDER 320
+
+ADD FIELD "nome-abrev" OF "confere-embarq" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Nome-abrev"
+  POSITION 16
+  MAX-WIDTH 24
+  ORDER 330
+
+ADD FIELD "nr-resumo" OF "confere-embarq" AS integer 
+  FORMAT ">>9"
+  INITIAL "0"
+  LABEL "Resumo"
+  POSITION 17
+  MAX-WIDTH 4
+  ORDER 340
+
+ADD INDEX "nr-embarq" ON "confere-embarq" 
+  AREA "indices"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "nr-embarque" ASCENDING 
+  INDEX-FIELD "nr-pedcli" ASCENDING 
+  INDEX-FIELD "nr-seq" ASCENDING 
+  INDEX-FIELD "it-codigo" ASCENDING 
+
+ADD TABLE "confere-nf"
+  AREA "dados"
+  LABEL "Confere Nota Fiscal Filial"
+  DUMP-NAME "confere-nf"
+
+ADD FIELD "nr-nota-fis" OF "confere-nf" AS character 
+  FORMAT "9999999"
+  INITIAL ""
+  LABEL "Nr.Nota Fis"
+  POSITION 2
+  MAX-WIDTH 14
+  ORDER 10
+
+ADD FIELD "conferencista" OF "confere-nf" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "Conferencista"
+  POSITION 3
+  MAX-WIDTH 40
+  ORDER 20
+
+ADD FIELD "usuario-digitou" OF "confere-nf" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "Usuario Digitou"
+  POSITION 4
+  MAX-WIDTH 40
+  ORDER 30
+
+ADD FIELD "data-digitacao" OF "confere-nf" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data"
+  POSITION 5
+  MAX-WIDTH 4
+  ORDER 40
+
+ADD FIELD "it-codigo" OF "confere-nf" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Item"
+  POSITION 6
+  MAX-WIDTH 32
+  ORDER 50
+
+ADD FIELD "qtde-nf" OF "confere-nf" AS decimal 
+  FORMAT "->>>,>>9.9999"
+  INITIAL "0"
+  LABEL "Qtde Nf."
+  POSITION 7
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 60
+
+ADD FIELD "qtde-dig" OF "confere-nf" AS decimal 
+  FORMAT "->>>,>>9.9999"
+  INITIAL "0"
+  LABEL "Qtde Digitada"
+  POSITION 8
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 70
+
+ADD FIELD "qtde-recontagem" OF "confere-nf" AS decimal 
+  FORMAT "->>>,>>9.9999"
+  INITIAL "0"
+  LABEL "Qtde Recontagem"
+  POSITION 9
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 80
+
+ADD INDEX "idx1" ON "confere-nf" 
+  AREA "indices"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "nr-nota-fis" ASCENDING 
+  INDEX-FIELD "it-codigo" ASCENDING 
+
+ADD TABLE "define-cfop"
+  AREA "dados"
+  DUMP-NAME "define-c"
+
+ADD FIELD "estado" OF "define-cfop" AS character 
+  FORMAT "x(04)"
+  INITIAL ""
+  LABEL "UF"
+  LABEL-SA "R2"
+  POSITION 2
+  MAX-WIDTH 8
+  COLUMN-LABEL "UF"
+  COLUMN-LABEL-SA "L4"
+  VALEXP "true"
+  HELP "Sigla da Unidade da Federaá∆o"
+  ORDER 20
+  MANDATORY
+
+ADD FIELD "class-fiscal" OF "define-cfop" AS character 
+  FORMAT "9999.99.99"
+  INITIAL "00000000"
+  LABEL "Classificaá∆o Fiscal"
+  LABEL-SA "R24"
+  POSITION 3
+  MAX-WIDTH 20
+  COLUMN-LABEL "Class Fisc"
+  COLUMN-LABEL-SA "L10"
+  VALEXP "class-fiscal <> """""
+  VALMSG "Classificaá∆o fiscal deve ser diferente de brancos."
+  HELP "Classificaá∆o Fiscal"
+  ORDER 30
+  MANDATORY
+
+ADD FIELD "nat-operacao" OF "define-cfop" AS character 
+  FORMAT "x(06)"
+  INITIAL ""
+  LABEL "Nat Operaá∆o"
+  LABEL-SA "R15"
+  POSITION 4
+  MAX-WIDTH 12
+  COLUMN-LABEL "Nat Oper"
+  COLUMN-LABEL-SA "L8"
+  HELP "Natureza da Operaá∆o"
+  ORDER 40
+  MANDATORY
+
+ADD FIELD "Produto" OF "define-cfop" AS integer 
+  FORMAT "9"
+  INITIAL "1"
+  LABEL "Produto"
+  POSITION 7
+  MAX-WIDTH 4
+  VIEW-AS "VIEW-AS RADIO-SET
+  RADIO-BUTTONS ""Comprado"", 1 ,
+                ""Produzido"", 2"
+  COLUMN-LABEL "Produto"
+  ORDER 70
+
+ADD FIELD "consumidor" OF "define-cfop" AS integer 
+  FORMAT "9"
+  INITIAL "1"
+  LABEL "Consumidor"
+  POSITION 8
+  MAX-WIDTH 4
+  VIEW-AS "VIEW-AS RADIO-SET
+  RADIO-BUTTONS ""Consumo"", 1 ,
+                ""Revenda"", 2"
+  COLUMN-LABEL "Consumidor"
+  ORDER 80
+
+ADD FIELD "cod-estabel" OF "define-cfop" AS character 
+  FORMAT "x(3)"
+  INITIAL ""
+  LABEL "Estabelecimento"
+  POSITION 9
+  MAX-WIDTH 6
+  COLUMN-LABEL ""
+  ORDER 90
+
+ADD FIELD "usuario-criador" OF "define-cfop" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "Usuario Criador"
+  POSITION 10
+  MAX-WIDTH 40
+  COLUMN-LABEL "Usuario Criador"
+  ORDER 120
+
+ADD FIELD "usuario-alteracao" OF "define-cfop" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "Usuario Alterou"
+  POSITION 11
+  MAX-WIDTH 40
+  COLUMN-LABEL "Usuario Alterou"
+  ORDER 130
+
+ADD FIELD "data-criacao" OF "define-cfop" AS datetime 
+  FORMAT "99/99/9999 HH:MM:SS.SSS"
+  INITIAL ?
+  LABEL "Data Criacao"
+  POSITION 12
+  MAX-WIDTH 8
+  COLUMN-LABEL "Data Criacao"
+  ORDER 100
+
+ADD FIELD "data-alteracao" OF "define-cfop" AS datetime 
+  FORMAT "99/99/9999 HH:MM:SS.SSS"
+  INITIAL ?
+  LABEL "Data Alteracao"
+  POSITION 13
+  MAX-WIDTH 8
+  COLUMN-LABEL "Data Alteracao"
+  ORDER 110
+
+ADD FIELD "cod-cliente" OF "define-cfop" AS integer 
+  FORMAT ">>>>>>>>9"
+  INITIAL "0"
+  LABEL "Cod.Cliente"
+  POSITION 14
+  MAX-WIDTH 4
+  ORDER 140
+
+ADD FIELD "it-codigo" OF "define-cfop" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Item"
+  POSITION 15
+  MAX-WIDTH 32
+  ORDER 150
+
+ADD INDEX "idx" ON "define-cfop" 
+  AREA "indices"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "estado" ASCENDING 
+  INDEX-FIELD "cod-estabel" ASCENDING 
+  INDEX-FIELD "class-fiscal" ASCENDING 
+  INDEX-FIELD "Produto" ASCENDING 
+  INDEX-FIELD "consumidor" ASCENDING 
+  INDEX-FIELD "cod-cliente" ASCENDING 
+  INDEX-FIELD "it-codigo" ASCENDING 
+
+ADD TABLE "define-user"
+  AREA "dados"
+  LABEL "Relacionamento Usuario"
+  DESCRIPTION "Tabela de relacionamento do usuario com Estabelecimento e Representante"
+  DUMP-NAME "define-u"
+
+ADD FIELD "usuario" OF "define-user" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Usuario"
+  POSITION 2
+  MAX-WIDTH 24
+  ORDER 10
+
+ADD FIELD "cod-estabel" OF "define-user" AS character 
+  FORMAT "x(3)"
+  INITIAL ""
+  LABEL "Estabelecimento"
+  POSITION 3
+  MAX-WIDTH 6
+  COLUMN-LABEL ""
+  ORDER 20
+
+ADD FIELD "nome-abrev" OF "define-user" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Representante"
+  POSITION 4
+  MAX-WIDTH 24
+  ORDER 30
+
+ADD INDEX "idx1" ON "define-user" 
+  AREA "indices"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "usuario" ASCENDING 
+
+ADD INDEX "idx2" ON "define-user" 
+  AREA "indices"
+  INDEX-FIELD "cod-estabel" ASCENDING 
+  INDEX-FIELD "usuario" ASCENDING 
+  INDEX-FIELD "nome-abrev" ASCENDING 
+
+ADD TABLE "es-canhoto"
+  AREA "dados"
+  LABEL "es-canhoto"
+  DESCRIPTION "tabela de controle de canhotos"
+  DUMP-NAME "es-canhoto"
+
+ADD FIELD "cod-estabel" OF "es-canhoto" AS character 
+  FORMAT "x(3)"
+  INITIAL ""
+  LABEL "Estabelecimento"
+  POSITION 2
+  MAX-WIDTH 6
+  COLUMN-LABEL "cod-estabel"
+  ORDER 10
+  MANDATORY
+
+ADD FIELD "nr-nota-fis" OF "es-canhoto" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  POSITION 3
+  MAX-WIDTH 32
+  ORDER 20
+  MANDATORY
+
+ADD FIELD "serie" OF "es-canhoto" AS character 
+  FORMAT "x(5)"
+  INITIAL ""
+  LABEL "serie"
+  POSITION 4
+  MAX-WIDTH 10
+  ORDER 30
+  MANDATORY
+
+ADD FIELD "cod-emitente" OF "es-canhoto" AS integer 
+  FORMAT "999999"
+  INITIAL "0"
+  LABEL "C¢digo do Emitente"
+  POSITION 5
+  MAX-WIDTH 4
+  ORDER 40
+  MANDATORY
+
+ADD FIELD "dt-emis-nota" OF "es-canhoto" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data de emiss∆o"
+  POSITION 6
+  MAX-WIDTH 4
+  COLUMN-LABEL "dt-emis-nota"
+  ORDER 50
+  MANDATORY
+
+ADD FIELD "situacao" OF "es-canhoto" AS character 
+  FORMAT "x(30)"
+  INITIAL "Aberto"
+  LABEL "Situaá∆o do Canhoto"
+  POSITION 7
+  MAX-WIDTH 60
+  ORDER 60
+  MANDATORY
+
+ADD FIELD "usuario" OF "es-canhoto" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Usu†rio"
+  POSITION 8
+  MAX-WIDTH 24
+  ORDER 70
+
+ADD FIELD "hora-registro" OF "es-canhoto" AS datetime 
+  FORMAT "99/99/9999 HH:MM:SS.SSS"
+  INITIAL ?
+  LABEL "Hora Registrado"
+  POSITION 9
+  MAX-WIDTH 8
+  ORDER 90
+
+ADD FIELD "dt-cancel" OF "es-canhoto" AS datetime 
+  FORMAT "99/99/9999 HH:MM:SS.SSS"
+  INITIAL ?
+  POSITION 10
+  MAX-WIDTH 8
+  ORDER 100
+
+ADD INDEX "idx1" ON "es-canhoto" 
+  AREA "dados"
+  PRIMARY
+  INDEX-FIELD "cod-estabel" ASCENDING 
+  INDEX-FIELD "serie" ASCENDING 
+  INDEX-FIELD "nr-nota-fis" ASCENDING 
+  INDEX-FIELD "hora-registro" ASCENDING 
+
+ADD TABLE "es-canhoto-hist"
+  AREA "dados"
+  LABEL "hist¢rico de canhoto"
+  DUMP-NAME "es-canhoto-hist"
+
+ADD FIELD "cod-estabel" OF "es-canhoto-hist" AS character 
+  FORMAT "x(3)"
+  INITIAL ""
+  LABEL "Estabelecimento"
+  POSITION 2
+  MAX-WIDTH 6
+  ORDER 10
+
+ADD FIELD "nr-nota-fis" OF "es-canhoto-hist" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "numero da nota"
+  POSITION 3
+  MAX-WIDTH 32
+  ORDER 20
+
+ADD FIELD "serie" OF "es-canhoto-hist" AS character 
+  FORMAT "x(5)"
+  INITIAL ""
+  LABEL "serie"
+  POSITION 4
+  MAX-WIDTH 10
+  ORDER 30
+
+ADD FIELD "situacao" OF "es-canhoto-hist" AS character 
+  FORMAT "x(30)"
+  INITIAL ""
+  LABEL "situacao"
+  POSITION 5
+  MAX-WIDTH 60
+  ORDER 40
+
+ADD FIELD "usuario" OF "es-canhoto-hist" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "usuario"
+  POSITION 6
+  MAX-WIDTH 24
+  ORDER 50
+
+ADD FIELD "hora-registro" OF "es-canhoto-hist" AS datetime 
+  FORMAT "99/99/9999 HH:MM:SS.SSS"
+  INITIAL ?
+  POSITION 7
+  MAX-WIDTH 8
+  ORDER 60
+
+ADD INDEX "idx1" ON "es-canhoto-hist" 
+  AREA "dados"
+  PRIMARY
+  INDEX-FIELD "cod-estabel" ASCENDING 
+  INDEX-FIELD "serie" ASCENDING 
+  INDEX-FIELD "nr-nota-fis" ASCENDING 
+  INDEX-FIELD "hora-registro" ASCENDING 
+
+ADD TABLE "es-canhoto-user"
+  AREA "dados"
+  DUMP-NAME "es-canhoto-user"
+
+ADD FIELD "cod-estabel" OF "es-canhoto-user" AS character 
+  FORMAT "x(3)"
+  INITIAL ""
+  LABEL "estabelecimento"
+  POSITION 2
+  MAX-WIDTH 6
+  ORDER 10
+  MANDATORY
+
+ADD FIELD "usuario" OF "es-canhoto-user" AS character 
+  FORMAT "x(30)"
+  INITIAL ""
+  POSITION 3
+  MAX-WIDTH 60
+  ORDER 20
+  MANDATORY
+
+ADD TABLE "es-docto-pend"
+  AREA "dados"
+  DUMP-NAME "es-docto-pend"
+
+ADD FIELD "nro-docto" OF "es-docto-pend" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Nro Documento"
+  POSITION 2
+  MAX-WIDTH 32
+  ORDER 10
+  MANDATORY
+
+ADD FIELD "serie-docto" OF "es-docto-pend" AS character 
+  FORMAT "x(5)"
+  INITIAL ""
+  LABEL "Serie"
+  POSITION 3
+  MAX-WIDTH 10
+  ORDER 20
+
+ADD FIELD "cnpj-emit" OF "es-docto-pend" AS character 
+  FORMAT "x(19)"
+  INITIAL ""
+  LABEL "CNPJ"
+  POSITION 4
+  MAX-WIDTH 38
+  ORDER 30
+  MANDATORY
+
+ADD FIELD "cod-motivo" OF "es-docto-pend" AS integer 
+  FORMAT "99"
+  INITIAL "0"
+  LABEL "Cod Motivo"
+  POSITION 5
+  MAX-WIDTH 4
+  ORDER 40
+  MANDATORY
+
+ADD INDEX "idx-01" ON "es-docto-pend" 
+  AREA "indices"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "nro-docto" ASCENDING 
+  INDEX-FIELD "serie-docto" ASCENDING 
+  INDEX-FIELD "cnpj-emit" ASCENDING 
+  INDEX-FIELD "cod-motivo" ASCENDING 
+
+ADD TABLE "es-embalagem"
+  AREA "dados"
+  DUMP-NAME "es-embalagem"
+
+ADD FIELD "cod-embalagem" OF "es-embalagem" AS integer 
+  FORMAT "99999"
+  INITIAL "0"
+  LABEL "Cod Embalagem"
+  POSITION 2
+  MAX-WIDTH 4
+  ORDER 10
+  MANDATORY
+
+ADD FIELD "desc-embalagem" OF "es-embalagem" AS character 
+  FORMAT "x(30)"
+  INITIAL ""
+  LABEL "Descricao Embalagem"
+  POSITION 3
+  MAX-WIDTH 60
+  ORDER 20
+  MANDATORY
+
+ADD FIELD "narrativa" OF "es-embalagem" AS character 
+  FORMAT "x(500)"
+  INITIAL ""
+  LABEL "Narrativa"
+  POSITION 4
+  MAX-WIDTH 1000
+  VIEW-AS "VIEW-AS EDITOR SIZE 80 BY 6"
+  ORDER 30
+
+ADD INDEX "idx-01" ON "es-embalagem" 
+  AREA "indices"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "cod-embalagem" ASCENDING 
+
+ADD TABLE "es-item-embalagem"
+  AREA "dados"
+  DUMP-NAME "es-item-embalagem"
+
+ADD FIELD "it-codigo" OF "es-item-embalagem" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "it-codigo"
+  POSITION 2
+  MAX-WIDTH 32
+  ORDER 10
+  MANDATORY
+
+ADD FIELD "obs" OF "es-item-embalagem" AS character 
+  FORMAT "x(256)"
+  INITIAL ""
+  LABEL "Observaá∆o"
+  POSITION 4
+  MAX-WIDTH 512
+  COLUMN-LABEL "Observaá∆o"
+  ORDER 30
+
+ADD FIELD "cod-embalagem" OF "es-item-embalagem" AS integer 
+  FORMAT "99999"
+  INITIAL "0"
+  LABEL "Cod Embalagem"
+  POSITION 5
+  MAX-WIDTH 4
+  ORDER 20
+  MANDATORY
+
+ADD INDEX "idx" ON "es-item-embalagem" 
+  AREA "dados"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "it-codigo" ASCENDING 
+  INDEX-FIELD "cod-embalagem" ASCENDING 
+
+ADD TABLE "es-motivo-pend"
+  AREA "dados"
+  DUMP-NAME "es-motivo-pend"
+
+ADD FIELD "cod-motivo" OF "es-motivo-pend" AS integer 
+  FORMAT "99"
+  INITIAL "0"
+  LABEL "Cod Motivo"
+  POSITION 2
+  MAX-WIDTH 4
+  ORDER 10
+  MANDATORY
+
+ADD FIELD "desc-motivo" OF "es-motivo-pend" AS character 
+  FORMAT "x(25)"
+  INITIAL ""
+  LABEL "Desc Motivo"
+  POSITION 3
+  MAX-WIDTH 50
+  ORDER 20
+  MANDATORY
+
+ADD INDEX "idx-01" ON "es-motivo-pend" 
+  AREA "indices"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "cod-motivo" ASCENDING 
+
+ADD TABLE "es-reg-docto"
+  AREA "dados"
+  LABEL "Registra Documentos de Entrada"
+  DESCRIPTION "via esreg-docto"
+  DUMP-NAME "es-reg-docto"
+
+ADD FIELD "nro-docto" OF "es-reg-docto" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Documento"
+  POSITION 2
+  MAX-WIDTH 32
+  ORDER 10
+
+ADD FIELD "serie-docto" OF "es-reg-docto" AS character 
+  FORMAT "x(5)"
+  INITIAL ""
+  LABEL "Serie"
+  POSITION 3
+  MAX-WIDTH 10
+  ORDER 20
+
+ADD FIELD "cnpj-emit" OF "es-reg-docto" AS character 
+  FORMAT "x(19)"
+  INITIAL ""
+  LABEL "CNPJ"
+  POSITION 4
+  MAX-WIDTH 38
+  ORDER 30
+
+ADD FIELD "dt-entr-docto" OF "es-reg-docto" AS datetime 
+  FORMAT "99/99/9999 HH:MM:SS.SSS"
+  INITIAL ?
+  LABEL "Data de Entrada do Documento"
+  POSITION 5
+  MAX-WIDTH 8
+  ORDER 40
+
+ADD FIELD "observacao" OF "es-reg-docto" AS character 
+  FORMAT "x(254)"
+  INITIAL ""
+  LABEL "Observacao"
+  POSITION 6
+  MAX-WIDTH 508
+  ORDER 50
+
+ADD INDEX "chave" ON "es-reg-docto" 
+  AREA "indices"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "nro-docto" ASCENDING 
+  INDEX-FIELD "serie-docto" ASCENDING 
+  INDEX-FIELD "cnpj-emit" ASCENDING 
+
+ADD TABLE "es-reg-docto-motivo"
+  AREA "dados"
+  DUMP-NAME "es-reg-d"
+
+ADD FIELD "nro-docto" OF "es-reg-docto-motivo" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Documento"
+  POSITION 2
+  MAX-WIDTH 32
+  ORDER 10
+
+ADD FIELD "serie-docto" OF "es-reg-docto-motivo" AS character 
+  FORMAT "x(5)"
+  INITIAL ""
+  LABEL "Serie"
+  POSITION 3
+  MAX-WIDTH 10
+  ORDER 20
+
+ADD FIELD "cod-emitente" OF "es-reg-docto-motivo" AS integer 
+  FORMAT ">>>>>>9"
+  INITIAL "0"
+  LABEL "Emitente"
+  POSITION 4
+  MAX-WIDTH 4
+  ORDER 30
+
+ADD FIELD "nat-operacao" OF "es-reg-docto-motivo" AS character 
+  FORMAT "x(06)"
+  INITIAL ""
+  LABEL "Nat Operaá∆o"
+  LABEL-SA "R15"
+  POSITION 5
+  MAX-WIDTH 12
+  COLUMN-LABEL "Nat Oper"
+  COLUMN-LABEL-SA "L8"
+  HELP "Natureza da Operaá∆o"
+  ORDER 40
+
+ADD FIELD "cod-motivo" OF "es-reg-docto-motivo" AS integer 
+  FORMAT "99"
+  INITIAL "0"
+  LABEL "Cod Motivo"
+  POSITION 6
+  MAX-WIDTH 4
+  VIEW-AS "VIEW-AS COMBO-BOX"
+  ORDER 50
+
+ADD INDEX "idx" ON "es-reg-docto-motivo" 
+  AREA "dados"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "nro-docto" ASCENDING 
+  INDEX-FIELD "serie-docto" ASCENDING 
+  INDEX-FIELD "cod-emitente" ASCENDING 
+  INDEX-FIELD "nat-operacao" ASCENDING 
+  INDEX-FIELD "cod-motivo" ASCENDING 
+
+ADD TABLE "esp-erro-wms"
+  AREA "Schema Area"
+  LABEL "Erro Integraá∆o WMS"
+  DUMP-NAME "wis002"
+
+ADD FIELD "id" OF "esp-erro-wms" AS int64 
+  FORMAT ">>>>>>>>>>9"
+  INITIAL "0"
+  LABEL "ID"
+  POSITION 2
+  MAX-WIDTH 8
+  ORDER 40
+
+ADD FIELD "data-hora-erro" OF "esp-erro-wms" AS datetime 
+  FORMAT "99/99/9999 HH:MM:SS"
+  INITIAL ?
+  LABEL "Data/Hora Erro"
+  POSITION 3
+  MAX-WIDTH 8
+  ORDER 50
+
+ADD FIELD "mensagem" OF "esp-erro-wms" AS character 
+  FORMAT "x(200)"
+  INITIAL ""
+  LABEL "Mensagem"
+  POSITION 4
+  MAX-WIDTH 400
+  ORDER 60
+
+ADD INDEX "pk" ON "esp-erro-wms" 
+  AREA "Schema Area"
+  PRIMARY
+  INDEX-FIELD "id" ASCENDING 
+  INDEX-FIELD "data-hora-erro" ASCENDING 
+
+ADD TABLE "esp-fila-wms"
+  AREA "Schema Area"
+  LABEL "Fila Integraá∆o  WIS"
+  DUMP-NAME "wis001"
+
+ADD FIELD "cod-trans" OF "esp-fila-wms" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "Transaá∆o"
+  POSITION 2
+  MAX-WIDTH 40
+  ORDER 10
+
+ADD FIELD "data-hora-criacao" OF "esp-fila-wms" AS datetime 
+  FORMAT "99/99/9999 HH:MM:SS"
+  INITIAL ?
+  LABEL "Data/Hora Criaá∆o"
+  POSITION 3
+  MAX-WIDTH 8
+  ORDER 20
+
+ADD FIELD "chave" OF "esp-fila-wms" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "Chave"
+  POSITION 4
+  MAX-WIDTH 100
+  ORDER 30
+
+ADD FIELD "id" OF "esp-fila-wms" AS int64 
+  FORMAT ">>>>>>>>>>9"
+  INITIAL "0"
+  LABEL "ID"
+  POSITION 5
+  MAX-WIDTH 8
+  ORDER 40
+
+ADD FIELD "data-hora-integracao" OF "esp-fila-wms" AS datetime 
+  FORMAT "99/99/9999 HH:MM:SS"
+  INITIAL ?
+  LABEL "Data/Hora Integr"
+  POSITION 6
+  MAX-WIDTH 8
+  ORDER 50
+
+ADD INDEX "trans-chave" ON "esp-fila-wms" 
+  AREA "Schema Area"
+  PRIMARY
+  INDEX-FIELD "cod-trans" ASCENDING 
+  INDEX-FIELD "chave" ASCENDING 
+
+ADD INDEX "id" ON "esp-fila-wms" 
+  AREA "Schema Area"
+  UNIQUE
+  INDEX-FIELD "id" ASCENDING 
+
+ADD TABLE "esp-param-integr-wms"
+  AREA "Schema Area"
+  LABEL "ParÉmetros Integraá∆o WMS"
+  DUMP-NAME "wis000"
+
+ADD FIELD "odbc-dsn" OF "esp-param-integr-wms" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "ODBC DSN"
+  POSITION 2
+  MAX-WIDTH 100
+  ORDER 10
+
+ADD FIELD "odbc-server" OF "esp-param-integr-wms" AS character 
+  FORMAT "x(30)"
+  INITIAL ""
+  LABEL "ODBC SERVER"
+  POSITION 3
+  MAX-WIDTH 60
+  COLUMN-LABEL "Server"
+  ORDER 20
+
+ADD FIELD "odbc-userid" OF "esp-param-integr-wms" AS character 
+  FORMAT "x(30)"
+  INITIAL ""
+  LABEL "ODBC USERID"
+  POSITION 4
+  MAX-WIDTH 60
+  ORDER 30
+
+ADD FIELD "odbc-passwd" OF "esp-param-integr-wms" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "ODBC PASSWORD"
+  POSITION 5
+  MAX-WIDTH 40
+  ORDER 40
+
+ADD FIELD "interv-proces" OF "esp-param-integr-wms" AS integer 
+  FORMAT ">>>>9"
+  INITIAL "0"
+  LABEL "Intervalo Processo"
+  POSITION 6
+  MAX-WIDTH 4
+  HELP "Intervalo de processamento (segundos)"
+  ORDER 50
+
+ADD FIELD "lista-estab-integr" OF "esp-param-integr-wms" AS character 
+  FORMAT "x(200)"
+  INITIAL ""
+  POSITION 7
+  MAX-WIDTH 400
+  ORDER 60
+
+ADD FIELD "lista-depos-integr" OF "esp-param-integr-wms" AS character 
+  FORMAT "x(200)"
+  INITIAL ""
+  POSITION 8
+  MAX-WIDTH 400
+  ORDER 70
+
+ADD INDEX "id" ON "esp-param-integr-wms" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "odbc-dsn" ASCENDING 
+
+ADD TABLE "es_concorrencia"
+  AREA "dados"
+  DUMP-NAME "es_conco"
+
+ADD FIELD "nome-concorrente" OF "es_concorrencia" AS character 
+  FORMAT "x(80)"
+  INITIAL ""
+  LABEL "Nome Concorrente"
+  POSITION 2
+  MAX-WIDTH 160
+  COLUMN-LABEL "Nome Concor"
+  ORDER 10
+
+ADD FIELD "it-codigo" OF "es_concorrencia" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Item"
+  POSITION 3
+  MAX-WIDTH 32
+  COLUMN-LABEL "Item"
+  ORDER 20
+
+ADD FIELD "dt-implant" OF "es_concorrencia" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data Implantaá∆o"
+  POSITION 4
+  MAX-WIDTH 4
+  COLUMN-LABEL "Dt Implant"
+  ORDER 30
+
+ADD FIELD "vl-venda" OF "es_concorrencia" AS decimal 
+  FORMAT ">>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Valor Vendido"
+  POSITION 5
+  MAX-WIDTH 17
+  COLUMN-LABEL "Vl Vendido"
+  DECIMALS 2
+  ORDER 40
+
+ADD FIELD "it-similar" OF "es_concorrencia" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Item Similar"
+  POSITION 6
+  MAX-WIDTH 32
+  COLUMN-LABEL "Item Similar"
+  ORDER 50
+
+ADD INDEX "idx-concorrencia" ON "es_concorrencia" 
+  AREA "indices"
+  PRIMARY
+  INDEX-FIELD "nome-concorrente" ASCENDING 
+  INDEX-FIELD "it-codigo" ASCENDING 
+  INDEX-FIELD "it-similar" ASCENDING 
+  INDEX-FIELD "dt-implant" ASCENDING 
+
+ADD INDEX "idx-item" ON "es_concorrencia" 
+  AREA "indices"
+  INDEX-FIELD "it-codigo" ASCENDING 
+  INDEX-FIELD "it-similar" ASCENDING 
+  INDEX-FIELD "dt-implant" ASCENDING 
+
+ADD TABLE "es_depto"
+  AREA "dados"
+  DUMP-NAME "es_depto"
+
+ADD FIELD "depto" OF "es_depto" AS character 
+  FORMAT "x(30)"
+  INITIAL ""
+  POSITION 2
+  MAX-WIDTH 60
+  ORDER 10
+
+ADD INDEX "idx" ON "es_depto" 
+  AREA "dados"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "depto" ASCENDING 
+
+ADD TABLE "es_embarque"
+  AREA "dados"
+  LABEL "Conferencia do Embarque"
+  DUMP-NAME "es_embar"
+
+ADD FIELD "nr-embarque" OF "es_embarque" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  LABEL "Embarque"
+  POSITION 2
+  MAX-WIDTH 4
+  ORDER 10
+
+ADD FIELD "conferido" OF "es_embarque" AS logical 
+  FORMAT "sim/n∆o"
+  INITIAL "n∆o"
+  POSITION 3
+  MAX-WIDTH 1
+  ORDER 20
+
+ADD TABLE "es_estrut"
+  AREA "dados"
+  DUMP-NAME "es_estr0"
+
+ADD FIELD "depto" OF "es_estrut" AS character 
+  FORMAT "x(30)"
+  INITIAL ""
+  POSITION 2
+  MAX-WIDTH 60
+  ORDER 10
+
+ADD FIELD "tp-despesa" OF "es_estrut" AS character 
+  FORMAT "x(40)"
+  INITIAL ""
+  LABEL "Tipo Despesa"
+  POSITION 3
+  MAX-WIDTH 80
+  ORDER 20
+
+ADD INDEX "idx" ON "es_estrut" 
+  AREA "indices"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "depto" ASCENDING 
+  INDEX-FIELD "tp-despesa" ASCENDING 
+
+ADD TABLE "es_estrut_ctbl"
+  AREA "dados"
+  DUMP-NAME "es_estrut_ctbl"
+
+ADD FIELD "depto" OF "es_estrut_ctbl" AS character 
+  FORMAT "x(30)"
+  INITIAL ""
+  POSITION 2
+  MAX-WIDTH 60
+  ORDER 10
+
+ADD FIELD "tp-despesa" OF "es_estrut_ctbl" AS character 
+  FORMAT "x(40)"
+  INITIAL ""
+  LABEL "Tipo Despesa"
+  POSITION 3
+  MAX-WIDTH 80
+  ORDER 20
+
+ADD FIELD "cod_cta_ctbl" OF "es_estrut_ctbl" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Conta Contabil"
+  POSITION 4
+  MAX-WIDTH 24
+  ORDER 30
+
+ADD FIELD "cod_ccusto" OF "es_estrut_ctbl" AS character 
+  FORMAT "x(5)"
+  INITIAL ""
+  LABEL "Centro Custo"
+  POSITION 5
+  MAX-WIDTH 10
+  ORDER 40
+
+ADD INDEX "idx" ON "es_estrut_ctbl" 
+  AREA "dados"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "depto" ASCENDING 
+  INDEX-FIELD "tp-despesa" ASCENDING 
+  INDEX-FIELD "cod_cta_ctbl" ASCENDING 
+
+ADD TABLE "es_etiqueta"
+  AREA "dados"
+  LABEL "Etiqueta Codigo de Barra"
+  DUMP-NAME "es_etiqu"
+
+ADD FIELD "num-etiqueta" OF "es_etiqueta" AS integer 
+  FORMAT "999999999999"
+  INITIAL "0"
+  LABEL "Num. Etiqueta"
+  POSITION 2
+  MAX-WIDTH 4
+  ORDER 10
+
+ADD FIELD "it-codigo" OF "es_etiqueta" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Item"
+  POSITION 3
+  MAX-WIDTH 32
+  ORDER 20
+
+ADD FIELD "lote" OF "es_etiqueta" AS character 
+  FORMAT "x(10)"
+  INITIAL ""
+  LABEL "Lote"
+  POSITION 4
+  MAX-WIDTH 20
+  ORDER 30
+
+ADD FIELD "dt-vali-lote" OF "es_etiqueta" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Dt. Validade"
+  POSITION 5
+  MAX-WIDTH 4
+  ORDER 40
+
+ADD FIELD "quantidade" OF "es_etiqueta" AS decimal 
+  FORMAT ">>>,>>9.999"
+  INITIAL "0"
+  LABEL "Quantidade"
+  POSITION 6
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 50
+
+ADD FIELD "dt-geracao" OF "es_etiqueta" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Dt. Geracao"
+  POSITION 7
+  MAX-WIDTH 4
+  ORDER 60
+
+ADD FIELD "hr-geracao" OF "es_etiqueta" AS character 
+  FORMAT "x(10)"
+  INITIAL ""
+  LABEL "Hr. Geracao"
+  POSITION 8
+  MAX-WIDTH 20
+  ORDER 70
+
+ADD FIELD "nr-embarque" OF "es_etiqueta" AS integer 
+  FORMAT ">,>>>,>>9"
+  INITIAL "0"
+  LABEL "Embarque"
+  POSITION 9
+  MAX-WIDTH 4
+  ORDER 80
+
+ADD INDEX "pk_etiq" ON "es_etiqueta" 
+  AREA "indices"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "num-etiqueta" ASCENDING 
+
+ADD INDEX "idx_embarque" ON "es_etiqueta" 
+  AREA "indices"
+  INDEX-FIELD "nr-embarque" ASCENDING 
+  INDEX-FIELD "it-codigo" ASCENDING 
+
+ADD TABLE "es_frota"
+  AREA "dados"
+  LABEL "Frota"
+  DESCRIPTION "
+"
+  DUMP-NAME "es_frota"
+
+ADD FIELD "frota-abrev" OF "es_frota" AS character 
+  FORMAT "X(12)"
+  INITIAL ""
+  LABEL "Nome Frota"
+  POSITION 2
+  MAX-WIDTH 24
+  COLUMN-LABEL ""
+  ORDER 10
+
+ADD FIELD "descricao" OF "es_frota" AS character 
+  FORMAT "X(50)"
+  INITIAL ""
+  LABEL "Descricao"
+  POSITION 3
+  MAX-WIDTH 100
+  ORDER 20
+
+ADD FIELD "dt_ult_alt" OF "es_frota" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data Ultima Alteracao"
+  POSITION 4
+  MAX-WIDTH 4
+  ORDER 30
+
+ADD FIELD "nome-ab-reg" OF "es_frota" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Regi∆o"
+  POSITION 5
+  MAX-WIDTH 60
+  ORDER 40
+
+ADD FIELD "grupo" OF "es_frota" AS character 
+  FORMAT "X(30)"
+  INITIAL ""
+  LABEL "Grupo"
+  POSITION 6
+  MAX-WIDTH 60
+  ORDER 60
+
+ADD FIELD "nome-mic-reg" OF "es_frota" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Micro Regi∆o"
+  POSITION 7
+  MAX-WIDTH 24
+  ORDER 50
+
+ADD INDEX "pu-frota" ON "es_frota" 
+  AREA "indices"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "frota-abrev" ASCENDING 
+
+ADD TABLE "es_frota_cliente"
+  AREA "dados"
+  LABEL "Cliente x Frota"
+  DUMP-NAME "es_frot1"
+
+ADD FIELD "frota-abrev" OF "es_frota_cliente" AS character 
+  FORMAT "X(12)"
+  INITIAL ""
+  LABEL "Nome Abreviado"
+  POSITION 2
+  MAX-WIDTH 24
+  COLUMN-LABEL "Nome Abrev"
+  ORDER 10
+
+ADD FIELD "nome-abrev" OF "es_frota_cliente" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Cliente"
+  POSITION 3
+  MAX-WIDTH 24
+  ORDER 20
+
+ADD INDEX "pu-cliente" ON "es_frota_cliente" 
+  AREA "indices"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "nome-abrev" ASCENDING 
+
+ADD INDEX "idx-frota" ON "es_frota_cliente" 
+  AREA "indices"
+  INDEX-FIELD "frota-abrev" ASCENDING 
+
+ADD TABLE "es_frota_maquina"
+  AREA "dados"
+  DUMP-NAME "es_frot2"
+
+ADD FIELD "frota-abrev" OF "es_frota_maquina" AS character 
+  FORMAT "X(12)"
+  INITIAL ""
+  LABEL "Nome Frota"
+  POSITION 2
+  MAX-WIDTH 24
+  COLUMN-LABEL ""
+  ORDER 10
+
+ADD FIELD "modelo-abrev" OF "es_frota_maquina" AS character 
+  FORMAT "X(12)"
+  INITIAL ""
+  LABEL "Modelo"
+  POSITION 3
+  MAX-WIDTH 24
+  ORDER 20
+
+ADD FIELD "quantidade" OF "es_frota_maquina" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  LABEL "Quantidade"
+  POSITION 4
+  MAX-WIDTH 4
+  ORDER 30
+
+ADD FIELD "ano_fabr" OF "es_frota_maquina" AS integer 
+  FORMAT ">>>9"
+  INITIAL "0"
+  LABEL "Ano Fabricacao"
+  POSITION 5
+  MAX-WIDTH 4
+  ORDER 40
+
+ADD INDEX "idx" ON "es_frota_maquina" 
+  AREA "indices"
+  PRIMARY
+  INDEX-FIELD "frota-abrev" ASCENDING 
+  INDEX-FIELD "modelo-abrev" ASCENDING 
+
+ADD TABLE "es_grupo_economico"
+  AREA "dados"
+  DUMP-NAME "es_grupo"
+
+ADD FIELD "grupo" OF "es_grupo_economico" AS character 
+  FORMAT "X(30)"
+  INITIAL ""
+  LABEL "Grupo"
+  POSITION 2
+  MAX-WIDTH 60
+  ORDER 10
+
+ADD FIELD "descricao" OF "es_grupo_economico" AS character 
+  FORMAT "X(50)"
+  INITIAL ""
+  LABEL "Descricao"
+  POSITION 3
+  MAX-WIDTH 100
+  ORDER 20
+
+ADD TABLE "es_item_cli"
+  AREA "dados"
+  LABEL "Extensao Tabela ITEM-CLI"
+  DESCRIPTION "Extensao da Tabela ITEM-CLI.
+O campo NOME-ABREV da tabela ITEM-CLI, esta sendo substituido pelo campo COD-EMIT"
+  DUMP-NAME "esit-cli"
+
+ADD FIELD "it-codigo" OF "es_item_cli" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "C¢digo do Item"
+  POSITION 2
+  MAX-WIDTH 32
+  COLUMN-LABEL "Item"
+  ORDER 10
+
+ADD FIELD "cod-emitente" OF "es_item_cli" AS integer 
+  FORMAT ">>>>>>>>9"
+  INITIAL "0"
+  LABEL "Emitente"
+  POSITION 3
+  MAX-WIDTH 4
+  COLUMN-LABEL "Emit"
+  ORDER 20
+
+ADD FIELD "unid-med-cli" OF "es_item_cli" AS character 
+  FORMAT "XX"
+  INITIAL ""
+  LABEL "Unidade Medida Cliente"
+  POSITION 4
+  MAX-WIDTH 4
+  COLUMN-LABEL "UN Cli"
+  ORDER 30
+
+ADD FIELD "perc-red-sub" OF "es_item_cli" AS decimal 
+  FORMAT ">>9.9999"
+  INITIAL "0"
+  LABEL "% Reducao ST"
+  POSITION 5
+  MAX-WIDTH 17
+  COLUMN-LABEL "Reducao ST"
+  DECIMALS 2
+  ORDER 40
+
+ADD INDEX "ch-01" ON "es_item_cli" 
+  AREA "indices"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "cod-emitente" ASCENDING 
+  INDEX-FIELD "it-codigo" ASCENDING 
+  INDEX-FIELD "unid-med-cli" ASCENDING 
+
+ADD INDEX "ch-02" ON "es_item_cli" 
+  AREA "indices"
+  INDEX-FIELD "it-codigo" ASCENDING 
+  INDEX-FIELD "unid-med-cli" ASCENDING 
+
+ADD TABLE "es_item_embarque"
+  AREA "dados"
+  LABEL "Item Conferencia Embarque"
+  DUMP-NAME "es_it_em"
+
+ADD FIELD "nr-embarque" OF "es_item_embarque" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  LABEL "Embarque"
+  POSITION 2
+  MAX-WIDTH 4
+  ORDER 10
+
+ADD FIELD "it-codigo" OF "es_item_embarque" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Item"
+  POSITION 3
+  MAX-WIDTH 32
+  ORDER 20
+
+ADD FIELD "qt-alocada" OF "es_item_embarque" AS decimal 
+  FORMAT ">>,>>>,>>9.999"
+  INITIAL "0"
+  LABEL "Qt Alocada"
+  POSITION 4
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 30
+
+ADD FIELD "qt-conferida" OF "es_item_embarque" AS decimal 
+  FORMAT ">>,>>>,>>9.999"
+  INITIAL "0"
+  LABEL "Qt Conferida"
+  POSITION 5
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 40
+
+ADD FIELD "desc-item" OF "es_item_embarque" AS character 
+  FORMAT "X(60)"
+  INITIAL ""
+  LABEL "Descriá∆o"
+  POSITION 6
+  MAX-WIDTH 120
+  ORDER 50
+
+ADD INDEX "pk_item_emb" ON "es_item_embarque" 
+  AREA "indices"
+  PRIMARY
+  INDEX-FIELD "nr-embarque" ASCENDING 
+  INDEX-FIELD "it-codigo" ASCENDING 
+
+ADD TABLE "es_item_similar"
+  AREA "dados"
+  LABEL "Cadastro dos itens similares"
+  DESCRIPTION "Extensao da Tabela : item.
+Cadastro de itens similares."
+  DUMP-NAME "esitemsi"
+
+ADD FIELD "it-codigo" OF "es_item_similar" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "C¢digo do Item"
+  POSITION 2
+  MAX-WIDTH 32
+  COLUMN-LABEL "Item"
+  ORDER 10
+
+ADD FIELD "it-similar" OF "es_item_similar" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "C¢digo Similar"
+  POSITION 3
+  MAX-WIDTH 32
+  COLUMN-LABEL "Item Similar"
+  ORDER 20
+
+ADD FIELD "narrativa" OF "es_item_similar" AS character 
+  FORMAT "x(2000)"
+  INITIAL ""
+  LABEL "Narrativa similar"
+  POSITION 4
+  MAX-WIDTH 4000
+  COLUMN-LABEL "Narrativa similar"
+  ORDER 30
+
+ADD INDEX "chave01" ON "es_item_similar" 
+  AREA "indices"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "it-codigo" ASCENDING 
+  INDEX-FIELD "it-similar" ASCENDING 
+
+ADD INDEX "chave02" ON "es_item_similar" 
+  AREA "indices"
+  INDEX-FIELD "it-similar" ASCENDING 
+
+ADD TABLE "es_modelo_maquina"
+  AREA "dados"
+  DUMP-NAME "es_model"
+
+ADD FIELD "modelo-abrev" OF "es_modelo_maquina" AS character 
+  FORMAT "X(12)"
+  INITIAL ""
+  LABEL "Modelo"
+  POSITION 2
+  MAX-WIDTH 24
+  ORDER 10
+
+ADD FIELD "descricao" OF "es_modelo_maquina" AS character 
+  FORMAT "X(50)"
+  INITIAL ""
+  LABEL "Descricao"
+  POSITION 3
+  MAX-WIDTH 100
+  ORDER 20
+
+ADD TABLE "es_natur_oper"
+  AREA "dados"
+  LABEL "Tabela de Extensao Natur Oper"
+  DESCRIPTION "Tabela de Extensao do Cadastro da Natureza de Operacao"
+  DUMP-NAME "esnatope"
+
+ADD FIELD "nat-operacao" OF "es_natur_oper" AS character 
+  FORMAT "x(6)"
+  INITIAL ""
+  LABEL "Natureza Operaá∆o"
+  POSITION 2
+  MAX-WIDTH 12
+  COLUMN-LABEL "Nat Oper"
+  ORDER 10
+
+ADD FIELD "icms-retido-st" OF "es_natur_oper" AS logical 
+  DESCRIPTION "Quando marcado, zera os valores da Base e Valor do ICMS Pr¢prio"
+  FORMAT "Sim/Nao"
+  INITIAL "Sim"
+  LABEL "ICMS Retido ST"
+  POSITION 3
+  MAX-WIDTH 1
+  COLUMN-LABEL "ICMS Retido ST"
+  HELP "N∆o inclui Base/Valor ICMS Pr¢prio na Nota Fiscal"
+  ORDER 20
+
+ADD INDEX "ch-01" ON "es_natur_oper" 
+  AREA "indices"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "nat-operacao" ASCENDING 
+
+ADD TABLE "es_ped_item"
+  AREA "dados"
+  LABEL "Extensao ped-item"
+  DESCRIPTION "Extensao da tabela ped-item : itens do pedido de venda"
+  DUMP-NAME "esped-it"
+
+ADD FIELD "cod-emitente" OF "es_ped_item" AS integer 
+  FORMAT ">>>>>>>>9"
+  INITIAL "0"
+  LABEL "Emitente"
+  POSITION 2
+  MAX-WIDTH 4
+  COLUMN-LABEL "Emit"
+  ORDER 10
+
+ADD FIELD "nr-pedcli" OF "es_ped_item" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Nro Pedido Cliente"
+  POSITION 3
+  MAX-WIDTH 24
+  COLUMN-LABEL "Nro Pedido"
+  ORDER 20
+
+ADD FIELD "nr-sequencia" OF "es_ped_item" AS integer 
+  FORMAT ">>,>>9"
+  INITIAL "0"
+  LABEL "Sequencia"
+  POSITION 4
+  MAX-WIDTH 4
+  COLUMN-LABEL "Seq"
+  ORDER 30
+
+ADD FIELD "it-codigo" OF "es_ped_item" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "item"
+  POSITION 5
+  MAX-WIDTH 32
+  COLUMN-LABEL "Item"
+  ORDER 40
+
+ADD FIELD "cod-refer" OF "es_ped_item" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Referencia"
+  POSITION 6
+  MAX-WIDTH 16
+  COLUMN-LABEL "Ref"
+  ORDER 50
+
+ADD FIELD "it-similar" OF "es_ped_item" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "C¢digo Similar"
+  POSITION 7
+  MAX-WIDTH 32
+  COLUMN-LABEL "Cod Similar"
+  ORDER 60
+
+ADD FIELD "vl-icmsub-it" OF "es_ped_item" AS decimal 
+  FORMAT ">>>,>>>,>>9.99999"
+  INITIAL "0"
+  LABEL "Valor ICMS Item Subs"
+  POSITION 8
+  MAX-WIDTH 20
+  COLUMN-LABEL "Vl ICMS Subst"
+  DECIMALS 5
+  ORDER 70
+
+ADD INDEX "chave01" ON "es_ped_item" 
+  AREA "indices"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "cod-emitente" ASCENDING 
+  INDEX-FIELD "nr-pedcli" ASCENDING 
+  INDEX-FIELD "nr-sequencia" ASCENDING 
+  INDEX-FIELD "it-codigo" ASCENDING 
+  INDEX-FIELD "cod-refer" ASCENDING 
+
+ADD INDEX "chave02" ON "es_ped_item" 
+  AREA "indices"
+  INDEX-FIELD "it-similar" ASCENDING 
+
+ADD TABLE "es_ped_venda"
+  AREA "dados"
+  LABEL "Extensao Ped-Venda"
+  DUMP-NAME "espedido"
+
+ADD FIELD "nr-pedido" OF "es_ped_venda" AS integer 
+  FORMAT ">>>,>>>,>>9"
+  INITIAL "0"
+  LABEL "Nr pedido"
+  POSITION 2
+  MAX-WIDTH 4
+  COLUMN-LABEL "Pedido"
+  ORDER 10
+
+ADD FIELD "cod-emitente" OF "es_ped_venda" AS integer 
+  FORMAT ">>>>>>>>9"
+  INITIAL "0"
+  LABEL "Cod Emitente"
+  POSITION 3
+  MAX-WIDTH 4
+  COLUMN-LABEL "Emitente"
+  ORDER 20
+
+ADD FIELD "nr-pedcli" OF "es_ped_venda" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Nro Pedido"
+  POSITION 4
+  MAX-WIDTH 24
+  COLUMN-LABEL "Pedido Cliente"
+  ORDER 30
+
+ADD FIELD "vl-icms" OF "es_ped_venda" AS decimal 
+  FORMAT ">>>,>>>,>>9.99999"
+  INITIAL "0"
+  LABEL "Vl ICMS"
+  POSITION 5
+  MAX-WIDTH 17
+  COLUMN-LABEL "Vl ICMS"
+  DECIMALS 2
+  ORDER 40
+
+ADD FIELD "vl-ipi" OF "es_ped_venda" AS decimal 
+  FORMAT ">>>,>>>,>>9.99999"
+  INITIAL "0"
+  LABEL "Vl IPI"
+  POSITION 6
+  MAX-WIDTH 17
+  COLUMN-LABEL "Vl IPI"
+  DECIMALS 2
+  ORDER 50
+
+ADD FIELD "vl-icms-st" OF "es_ped_venda" AS decimal 
+  FORMAT ">>>,>>>,>>9.99999"
+  INITIAL "0"
+  LABEL "Vl ICMS ST"
+  POSITION 7
+  MAX-WIDTH 17
+  COLUMN-LABEL "Vl ICMS ST"
+  DECIMALS 2
+  ORDER 60
+
+ADD FIELD "totalizado" OF "es_ped_venda" AS logical 
+  FORMAT "Sim/Nao"
+  INITIAL "Nao"
+  POSITION 8
+  MAX-WIDTH 1
+  ORDER 70
+
+ADD INDEX "ch-01" ON "es_ped_venda" 
+  AREA "indices"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "nr-pedido" ASCENDING 
+
+ADD INDEX "ch-02" ON "es_ped_venda" 
+  AREA "indices"
+  UNIQUE
+  INDEX-FIELD "cod-emitente" ASCENDING 
+  INDEX-FIELD "nr-pedido" ASCENDING 
+
+ADD TABLE "es_tp_despesa"
+  AREA "dados"
+  DUMP-NAME "es_tp_despesa"
+
+ADD FIELD "tp-despesa" OF "es_tp_despesa" AS character 
+  FORMAT "x(40)"
+  INITIAL ""
+  LABEL "Tipo Despesa"
+  POSITION 2
+  MAX-WIDTH 80
+  ORDER 10
+
+ADD INDEX "idx" ON "es_tp_despesa" 
+  AREA "dados"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "tp-despesa" ASCENDING 
+
+ADD TABLE "indicador-compra"
+  AREA "dados"
+  DESCRIPTION "Indicador de Compras"
+  DUMP-NAME "indicado"
+
+ADD FIELD "data-congelamento" OF "indicador-compra" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Dt.Congelamento"
+  POSITION 2
+  MAX-WIDTH 4
+  ORDER 10
+
+ADD FIELD "it-codigo" OF "indicador-compra" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Item"
+  POSITION 3
+  MAX-WIDTH 32
+  ORDER 20
+
+ADD FIELD "data-ult-compr" OF "indicador-compra" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data Ult. Compra"
+  POSITION 4
+  MAX-WIDTH 4
+  ORDER 30
+
+ADD FIELD "vlr-ult-compra" OF "indicador-compra" AS decimal 
+  FORMAT "->>,>>9.9999"
+  INITIAL "0"
+  LABEL "Valor Ult. Compra"
+  POSITION 5
+  MAX-WIDTH 17
+  DECIMALS 4
+  ORDER 40
+
+ADD FIELD "lead-time" OF "indicador-compra" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  LABEL "Lead Time"
+  POSITION 6
+  MAX-WIDTH 4
+  ORDER 50
+
+ADD FIELD "contrato" OF "indicador-compra" AS logical 
+  FORMAT "Sim/N∆o"
+  INITIAL "Sim"
+  POSITION 8
+  MAX-WIDTH 1
+  ORDER 60
+
+ADD FIELD "cod-fornec" OF "indicador-compra" AS integer 
+  FORMAT ">>>>>>>9"
+  INITIAL "0"
+  LABEL "Fornecedor"
+  POSITION 9
+  MAX-WIDTH 4
+  ORDER 80
+
+ADD FIELD "nr-nota-fis" OF "indicador-compra" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Nota Fiscal"
+  POSITION 10
+  MAX-WIDTH 32
+  ORDER 70
+
+ADD INDEX "idx1" ON "indicador-compra" 
+  AREA "indices"
+  PRIMARY
+  INDEX-FIELD "it-codigo" ASCENDING 
+  INDEX-FIELD "data-congelamento" ASCENDING 
+
+ADD TABLE "it-nesting"
+  AREA "dados"
+  DUMP-NAME "it-nesting"
+
+ADD FIELD "nesting" OF "it-nesting" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "Nesting"
+  POSITION 2
+  MAX-WIDTH 40
+  ORDER 10
+
+ADD FIELD "it-codigo" OF "it-nesting" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Item"
+  POSITION 3
+  MAX-WIDTH 32
+  ORDER 20
+
+ADD FIELD "qtde" OF "it-nesting" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Quantidade"
+  POSITION 4
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 30
+
+ADD FIELD "nr-ord-prod" OF "it-nesting" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  LABEL "Nr.Ord.Prod."
+  POSITION 5
+  MAX-WIDTH 4
+  ORDER 40
+
+ADD FIELD "operacao" OF "it-nesting" AS integer 
+  FORMAT ">>>9"
+  INITIAL "0"
+  LABEL "Operaá∆o"
+  POSITION 6
+  MAX-WIDTH 4
+  ORDER 50
+
+ADD FIELD "reserva-eng" OF "it-nesting" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Reserva Eng."
+  POSITION 7
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 60
+
+ADD INDEX "nest-item" ON "it-nesting" 
+  AREA "dados"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "nesting" ASCENDING 
+  INDEX-FIELD "it-codigo" ASCENDING 
+
+ADD TABLE "item-extensao"
+  AREA "dados"
+  LABEL "Item Extensao"
+  DUMP-NAME "item-ext"
+
+ADD FIELD "it-codigo" OF "item-extensao" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Item"
+  POSITION 2
+  MAX-WIDTH 32
+  ORDER 10
+
+ADD FIELD "data-alter" OF "item-extensao" AS datetime 
+  FORMAT "99/99/9999 HH:MM:SS"
+  INITIAL ?
+  LABEL "Data Alteraá∆o"
+  POSITION 3
+  MAX-WIDTH 8
+  ORDER 20
+
+ADD FIELD "usuario" OF "item-extensao" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Usuario"
+  POSITION 4
+  MAX-WIDTH 32
+  ORDER 30
+
+ADD FIELD "curva" OF "item-extensao" AS character 
+  FORMAT "x(10)"
+  INITIAL ""
+  LABEL "Curva"
+  POSITION 5
+  MAX-WIDTH 20
+  ORDER 40
+
+ADD FIELD "descricao-vendas" OF "item-extensao" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  LABEL "Descricao Vendas"
+  POSITION 6
+  MAX-WIDTH 200
+  ORDER 50
+
+ADD FIELD "descricao-compras" OF "item-extensao" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  LABEL "Descricao Compras"
+  POSITION 7
+  MAX-WIDTH 200
+  ORDER 60
+
+ADD FIELD "marca" OF "item-extensao" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "Marca"
+  POSITION 8
+  MAX-WIDTH 40
+  ORDER 70
+
+ADD FIELD "qualidade" OF "item-extensao" AS integer 
+  FORMAT ">9"
+  INITIAL "0"
+  LABEL "Qualidade"
+  POSITION 9
+  MAX-WIDTH 4
+  VIEW-AS "VIEW-AS RADIO-SET
+  RADIO-BUTTONS ""Diferencial"",1,""Original"",2,""Conforme Original"" ,3,""Alternativo"",4"
+  ORDER 80
+
+ADD FIELD "narrativa" OF "item-extensao" AS character 
+  FORMAT "x(300)"
+  INITIAL ""
+  LABEL "Narrativa"
+  POSITION 10
+  MAX-WIDTH 600
+  VIEW-AS "VIEW-AS EDITOR
+   size 80 By 2"
+  ORDER 90
+
+ADD FIELD "dir-imagem" OF "item-extensao" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  LABEL "Diretorio Imagem"
+  POSITION 11
+  MAX-WIDTH 200
+  ORDER 100
+
+ADD FIELD "dir-desenho" OF "item-extensao" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  LABEL "Diretorio Desenho"
+  POSITION 12
+  MAX-WIDTH 200
+  ORDER 110
+
+ADD INDEX "idx" ON "item-extensao" 
+  AREA "dados"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "it-codigo" ASCENDING 
+
+ADD INDEX "desc-compras" ON "item-extensao" 
+  AREA "dados"
+  INDEX-FIELD "descricao-compras" ASCENDING 
+
+ADD INDEX "desc-vendas" ON "item-extensao" 
+  AREA "dados"
+  INDEX-FIELD "descricao-vendas" ASCENDING 
+
+ADD TABLE "item-prev"
+  AREA "dados"
+  DESCRIPTION "Cadastro Previs∆o Venda do Item"
+  DUMP-NAME "item-pre"
+
+ADD FIELD "it-codigo" OF "item-prev" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Item"
+  POSITION 2
+  MAX-WIDTH 32
+  ORDER 10
+
+ADD FIELD "periodo" OF "item-prev" AS character 
+  FORMAT "9999/99"
+  INITIAL ""
+  LABEL "Periodo"
+  POSITION 3
+  MAX-WIDTH 14
+  ORDER 20
+
+ADD FIELD "quantidade" OF "item-prev" AS decimal 
+  FORMAT "->>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Quantidade"
+  POSITION 4
+  MAX-WIDTH 17
+  COLUMN-LABEL "Qtde"
+  DECIMALS 2
+  ORDER 30
+
+ADD FIELD "situacao" OF "item-prev" AS logical 
+  FORMAT "Confirmada/Planejada"
+  INITIAL "Planejada"
+  LABEL "Situaá∆o"
+  POSITION 5
+  MAX-WIDTH 1
+  VIEW-AS "VIEW-AS RADIO-SET
+  RADIO-BUTTONS Planejada,yes, Confirmada, no"
+  COLUMN-LABEL "Situaá∆o"
+  ORDER 40
+
+ADD INDEX "idx2" ON "item-prev" 
+  AREA "indices"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "it-codigo" ASCENDING 
+  INDEX-FIELD "periodo" DESCENDING 
+
+ADD TABLE "item-similar"
+  AREA "dados"
+  LABEL "Campos Adicionais"
+  DUMP-NAME "item-similar"
+
+ADD FIELD "it-codigo" OF "item-similar" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "C¢digo do Item"
+  POSITION 2
+  MAX-WIDTH 32
+  COLUMN-LABEL "Item"
+  ORDER 10
+
+ADD FIELD "it-similar" OF "item-similar" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "C¢digo Similar"
+  POSITION 3
+  MAX-WIDTH 32
+  COLUMN-LABEL "Item Similar"
+  ORDER 20
+
+ADD FIELD "narrativa" OF "item-similar" AS character 
+  FORMAT "x(2000)"
+  INITIAL ""
+  LABEL "Narrativa similar"
+  POSITION 4
+  MAX-WIDTH 4000
+  VIEW-AS "VIEW-AS EDITOR
+   SIZE 80 BY 2"
+  COLUMN-LABEL "Narrativa similar"
+  ORDER 30
+
+ADD FIELD "caminho" OF "item-similar" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  LABEL "Caminho Imagens"
+  POSITION 5
+  MAX-WIDTH 200
+  ORDER 40
+
+ADD FIELD "modelo" OF "item-similar" AS character 
+  FORMAT "x(30)"
+  INITIAL ""
+  LABEL "Modelo"
+  POSITION 6
+  MAX-WIDTH 60
+  ORDER 50
+
+ADD FIELD "serie" OF "item-similar" AS character 
+  FORMAT "x(15)"
+  INITIAL ""
+  LABEL "Serie"
+  POSITION 7
+  MAX-WIDTH 30
+  ORDER 60
+
+ADD FIELD "ano" OF "item-similar" AS character 
+  FORMAT "x(10)"
+  INITIAL ""
+  LABEL "Ano"
+  POSITION 8
+  MAX-WIDTH 20
+  ORDER 70
+
+ADD FIELD "Obs" OF "item-similar" AS character 
+  FORMAT "x(400)"
+  INITIAL ""
+  LABEL "Observaá∆o"
+  POSITION 9
+  MAX-WIDTH 800
+  VIEW-AS "VIEW-AS EDITOR
+  SIZE 80 BY 2"
+  ORDER 80
+
+ADD FIELD "usuario" OF "item-similar" AS character 
+  FORMAT "x(15)"
+  INITIAL ""
+  LABEL "Usuario"
+  POSITION 10
+  MAX-WIDTH 30
+  ORDER 90
+
+ADD FIELD "data-hora" OF "item-similar" AS datetime 
+  FORMAT "99/99/9999 HH:MM:SS"
+  INITIAL ?
+  LABEL "Data/Hora"
+  POSITION 11
+  MAX-WIDTH 8
+  ORDER 100
+
+ADD INDEX "Similar-Item" ON "item-similar" 
+  AREA "dados"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "it-similar" ASCENDING 
+  INDEX-FIELD "it-codigo" ASCENDING 
+
+ADD INDEX "Item-Similar" ON "item-similar" 
+  AREA "dados"
+  UNIQUE
+  INDEX-FIELD "it-codigo" ASCENDING 
+  INDEX-FIELD "it-similar" ASCENDING 
+
+ADD TABLE "log-peditem"
+  AREA "dados"
+  LABEL "Tabela de LOG do Item do Pedid"
+  DUMP-NAME "log-pedi"
+
+ADD FIELD "nome-abrev" OF "log-peditem" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Nome Abrev"
+  POSITION 2
+  MAX-WIDTH 24
+  ORDER 30
+
+ADD FIELD "nr-pedcli" OF "log-peditem" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Nr.Pedido"
+  POSITION 3
+  MAX-WIDTH 24
+  ORDER 40
+
+ADD FIELD "nr-sequencia" OF "log-peditem" AS integer 
+  FORMAT ">>>9"
+  INITIAL "0"
+  LABEL "Sequencia"
+  POSITION 4
+  MAX-WIDTH 4
+  ORDER 50
+
+ADD FIELD "it-codigo" OF "log-peditem" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Item"
+  POSITION 5
+  MAX-WIDTH 32
+  ORDER 60
+
+ADD FIELD "cod-refer" OF "log-peditem" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Referencia"
+  POSITION 6
+  MAX-WIDTH 16
+  COLUMN-LABEL "Ref"
+  ORDER 70
+
+ADD FIELD "dt-entrega-ant" OF "log-peditem" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Dt Entrega Anterior"
+  POSITION 7
+  MAX-WIDTH 4
+  ORDER 80
+
+ADD FIELD "dt-entrega-atual" OF "log-peditem" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Dt Entrega Atual"
+  POSITION 8
+  MAX-WIDTH 4
+  ORDER 90
+
+ADD FIELD "usuario-alt" OF "log-peditem" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "Usuario Alteraá∆o"
+  POSITION 9
+  MAX-WIDTH 40
+  COLUMN-LABEL "Usuario"
+  ORDER 100
+
+ADD FIELD "data-alt" OF "log-peditem" AS datetime 
+  FORMAT "99/99/9999 HH:MM"
+  INITIAL ?
+  LABEL "Data Alteracao"
+  POSITION 10
+  MAX-WIDTH 8
+  COLUMN-LABEL "Data Alteracao"
+  ORDER 110
+
+ADD FIELD "dt-entorig-ant" OF "log-peditem" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Dt Entr Orig Anterior"
+  POSITION 11
+  MAX-WIDTH 4
+  ORDER 120
+
+ADD FIELD "dt-entorig-atual" OF "log-peditem" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Dt Entr Orig Atual"
+  POSITION 12
+  MAX-WIDTH 4
+  ORDER 130
+
+ADD INDEX "idx1" ON "log-peditem" 
+  AREA "indices"
+  PRIMARY
+  INDEX-FIELD "nome-abrev" ASCENDING 
+  INDEX-FIELD "nr-pedcli" ASCENDING 
+  INDEX-FIELD "nr-sequencia" ASCENDING 
+  INDEX-FIELD "it-codigo" ASCENDING 
+  INDEX-FIELD "cod-refer" ASCENDING 
+  INDEX-FIELD "data-alt" ASCENDING 
+
+ADD TABLE "nesting"
+  AREA "dados"
+  LABEL "Nesting"
+  DUMP-NAME "nesting"
+
+ADD FIELD "nesting" OF "nesting" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "Nesting"
+  POSITION 2
+  MAX-WIDTH 40
+  ORDER 10
+
+ADD FIELD "it-codigo" OF "nesting" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Item"
+  POSITION 3
+  MAX-WIDTH 32
+  ORDER 20
+
+ADD FIELD "qt-planej" OF "nesting" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Qtd.Planej."
+  POSITION 4
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 30
+
+ADD FIELD "qt-report" OF "nesting" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Qtd.Report."
+  POSITION 5
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 40
+
+ADD FIELD "espessura" OF "nesting" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Espessura"
+  POSITION 6
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 50
+
+ADD FIELD "largura" OF "nesting" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Largura"
+  POSITION 7
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 60
+
+ADD FIELD "comprimento" OF "nesting" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Comprimento"
+  POSITION 8
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 70
+
+ADD FIELD "usuario" OF "nesting" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Usuario"
+  POSITION 9
+  MAX-WIDTH 32
+  ORDER 80
+
+ADD FIELD "impresso" OF "nesting" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "Impresso"
+  POSITION 10
+  MAX-WIDTH 1
+  ORDER 90
+
+ADD FIELD "ord-gerada" OF "nesting" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "Ordem Gerada ?"
+  POSITION 11
+  MAX-WIDTH 1
+  ORDER 100
+
+ADD FIELD "status-nesting" OF "nesting" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  LABEL "Status"
+  POSITION 12
+  MAX-WIDTH 4
+  ORDER 110
+
+ADD FIELD "dt-ini-nesting" OF "nesting" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data inicio Nesting"
+  POSITION 13
+  MAX-WIDTH 4
+  ORDER 120
+
+ADD INDEX "nest" ON "nesting" 
+  AREA "dados"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "nesting" ASCENDING 
+
+ADD TABLE "nfe_eletro"
+  AREA "dados"
+  DUMP-NAME "nfe_elet"
+
+ADD FIELD "cod-estabel" OF "nfe_eletro" AS character 
+  FORMAT "X(3)"
+  INITIAL ""
+  LABEL "Estabelecimento"
+  LABEL-SA "R18"
+  POSITION 2
+  MAX-WIDTH 6
+  COLUMN-LABEL "Est"
+  COLUMN-LABEL-SA "L3"
+  VALEXP "true"
+  HELP "C¢digo do estabelecimento"
+  ORDER 10
+  MANDATORY
+
+ADD FIELD "serie" OF "nfe_eletro" AS character 
+  FORMAT "x(5)"
+  INITIAL "U"
+  LABEL "SÇrie"
+  LABEL-SA "R7"
+  POSITION 3
+  MAX-WIDTH 10
+  COLUMN-LABEL "Ser"
+  COLUMN-LABEL-SA "L5"
+  VALEXP "true"
+  HELP "SÇrie da nota fiscal"
+  ORDER 20
+  MANDATORY
+
+ADD FIELD "nr-nota-fis" OF "nfe_eletro" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Nr Nota Fiscal"
+  LABEL-SA "R17"
+  POSITION 4
+  MAX-WIDTH 32
+  COLUMN-LABEL "Nota Fis"
+  COLUMN-LABEL-SA "L16"
+  VALEXP "true"
+  HELP "N£mero da nota fiscal"
+  ORDER 30
+  MANDATORY
+
+ADD FIELD "num-lote" OF "nfe_eletro" AS decimal 
+  FORMAT ">>>,>>>,>>>,>>>,>>9"
+  INITIAL "0"
+  LABEL "Nro Lote"
+  POSITION 5
+  MAX-WIDTH 15
+  COLUMN-LABEL "N.Lote"
+  DECIMALS 0
+  ORDER 40
+
+ADD FIELD "chNFe" OF "nfe_eletro" AS character 
+  FORMAT "x(40)"
+  INITIAL ""
+  LABEL "chNFe"
+  POSITION 6
+  MAX-WIDTH 80
+  COLUMN-LABEL "chNFe"
+  ORDER 50
+
+ADD FIELD "dhRecbto" OF "nfe_eletro" AS character 
+  FORMAT "x(24)"
+  INITIAL ""
+  LABEL "dhRecbto"
+  POSITION 7
+  MAX-WIDTH 48
+  COLUMN-LABEL "dhRecbto"
+  ORDER 60
+
+ADD FIELD "digVal" OF "nfe_eletro" AS character 
+  FORMAT "x(40)"
+  INITIAL ""
+  LABEL "digVal"
+  POSITION 8
+  MAX-WIDTH 80
+  COLUMN-LABEL "digVal"
+  ORDER 70
+
+ADD FIELD "cStat" OF "nfe_eletro" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Status"
+  POSITION 9
+  MAX-WIDTH 16
+  COLUMN-LABEL "Status"
+  ORDER 80
+
+ADD FIELD "xMotivo" OF "nfe_eletro" AS character 
+  FORMAT "x(132)"
+  INITIAL ""
+  LABEL "Motivo"
+  POSITION 10
+  MAX-WIDTH 264
+  COLUMN-LABEL "Motivo"
+  ORDER 90
+
+ADD FIELD "nProt" OF "nfe_eletro" AS character 
+  FORMAT "x(32)"
+  INITIAL ""
+  LABEL "Protocolo"
+  POSITION 11
+  MAX-WIDTH 64
+  COLUMN-LABEL "Protocolo"
+  ORDER 100
+
+ADD INDEX "ch-01" ON "nfe_eletro" 
+  AREA "indices"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "cod-estabel" ASCENDING 
+  INDEX-FIELD "serie" ASCENDING 
+  INDEX-FIELD "nr-nota-fis" ASCENDING 
+
+ADD INDEX "ch-02" ON "nfe_eletro" 
+  AREA "indices"
+  INDEX-FIELD "num-lote" ASCENDING 
+
+ADD INDEX "ch-03" ON "nfe_eletro" 
+  AREA "indices"
+  INDEX-FIELD "chNFe" ASCENDING 
+
+ADD TABLE "nfe_lote"
+  AREA "dados"
+  DUMP-NAME "nfe_lote"
+
+ADD FIELD "num-lote" OF "nfe_lote" AS decimal 
+  FORMAT ">>>,>>>,>>>,>>>,>>9"
+  INITIAL "0"
+  LABEL "Nro Lote"
+  POSITION 2
+  MAX-WIDTH 15
+  COLUMN-LABEL "N.Lote"
+  DECIMALS 0
+  ORDER 10
+
+ADD FIELD "tpAmb" OF "nfe_lote" AS character 
+  FORMAT "x(1)"
+  INITIAL ""
+  LABEL "Ambiente"
+  POSITION 3
+  MAX-WIDTH 2
+  COLUMN-LABEL "Ambiente"
+  ORDER 20
+
+ADD FIELD "cStat" OF "nfe_lote" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Status"
+  POSITION 4
+  MAX-WIDTH 16
+  COLUMN-LABEL "Status"
+  ORDER 30
+
+ADD FIELD "xMotivo" OF "nfe_lote" AS character 
+  FORMAT "x(132)"
+  INITIAL ""
+  LABEL "Motivo"
+  POSITION 5
+  MAX-WIDTH 264
+  COLUMN-LABEL "Motivo"
+  ORDER 40
+
+ADD FIELD "cUF" OF "nfe_lote" AS character 
+  FORMAT "x(2)"
+  INITIAL ""
+  LABEL "UF"
+  POSITION 6
+  MAX-WIDTH 4
+  COLUMN-LABEL "UF"
+  ORDER 50
+
+ADD FIELD "nRec" OF "nfe_lote" AS character 
+  FORMAT "x(24)"
+  INITIAL ""
+  LABEL "Recibo"
+  POSITION 7
+  MAX-WIDTH 48
+  COLUMN-LABEL "Recibo"
+  ORDER 60
+
+ADD FIELD "dhRecbto" OF "nfe_lote" AS character 
+  FORMAT "x(24)"
+  INITIAL ""
+  LABEL "Dt Recbto"
+  POSITION 8
+  MAX-WIDTH 48
+  COLUMN-LABEL "Dt Recbto"
+  ORDER 70
+
+ADD FIELD "tMed" OF "nfe_lote" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "tMed"
+  POSITION 9
+  MAX-WIDTH 16
+  COLUMN-LABEL "tMed"
+  ORDER 80
+
+ADD FIELD "xml" OF "nfe_lote" AS character 
+  FORMAT "x(2000)"
+  INITIAL ""
+  LABEL "XML"
+  POSITION 10
+  MAX-WIDTH 4000
+  COLUMN-LABEL "XML"
+  ORDER 90
+
+ADD INDEX "ch-01" ON "nfe_lote" 
+  AREA "indices"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "num-lote" ASCENDING 
+
+ADD TABLE "ord-cab"
+  AREA "dados"
+  LABEL "ord-cab"
+  DUMP-NAME "ord-cab"
+
+ADD FIELD "nr-ord-produ" OF "ord-cab" AS character 
+  DESCRIPTION "N£mero da Ordem"
+  FORMAT "X(30)"
+  INITIAL ""
+  LABEL "N£mero da Ordem"
+  POSITION 2
+  MAX-WIDTH 60
+  COLUMN-LABEL "N£mero da Ordem"
+  ORDER 10
+
+ADD FIELD "it-codigo" OF "ord-cab" AS character 
+  DESCRIPTION "C¢digo do Item"
+  FORMAT "X(30)"
+  INITIAL ""
+  LABEL "C¢digo do Item"
+  POSITION 3
+  MAX-WIDTH 60
+  COLUMN-LABEL "C¢digo do Item"
+  ORDER 20
+
+ADD FIELD "dt-recebimento" OF "ord-cab" AS date 
+  DESCRIPTION "Data de Recebimento"
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data de Recebimento"
+  POSITION 4
+  MAX-WIDTH 4
+  COLUMN-LABEL "Data de Recebimento"
+  ORDER 30
+
+ADD FIELD "qt-ordem" OF "ord-cab" AS decimal 
+  DESCRIPTION "Quantidade da Ordem"
+  FORMAT ">>>,>>>,>>>9.99"
+  INITIAL "0"
+  LABEL "Quantidade da Ordem"
+  POSITION 5
+  MAX-WIDTH 17
+  COLUMN-LABEL "Quantidade da Ordem"
+  DECIMALS 2
+  ORDER 40
+
+ADD FIELD "nr-ord-mps" OF "ord-cab" AS character 
+  DESCRIPTION "N£mero da Ordem MPS"
+  FORMAT "X(30)"
+  INITIAL ""
+  LABEL "N£mero da Ordem MPS"
+  POSITION 6
+  MAX-WIDTH 60
+  COLUMN-LABEL "N£mero da Ordem MPS"
+  ORDER 50
+
+ADD FIELD "status-ordem" OF "ord-cab" AS character 
+  DESCRIPTION "Status da Origem"
+  FORMAT "X(1)"
+  INITIAL ""
+  LABEL "Status da Origem"
+  POSITION 10
+  MAX-WIDTH 2
+  COLUMN-LABEL "Status da Origem"
+  ORDER 90
+
+ADD FIELD "ambiente" OF "ord-cab" AS character 
+  FORMAT "X(30)"
+  INITIAL ""
+  LABEL "Ambiente DrummerAPS"
+  POSITION 11
+  MAX-WIDTH 60
+  ORDER 140
+
+ADD FIELD "dt-liberacao" OF "ord-cab" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  POSITION 12
+  MAX-WIDTH 4
+  ORDER 110
+
+ADD FIELD "cod-estabel" OF "ord-cab" AS character 
+  FORMAT "X(3)"
+  INITIAL ""
+  POSITION 13
+  MAX-WIDTH 6
+  ORDER 120
+
+ADD FIELD "status-ems" OF "ord-cab" AS integer 
+  FORMAT ">9"
+  INITIAL "0"
+  LABEL "Status EMS"
+  POSITION 14
+  MAX-WIDTH 4
+  ORDER 130
+
+ADD FIELD "nr-pedido" OF "ord-cab" AS character 
+  FORMAT "X(60)"
+  INITIAL ""
+  LABEL "Nr Pedido"
+  POSITION 15
+  MAX-WIDTH 60
+  ORDER 150
+
+ADD FIELD "nr-ord-id" OF "ord-cab" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  POSITION 16
+  MAX-WIDTH 4
+  ORDER 160
+
+ADD INDEX "pk-ord-cab" ON "ord-cab" 
+  AREA "indices"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "nr-ord-mps" ASCENDING 
+  INDEX-FIELD "cod-estabel" ASCENDING 
+  INDEX-FIELD "ambiente" ASCENDING 
+
+ADD INDEX "ie-dt-liber" ON "ord-cab" 
+  AREA "indices"
+  INDEX-FIELD "dt-liberacao" ASCENDING 
+
+ADD INDEX "ie-nr-ord-produ" ON "ord-cab" 
+  AREA "indices"
+  INDEX-FIELD "nr-ord-produ" ASCENDING 
+
+ADD TABLE "previsao"
+  AREA "dados"
+  LABEL "Previsao do Item"
+  DUMP-NAME "previsao"
+
+ADD FIELD "it-codigo" OF "previsao" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Item"
+  POSITION 2
+  MAX-WIDTH 32
+  ORDER 10
+
+ADD INDEX "idx1" ON "previsao" 
+  AREA "indices"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "it-codigo" ASCENDING 
+
+ADD TABLE "prg-compras"
+  AREA "dados"
+  DUMP-NAME "prg-comp"
+
+ADD FIELD "it-codigo" OF "prg-compras" AS character 
+  DESCRIPTION "C¢digo do Item"
+  FORMAT "X(30)"
+  INITIAL ""
+  LABEL "C¢digo do Item"
+  POSITION 2
+  MAX-WIDTH 60
+  COLUMN-LABEL "C¢digo do Item"
+  ORDER 10
+
+ADD FIELD "nr-ped-mercadoria" OF "prg-compras" AS character 
+  DESCRIPTION "N£mero do Pedido de Mercadoria"
+  FORMAT "X(30)"
+  INITIAL ""
+  LABEL "N£mero do Pedido de Mercadoria"
+  POSITION 3
+  MAX-WIDTH 60
+  COLUMN-LABEL "N£mero do Pedido de Mercadoria"
+  ORDER 20
+
+ADD FIELD "nome-fornec" OF "prg-compras" AS character 
+  DESCRIPTION "Nome Fantasia do Fornecedor"
+  FORMAT "X(20)"
+  INITIAL ""
+  LABEL "Nome Fantasia do Fornecedor"
+  POSITION 4
+  MAX-WIDTH 40
+  COLUMN-LABEL "Nome Fantasia do Fornecedor"
+  ORDER 30
+
+ADD FIELD "status-ped-merc" OF "prg-compras" AS character 
+  DESCRIPTION "Status do Pedido de Mercadoria"
+  FORMAT "X(1)"
+  INITIAL ""
+  LABEL "Status do Pedido de Mercadoria"
+  POSITION 5
+  MAX-WIDTH 2
+  COLUMN-LABEL "Status do Pedido de Mercadoria"
+  ORDER 40
+
+ADD FIELD "dt-original" OF "prg-compras" AS date 
+  DESCRIPTION "Data Original"
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data Original"
+  POSITION 6
+  MAX-WIDTH 4
+  COLUMN-LABEL "Data Original"
+  ORDER 50
+
+ADD FIELD "dt-reprogramada" OF "prg-compras" AS date 
+  DESCRIPTION "Data Reprogramada"
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data Reprogramada"
+  POSITION 7
+  MAX-WIDTH 4
+  COLUMN-LABEL "Data Reprogramada"
+  ORDER 60
+
+ADD FIELD "qt-original" OF "prg-compras" AS decimal 
+  DESCRIPTION "Quantidade Original"
+  FORMAT ">,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Quantidade Original"
+  POSITION 8
+  MAX-WIDTH 17
+  COLUMN-LABEL "Quantidade Original"
+  DECIMALS 2
+  ORDER 70
+
+ADD FIELD "qt-reprogramada" OF "prg-compras" AS decimal 
+  DESCRIPTION "Quantidade Reprogramada"
+  FORMAT ">,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Quantidade Reprogramada"
+  POSITION 9
+  MAX-WIDTH 17
+  COLUMN-LABEL "Quantidade Reprogramada"
+  DECIMALS 2
+  ORDER 80
+
+ADD FIELD "cod-estabel" OF "prg-compras" AS character 
+  FORMAT "X(3)"
+  INITIAL ""
+  POSITION 10
+  MAX-WIDTH 6
+  ORDER 90
+
+ADD FIELD "status-ems" OF "prg-compras" AS integer 
+  FORMAT ">9"
+  INITIAL "0"
+  LABEL "Status EMS"
+  POSITION 11
+  MAX-WIDTH 4
+  ORDER 100
+
+ADD FIELD "u-char-1" OF "prg-compras" AS character 
+  FORMAT "X(256)"
+  INITIAL ""
+  POSITION 12
+  MAX-WIDTH 512
+  ORDER 110
+
+ADD FIELD "u-int-1" OF "prg-compras" AS integer 
+  FORMAT "->>>>>>>>9"
+  INITIAL "0"
+  POSITION 13
+  MAX-WIDTH 4
+  ORDER 120
+
+ADD FIELD "u-dec-1" OF "prg-compras" AS decimal 
+  FORMAT "->>>>>>>>>9.999999999"
+  INITIAL "0"
+  POSITION 14
+  MAX-WIDTH 24
+  DECIMALS 9
+  ORDER 130
+
+ADD FIELD "u-log-1" OF "prg-compras" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  POSITION 15
+  MAX-WIDTH 1
+  ORDER 140
+
+ADD FIELD "numero-ordem" OF "prg-compras" AS integer 
+  FORMAT "zzzzz9,99"
+  INITIAL "0"
+  LABEL "Numero Ordem"
+  POSITION 16
+  MAX-WIDTH 4
+  ORDER 150
+
+ADD FIELD "ambiente" OF "prg-compras" AS character 
+  FORMAT "X(30)"
+  INITIAL ""
+  LABEL "Ambiente DrummerAPS"
+  POSITION 17
+  MAX-WIDTH 60
+  ORDER 160
+
+ADD FIELD "dt-liberacao" OF "prg-compras" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data de Liberacao"
+  POSITION 18
+  MAX-WIDTH 4
+  ORDER 170
+
+ADD INDEX "pk-prg-compras" ON "prg-compras" 
+  AREA "indices"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "ambiente" ASCENDING 
+  INDEX-FIELD "it-codigo" ASCENDING 
+  INDEX-FIELD "nr-ped-mercadoria" ASCENDING 
+  INDEX-FIELD "nome-fornec" ASCENDING 
+
+ADD INDEX "ie-mercadoria" ON "prg-compras" 
+  AREA "indices"
+  INDEX-FIELD "nr-ped-mercadoria" ASCENDING 
+
+ADD INDEX "ie-ordem-ems" ON "prg-compras" 
+  AREA "indices"
+  INDEX-FIELD "numero-ordem" ASCENDING 
+
+ADD TABLE "proc-ped-ent-volume"
+  AREA "dados"
+  LABEL "Informar qtde e volume no ped"
+  DUMP-NAME "proc-ped"
+
+ADD FIELD "cod-estabel" OF "proc-ped-ent-volume" AS character 
+  FORMAT "x(3)"
+  INITIAL ""
+  LABEL "Cod.Estabel"
+  POSITION 2
+  MAX-WIDTH 6
+  ORDER 10
+
+ADD FIELD "nr-proc-exp" OF "proc-ped-ent-volume" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Nr.Processo"
+  POSITION 3
+  MAX-WIDTH 24
+  ORDER 20
+
+ADD FIELD "volume" OF "proc-ped-ent-volume" AS integer 
+  FORMAT ">>9"
+  INITIAL "0"
+  LABEL "Volume"
+  POSITION 4
+  MAX-WIDTH 4
+  ORDER 30
+
+ADD FIELD "qtde" OF "proc-ped-ent-volume" AS integer 
+  FORMAT ">>>,>>9"
+  INITIAL "0"
+  LABEL "Quantidade"
+  POSITION 5
+  MAX-WIDTH 4
+  COLUMN-LABEL "Qtde"
+  ORDER 40
+
+ADD FIELD "nome-abrev" OF "proc-ped-ent-volume" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Nome Abrev."
+  POSITION 6
+  MAX-WIDTH 24
+  ORDER 50
+
+ADD FIELD "nr-pedcli" OF "proc-ped-ent-volume" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Nr. Ped.Cli"
+  POSITION 7
+  MAX-WIDTH 24
+  ORDER 60
+
+ADD FIELD "nr-sequencia" OF "proc-ped-ent-volume" AS integer 
+  FORMAT ">>,>>9"
+  INITIAL "0"
+  LABEL "Nr.Seq"
+  POSITION 8
+  MAX-WIDTH 4
+  ORDER 70
+
+ADD FIELD "it-codigo" OF "proc-ped-ent-volume" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Item"
+  POSITION 9
+  MAX-WIDTH 32
+  ORDER 80
+
+ADD FIELD "cod-refer" OF "proc-ped-ent-volume" AS character 
+  FORMAT "x(10)"
+  INITIAL ""
+  LABEL "Cod.Refer"
+  POSITION 10
+  MAX-WIDTH 20
+  ORDER 90
+
+ADD FIELD "nr-entrega" OF "proc-ped-ent-volume" AS integer 
+  FORMAT ">>>9"
+  INITIAL "0"
+  LABEL "Nr.Entrega"
+  POSITION 11
+  MAX-WIDTH 4
+  ORDER 100
+
+ADD INDEX "idx" ON "proc-ped-ent-volume" 
+  AREA "dados"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "cod-estabel" ASCENDING 
+  INDEX-FIELD "nr-proc-exp" ASCENDING 
+  INDEX-FIELD "nome-abrev" ASCENDING 
+  INDEX-FIELD "nr-pedcli" ASCENDING 
+  INDEX-FIELD "nr-sequencia" ASCENDING 
+  INDEX-FIELD "it-codigo" ASCENDING 
+  INDEX-FIELD "cod-refer" ASCENDING 
+  INDEX-FIELD "nr-entrega" ASCENDING 
+  INDEX-FIELD "volume" ASCENDING 
+
+ADD TABLE "processo-exp-ext"
+  AREA "dados"
+  DUMP-NAME "processo"
+
+ADD FIELD "cod-estabel" OF "processo-exp-ext" AS character 
+  FORMAT "x(3)"
+  INITIAL ""
+  LABEL "Estabel"
+  POSITION 2
+  MAX-WIDTH 6
+  ORDER 10
+
+ADD FIELD "nr-proc-exp" OF "processo-exp-ext" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Nr.Processo"
+  POSITION 3
+  MAX-WIDTH 24
+  ORDER 20
+
+ADD FIELD "volume" OF "processo-exp-ext" AS integer 
+  FORMAT ">>9"
+  INITIAL "0"
+  LABEL "Volume"
+  POSITION 4
+  MAX-WIDTH 4
+  ORDER 30
+
+ADD FIELD "tp-caixa" OF "processo-exp-ext" AS integer 
+  FORMAT "9"
+  INITIAL "0"
+  LABEL "Embalagem"
+  POSITION 5
+  MAX-WIDTH 4
+  VIEW-AS "VIEW-AS RADIO-SET
+  RADIO-BUTTONS Pallet, 1, Caixa,2 , Outros, 3"
+  ORDER 40
+
+ADD FIELD "peso-emb" OF "processo-exp-ext" AS decimal 
+  FORMAT "->>,>>9.9999"
+  INITIAL "0"
+  LABEL "Peso Embalagem"
+  POSITION 6
+  MAX-WIDTH 19
+  DECIMALS 4
+  ORDER 50
+
+ADD FIELD "peso-bruto" OF "processo-exp-ext" AS decimal 
+  FORMAT "->>,>>9.9999"
+  INITIAL "0"
+  LABEL "PEso Bruto"
+  POSITION 7
+  MAX-WIDTH 19
+  DECIMALS 4
+  ORDER 60
+
+ADD FIELD "comprimento" OF "processo-exp-ext" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Comprimento"
+  POSITION 8
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 70
+
+ADD FIELD "largura" OF "processo-exp-ext" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Largura"
+  POSITION 9
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 80
+
+ADD FIELD "altura" OF "processo-exp-ext" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Altura"
+  POSITION 10
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 90
+
+ADD FIELD "embalagem" OF "processo-exp-ext" AS character 
+  FORMAT "x(10)"
+  INITIAL ""
+  LABEL "Embalagem"
+  POSITION 11
+  MAX-WIDTH 20
+  VIEW-AS "VIEW-AS COMBO-BOX"
+  ORDER 100
+
+ADD INDEX "idx" ON "processo-exp-ext" 
+  AREA "dados"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "cod-estabel" ASCENDING 
+  INDEX-FIELD "nr-proc-exp" ASCENDING 
+  INDEX-FIELD "volume" ASCENDING 
+
+ADD TABLE "registra-narrativa"
+  AREA "dados"
+  LABEL "Registra alteracoes Narrativa"
+  DESCRIPTION "da Operacao"
+  DUMP-NAME "regist-n"
+
+ADD FIELD "it-codigo" OF "registra-narrativa" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Item"
+  POSITION 2
+  MAX-WIDTH 32
+  ORDER 10
+
+ADD FIELD "operacao" OF "registra-narrativa" AS integer 
+  FORMAT ">>>9"
+  INITIAL "0"
+  LABEL "Operaá∆o"
+  POSITION 3
+  MAX-WIDTH 4
+  ORDER 20
+
+ADD FIELD "narrativa" OF "registra-narrativa" AS character 
+  FORMAT "x(15000)"
+  INITIAL ""
+  LABEL "Narrativa"
+  POSITION 4
+  MAX-WIDTH 30000
+  ORDER 140
+
+ADD FIELD "data-hora" OF "registra-narrativa" AS datetime 
+  FORMAT "99/99/9999 HH:MM:SS"
+  INITIAL ?
+  LABEL "Data/Hora"
+  POSITION 5
+  MAX-WIDTH 8
+  ORDER 150
+
+ADD FIELD "usuario" OF "registra-narrativa" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Usuario"
+  POSITION 6
+  MAX-WIDTH 32
+  ORDER 170
+
+ADD FIELD "num-id-operacao" OF "registra-narrativa" AS integer 
+  FORMAT ">>,>>>,>>9"
+  INITIAL "0"
+  LABEL "Num Id Operacao"
+  POSITION 7
+  MAX-WIDTH 4
+  ORDER 180
+
+ADD FIELD "tipo-operacao" OF "registra-narrativa" AS character 
+  FORMAT "x(10)"
+  INITIAL ""
+  LABEL "Tipo Operaá∆o"
+  POSITION 8
+  MAX-WIDTH 20
+  ORDER 190
+
+ADD INDEX "idx1" ON "registra-narrativa" 
+  AREA "indices"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "it-codigo" ASCENDING 
+  INDEX-FIELD "operacao" ASCENDING 
+  INDEX-FIELD "data-hora" ASCENDING 
+  INDEX-FIELD "usuario" ASCENDING 
+
+ADD INDEX "idx2" ON "registra-narrativa" 
+  AREA "indices"
+  INDEX-FIELD "num-id-operacao" ASCENDING 
+
+ADD TABLE "registra-operacao"
+  AREA "dados"
+  DUMP-NAME "registra"
+
+ADD FIELD "it-codigo" OF "registra-operacao" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Item"
+  POSITION 2
+  MAX-WIDTH 32
+  ORDER 10
+
+ADD FIELD "operacao" OF "registra-operacao" AS integer 
+  FORMAT ">>>9"
+  INITIAL "0"
+  LABEL "Operaá∆o"
+  POSITION 3
+  MAX-WIDTH 4
+  ORDER 20
+
+ADD FIELD "nr-oper-pad" OF "registra-operacao" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  LABEL "Nr.Oper.Padr∆o"
+  POSITION 4
+  MAX-WIDTH 4
+  ORDER 30
+
+ADD FIELD "descricao" OF "registra-operacao" AS character 
+  FORMAT "x(30)"
+  INITIAL ""
+  LABEL "Descriá∆o"
+  POSITION 5
+  MAX-WIDTH 60
+  ORDER 40
+
+ADD FIELD "proporcao" OF "registra-operacao" AS decimal 
+  FORMAT ">>9.99"
+  INITIAL "0"
+  LABEL "Proporá∆o"
+  POSITION 6
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 50
+
+ADD FIELD "pto-controle" OF "registra-operacao" AS integer 
+  FORMAT ">,>>9"
+  INITIAL "0"
+  LABEL "Ponto Controle"
+  POSITION 8
+  MAX-WIDTH 4
+  ORDER 70
+
+ADD FIELD "nr-unidades" OF "registra-operacao" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  LABEL "Unidades"
+  POSITION 9
+  MAX-WIDTH 4
+  ORDER 80
+
+ADD FIELD "tempo-prep" OF "registra-operacao" AS decimal 
+  FORMAT ">,>>9.999"
+  INITIAL "0"
+  LABEL "Tempo Preparaá∆o"
+  POSITION 10
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 90
+
+ADD FIELD "tempo-maquin" OF "registra-operacao" AS decimal 
+  FORMAT "->>,>>9.999"
+  INITIAL "0"
+  LABEL "Tempo Maquina"
+  POSITION 11
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 100
+
+ADD FIELD "tempo-homem" OF "registra-operacao" AS decimal 
+  FORMAT "->>,>>9.999"
+  INITIAL "0"
+  LABEL "Tempo Homem"
+  POSITION 12
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 110
+
+ADD FIELD "un-med-tempo" OF "registra-operacao" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Unid Med.Tempo"
+  POSITION 13
+  MAX-WIDTH 24
+  VIEW-AS "VIEW-AS COMBO-BOX
+  LIST-ITEMS ""Horas"",""Minutos"",""Segundos"", ""Dias"""
+  ORDER 120
+
+ADD FIELD "nr-op-simult" OF "registra-operacao" AS integer 
+  FORMAT ">,>>9"
+  INITIAL "0"
+  LABEL "Oper. SimultÉneas"
+  POSITION 14
+  MAX-WIDTH 4
+  ORDER 130
+
+ADD FIELD "narrativa" OF "registra-operacao" AS character 
+  FORMAT "x(15000)"
+  INITIAL ""
+  LABEL "Narrativa"
+  POSITION 15
+  MAX-WIDTH 30000
+  ORDER 140
+
+ADD FIELD "data-hora" OF "registra-operacao" AS datetime 
+  FORMAT "99/99/9999 HH:MM:SS"
+  INITIAL ?
+  LABEL "Data/Hora"
+  POSITION 16
+  MAX-WIDTH 8
+  ORDER 150
+
+ADD FIELD "tipo-operacao" OF "registra-operacao" AS character 
+  FORMAT "x(10)"
+  INITIAL ""
+  LABEL "Tipo Operaá∆o"
+  POSITION 17
+  MAX-WIDTH 20
+  ORDER 160
+
+ADD FIELD "usuario" OF "registra-operacao" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Usuario"
+  POSITION 18
+  MAX-WIDTH 32
+  ORDER 170
+
+ADD FIELD "gm-codigo" OF "registra-operacao" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Grupo Maquina"
+  POSITION 19
+  MAX-WIDTH 24
+  ORDER 180
+
+ADD FIELD "num-id-operacao" OF "registra-operacao" AS integer 
+  FORMAT ">>,>>>,>>9"
+  INITIAL "0"
+  LABEL "Num Id Operacao"
+  POSITION 20
+  MAX-WIDTH 4
+  ORDER 190
+
+ADD INDEX "idx1" ON "registra-operacao" 
+  AREA "indices"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "it-codigo" ASCENDING 
+  INDEX-FIELD "operacao" ASCENDING 
+  INDEX-FIELD "data-hora" ASCENDING 
+  INDEX-FIELD "usuario" ASCENDING 
+
+ADD INDEX "idx2" ON "registra-operacao" 
+  AREA "indices"
+  INDEX-FIELD "num-id-operacao" ASCENDING 
+
+ADD TABLE "rep-pedidos"
+  AREA "dados"
+  DUMP-NAME "rep-pedi"
+
+ADD FIELD "nr-pedido" OF "rep-pedidos" AS character 
+  DESCRIPTION "N£mero do Pedido"
+  FORMAT "X(30)"
+  INITIAL ""
+  LABEL "N£mero do Pedido"
+  POSITION 2
+  MAX-WIDTH 60
+  COLUMN-LABEL "N£mero do Pedido"
+  ORDER 10
+
+ADD FIELD "cod-produto" OF "rep-pedidos" AS character 
+  DESCRIPTION "C¢digo do Produto"
+  FORMAT "X(30)"
+  INITIAL ""
+  LABEL "C¢digo do Produto"
+  POSITION 3
+  MAX-WIDTH 60
+  COLUMN-LABEL "C¢digo do Produto"
+  ORDER 20
+
+ADD FIELD "dt-original" OF "rep-pedidos" AS date 
+  DESCRIPTION "Data Original"
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data Original"
+  POSITION 4
+  MAX-WIDTH 4
+  COLUMN-LABEL "Data Original"
+  ORDER 30
+
+ADD FIELD "dt-reprogramada" OF "rep-pedidos" AS date 
+  DESCRIPTION "Data Reprogramada"
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data Reprogramada"
+  POSITION 5
+  MAX-WIDTH 4
+  COLUMN-LABEL "Data Reprogramada"
+  ORDER 40
+
+ADD FIELD "qt-necessaria" OF "rep-pedidos" AS decimal 
+  DESCRIPTION "Quantidade Necess†ria"
+  FORMAT ">,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Quantidade Necess†ria"
+  POSITION 6
+  MAX-WIDTH 17
+  COLUMN-LABEL "Quantidade Necess†ria"
+  DECIMALS 2
+  ORDER 50
+
+ADD FIELD "qt-reprogramada" OF "rep-pedidos" AS decimal 
+  DESCRIPTION "Quantidade Reprogramada"
+  FORMAT ">,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Quantidade Reprogramada"
+  POSITION 7
+  MAX-WIDTH 17
+  COLUMN-LABEL "Quantidade Reprogramada"
+  DECIMALS 2
+  ORDER 60
+
+ADD FIELD "nr-sequencia" OF "rep-pedidos" AS integer 
+  FORMAT ">>,>>9"
+  INITIAL "0"
+  POSITION 8
+  MAX-WIDTH 4
+  ORDER 70
+
+ADD FIELD "status-ems" OF "rep-pedidos" AS integer 
+  FORMAT ">9"
+  INITIAL "0"
+  LABEL "Status EMS"
+  POSITION 9
+  MAX-WIDTH 4
+  ORDER 80
+
+ADD FIELD "u-char-1" OF "rep-pedidos" AS character 
+  FORMAT "X(256)"
+  INITIAL ""
+  POSITION 10
+  MAX-WIDTH 512
+  ORDER 90
+
+ADD FIELD "u-int-1" OF "rep-pedidos" AS integer 
+  FORMAT "->>>>>>>>9"
+  INITIAL "0"
+  POSITION 11
+  MAX-WIDTH 4
+  ORDER 100
+
+ADD FIELD "u-dec-1" OF "rep-pedidos" AS decimal 
+  FORMAT "->>>>>>>>>9.999999999"
+  INITIAL "0"
+  POSITION 12
+  MAX-WIDTH 24
+  DECIMALS 9
+  ORDER 110
+
+ADD FIELD "u-log-1" OF "rep-pedidos" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  POSITION 13
+  MAX-WIDTH 1
+  ORDER 120
+
+ADD FIELD "ambiente" OF "rep-pedidos" AS character 
+  FORMAT "X(30)"
+  INITIAL ""
+  LABEL "Ambiente DrummerAPS"
+  POSITION 14
+  MAX-WIDTH 60
+  ORDER 130
+
+ADD INDEX "pk-rep-pedidos" ON "rep-pedidos" 
+  AREA "indices"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "nr-pedido" ASCENDING 
+  INDEX-FIELD "cod-produto" ASCENDING 
+  INDEX-FIELD "nr-sequencia" ASCENDING 
+
+ADD TABLE "xml_cfop"
+  AREA "dados"
+  LABEL "relaá∆o cfop x nat.operacao"
+  DUMP-NAME "xml_cfop"
+
+ADD FIELD "cod_estabel" OF "xml_cfop" AS character 
+  FORMAT "x(3)"
+  INITIAL "*"
+  LABEL "Codigo Estabelecimento"
+  POSITION 2
+  MAX-WIDTH 6
+  COLUMN-LABEL "Cod.Estabel"
+  ORDER 10
+
+ADD FIELD "cod-fornec" OF "xml_cfop" AS integer 
+  FORMAT ">>>,>>>,>>9"
+  INITIAL "0"
+  LABEL "Emitente"
+  POSITION 3
+  MAX-WIDTH 4
+  ORDER 20
+
+ADD FIELD "it-fornec" OF "xml_cfop" AS character 
+  FORMAT "x(20)"
+  INITIAL "*"
+  LABEL "Item Fornecedor"
+  POSITION 4
+  MAX-WIDTH 40
+  ORDER 30
+
+ADD FIELD "class-fiscal" OF "xml_cfop" AS character 
+  FORMAT "X(10)"
+  INITIAL "*"
+  LABEL "Classif.Fiscal"
+  POSITION 5
+  MAX-WIDTH 20
+  ORDER 40
+
+ADD FIELD "cfop-xml" OF "xml_cfop" AS character 
+  FORMAT "x(8)"
+  INITIAL "*"
+  LABEL "CFOP do XML"
+  POSITION 6
+  MAX-WIDTH 16
+  ORDER 50
+
+ADD FIELD "tipo-compra" OF "xml_cfop" AS character 
+  FORMAT "X"
+  INITIAL "*"
+  LABEL "Tipo Compra"
+  POSITION 7
+  MAX-WIDTH 2
+  ORDER 60
+
+ADD FIELD "nat-operacao" OF "xml_cfop" AS character 
+  FORMAT "X(10)"
+  INITIAL ""
+  LABEL "Natureza Operaá∆o"
+  POSITION 8
+  MAX-WIDTH 20
+  COLUMN-LABEL "Nat.Oper."
+  ORDER 70
+
+ADD FIELD "class-fiscal-fim" OF "xml_cfop" AS character 
+  FORMAT "X(10)"
+  INITIAL "*"
+  LABEL "Classif.Fiscal"
+  POSITION 9
+  MAX-WIDTH 20
+  ORDER 80
+
+ADD INDEX "idx1" ON "xml_cfop" 
+  AREA "indices"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "cod_estabel" ASCENDING 
+  INDEX-FIELD "cod-fornec" ASCENDING 
+  INDEX-FIELD "it-fornec" ASCENDING 
+  INDEX-FIELD "class-fiscal" ASCENDING 
+  INDEX-FIELD "cfop-xml" ASCENDING 
+  INDEX-FIELD "tipo-compra" ASCENDING 
+
+ADD INDEX "idx2" ON "xml_cfop" 
+  AREA "dados"
+  UNIQUE
+  INDEX-FIELD "cod_estabel" ASCENDING 
+  INDEX-FIELD "cod-fornec" ASCENDING 
+  INDEX-FIELD "it-fornec" ASCENDING 
+  INDEX-FIELD "class-fiscal" ASCENDING 
+  INDEX-FIELD "class-fiscal-fim" ASCENDING 
+  INDEX-FIELD "cfop-xml" ASCENDING 
+  INDEX-FIELD "tipo-compra" ASCENDING 
+
+ADD TABLE "xml_item"
+  AREA "dados"
+  LABEL "De Para do Item Forn/nosso"
+  DUMP-NAME "xml_item"
+
+ADD FIELD "cod-estabel" OF "xml_item" AS character 
+  FORMAT "x(3)"
+  INITIAL ""
+  LABEL "Cod.Estabel"
+  POSITION 2
+  MAX-WIDTH 6
+  ORDER 10
+
+ADD FIELD "it-codigo" OF "xml_item" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Item nosso"
+  POSITION 5
+  MAX-WIDTH 32
+  ORDER 41
+
+ADD FIELD "fator-dec" OF "xml_item" AS integer 
+  FORMAT ">>9"
+  INITIAL "0"
+  LABEL "Qtd.Decimal"
+  POSITION 6
+  MAX-WIDTH 4
+  ORDER 50
+
+ADD FIELD "it-relac" OF "xml_item" AS character 
+  FORMAT "x(16)"
+  INITIAL ""
+  LABEL "Item Relacionado"
+  POSITION 7
+  MAX-WIDTH 32
+  ORDER 20
+
+ADD FIELD "cod-emitente" OF "xml_item" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  LABEL "Cod. Emitente"
+  POSITION 8
+  MAX-WIDTH 4
+  ORDER 30
+
+ADD FIELD "fator-conv" OF "xml_item" AS integer 
+  FORMAT ">,>>>,>>9"
+  INITIAL "1"
+  LABEL "Fator Convers∆o"
+  POSITION 9
+  MAX-WIDTH 4
+  ORDER 40
+
+ADD INDEX "idx2" ON "xml_item" 
+  AREA "indices"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "cod-estabel" ASCENDING 
+  INDEX-FIELD "cod-emitente" ASCENDING 
+  INDEX-FIELD "it-relac" ASCENDING 
+
+ADD TABLE "xml_param"
+  AREA "dados"
+  DUMP-NAME "xml_para"
+
+ADD FIELD "cod_estabel" OF "xml_param" AS character 
+  FORMAT "x(3)"
+  INITIAL ""
+  LABEL "Codigo Estabelecimento"
+  POSITION 2
+  MAX-WIDTH 6
+  COLUMN-LABEL "Cod.Estabel"
+  ORDER 10
+
+ADD FIELD "dir_destino" OF "xml_param" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  LABEL "Destino XML"
+  POSITION 3
+  MAX-WIDTH 200
+  ORDER 20
+
+ADD FIELD "validar-xml" OF "xml_param" AS logical 
+  FORMAT "Sim/N∆o"
+  INITIAL "Sim"
+  LABEL "Validar XML"
+  POSITION 4
+  MAX-WIDTH 1
+  VIEW-AS "VIEW-AS TOGGLE-BOX"
+  ORDER 30
+
+ADD INDEX "idx" ON "xml_param" 
+  AREA "indices"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "cod_estabel" ASCENDING 
+
+.
+PSC
+cpstream=ibm850
+.
+0000083801
