@@ -1,9 +1,12 @@
-/*************************************************                                                                                               **
+/*************************************************
 ** Programa: app/getOrderTracking.p             **
 ** Data       : Fevereiro/2016                  **
 ** Autor      : SZ - Eliziani                   **
 ** Descri‡Æo: Rastreio de pedido                **
 **                                              **
+** Altera‡Æo: Joao Pacheco - 21/11/16           **
+**            - Enviar Dt/Hora Aprov            **
+**            - Enviar Usr Aprov                **
 **************************************************/
 
 def temp-table tt-order-tracking no-undo
@@ -21,7 +24,10 @@ def temp-table tt-order-tracking no-undo
     field qtd-itens-sep-conf as char
     field user-sep-conf      as char
     field nr-nota-fis        as char
-    field nfs-canceladas     as char.
+    field nfs-canceladas     as char
+    field dt-aprov           like ped-venda.dt-apr-cred
+    field hr-aprov           as char
+    field user-aprov         like ped-venda.quem-aprovou.
 
 def input param pnome-abrev like ped-venda.nome-abrev no-undo.
 def input param pnr-pedcli  like ped-venda.nr-pedcli  no-undo.
@@ -45,6 +51,9 @@ def var c-lst-itens-tot   as char    no-undo.
 def var c-lst-itens-proc  as char    no-undo.
 def var c-lst-nr-nota-fis as char    no-undo.
 def var c-nfs-canceladas  as char    no-undo.
+def var c-dt-aprov        as date    no-undo.
+def var c-hr-aprov        as char    no-undo.
+def var c-quem-aprov      as char    no-undo.
 
 def buffer bped-venda   for ped-venda.
 def buffer bnota-fiscal for nota-fiscal.
@@ -54,6 +63,10 @@ for each ped-venda no-lock
      and ped-venda.nr-pedcli  = pnr-pedcli,
    first emitente no-lock
    where emitente.nome-abrev = ped-venda.nome-abrev:
+
+    assign c-dt-aprov   = ped-venda.dt-apr-cred
+           c-hr-aprov   = ''
+           c-quem-aprov = ped-venda.quem-aprovou.
 
     for each pre-fatur no-lock
        where pre-fatur.nome-abrev  = ped-venda.nome-abrev
@@ -276,6 +289,27 @@ for each ped-venda no-lock
         if avail embarque then
             assign c-dt-embarque = c-dt-embarque + string(embarque.dt-embarque).
     end.
+
+    if can-find(dw-follow-up-ped where
+                dw-follow-up-ped.nome-abrev = ped-venda.nome-abrev and
+                dw-follow-up-ped.nr-pedcli  = ped-venda.nr-pedcli) then do:
+
+        find dw-follow-up-ped no-lock where
+             dw-follow-up-ped.nome-abrev = ped-venda.nome-abrev and
+             dw-follow-up-ped.nr-pedcli  = ped-venda.nr-pedcli  no-error.
+
+        if dw-follow-up-ped.user-aprov-auto <> '' then
+            assign c-dt-aprov   = dw-follow-up-ped.dt-aprov-auto
+                   c-hr-aprov   = dw-follow-up-ped.hr-aprov-auto
+                   c-quem-aprov = dw-follow-up-ped.user-aprov-auto.
+
+        if dw-follow-up-ped.user-aprov-cred <> '' then
+            assign c-dt-aprov   = dw-follow-up-ped.dt-aprov-cred
+                   c-hr-aprov   = dw-follow-up-ped.hr-aprov-cred
+                   c-quem-aprov = dw-follow-up-ped.user-aprov-cred. 
+
+    end.
+
     create tt-order-tracking.
     assign tt-order-tracking.nr-pedcli          = ped-venda.nr-pedcli 
            tt-order-tracking.nome-abrev         = emitente.nome-abrev
@@ -291,7 +325,10 @@ for each ped-venda no-lock
            tt-order-tracking.qtd-itens-sep-conf = c-lst-itens-proc
            tt-order-tracking.user-sep-conf      = c-users-separa
            tt-order-tracking.nr-nota-fis        = c-lst-nr-nota-fis
-           tt-order-tracking.nfs-canceladas     = c-nfs-canceladas.
+           tt-order-tracking.nfs-canceladas     = c-nfs-canceladas
+           tt-order-tracking.dt-aprov           = c-dt-aprov
+           tt-order-tracking.hr-aprov           = c-hr-aprov
+           tt-order-tracking.user-aprov         = c-quem-aprov.
 end.    
 
 return "OK".

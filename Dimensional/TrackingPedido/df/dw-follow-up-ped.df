@@ -1,0 +1,159 @@
+ADD TABLE "dw-follow-up-ped"
+  AREA "Schema Area"
+  LABEL "Follow Up Pedidos"
+  DUMP-NAME "dw-follow-up-ped"
+
+ADD FIELD "nome-abrev" OF "dw-follow-up-ped" AS character 
+  FORMAT "X(12)"
+  INITIAL ""
+  LABEL "Nome Abrev"
+  POSITION 2
+  MAX-WIDTH 24
+  COLUMN-LABEL "Nome Abrev"
+  HELP "Nome Abrev"
+  ORDER 10
+
+ADD FIELD "nr-pedcli" OF "dw-follow-up-ped" AS character 
+  FORMAT "X(12)"
+  INITIAL ""
+  LABEL "Nr Ped Cli"
+  POSITION 3
+  MAX-WIDTH 24
+  COLUMN-LABEL "Nr Ped Cli"
+  ORDER 20
+
+ADD FIELD "dt-criacao" OF "dw-follow-up-ped" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data Cria‡Æo"
+  POSITION 4
+  MAX-WIDTH 4
+  COLUMN-LABEL "Dt Cria‡Æo"
+  HELP "Data Cria‡Æo"
+  ORDER 30
+
+ADD FIELD "hr-criacao" OF "dw-follow-up-ped" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Hora Cria‡Æo"
+  POSITION 5
+  MAX-WIDTH 16
+  COLUMN-LABEL "Hr Cria‡Æo"
+  HELP "Hora Cria‡Æo"
+  ORDER 40
+
+ADD FIELD "user-criacao" OF "dw-follow-up-ped" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Usu rio Cria‡Æo"
+  POSITION 6
+  MAX-WIDTH 16
+  COLUMN-LABEL "Usuar Cria‡Æo"
+  HELP "Usu rio Cria‡Æo"
+  ORDER 50
+
+ADD FIELD "dt-alter" OF "dw-follow-up-ped" AS date 
+  DESCRIPTION "Data Altera‡Æo"
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data Altera‡Æo"
+  POSITION 7
+  MAX-WIDTH 4
+  COLUMN-LABEL "Dt Altera‡Æo"
+  HELP "Data Altera‡Æo"
+  ORDER 60
+
+ADD FIELD "hr-alter" OF "dw-follow-up-ped" AS character 
+  DESCRIPTION "Hora Altera‡Æo"
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Hora Altera‡Æo"
+  POSITION 8
+  MAX-WIDTH 16
+  COLUMN-LABEL "Hr Altera‡Æo"
+  HELP "Hora Altera‡Æo"
+  ORDER 70
+
+ADD FIELD "user-alter" OF "dw-follow-up-ped" AS character 
+  DESCRIPTION "Usu rio Altera‡Æo"
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Usu rio Altera‡Æo"
+  POSITION 9
+  MAX-WIDTH 16
+  COLUMN-LABEL "Usuar Altera‡Æo"
+  HELP "Usu rio Altera‡Æo"
+  ORDER 80
+
+ADD FIELD "dt-aprov-cred" OF "dw-follow-up-ped" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data Aprov/Reprov Cred"
+  POSITION 10
+  MAX-WIDTH 4
+  COLUMN-LABEL "Dt Aprov/Reprov Cred"
+  HELP "Data Aprova‡Æo/Reprova‡Æo Cr‚dito"
+  ORDER 90
+
+ADD FIELD "hr-aprov-cred" OF "dw-follow-up-ped" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Hora Aprov/Reprov Cred"
+  POSITION 11
+  MAX-WIDTH 16
+  COLUMN-LABEL "Hr Aprov/Reprov Cred"
+  HELP "Hora Aprova‡Æo/Reprova‡Æo Cr‚dito"
+  ORDER 100
+
+ADD FIELD "user-aprov-cred" OF "dw-follow-up-ped" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Usu rio Aprov/Reprov Cred"
+  POSITION 12
+  MAX-WIDTH 16
+  COLUMN-LABEL "Usuar Aprov/Reprov Cred"
+  HELP "Usu rio Aprova‡Æo/Reprova‡Æo Cr‚dito"
+  ORDER 110
+
+ADD FIELD "dt-aprov-auto" OF "dw-follow-up-ped" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data Aprov/Reprov Auto"
+  POSITION 13
+  MAX-WIDTH 4
+  COLUMN-LABEL "Dt Aprov/Reprov Auto"
+  HELP "Data Aprova‡Æo/Reprov Autom tica Cr‚dito"
+  ORDER 120
+
+ADD FIELD "hr-aprov-auto" OF "dw-follow-up-ped" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Hora Aprov/Reprov Auto"
+  POSITION 14
+  MAX-WIDTH 16
+  COLUMN-LABEL "Hr Aprov/Reprov Auto"
+  HELP "Hora Aprova‡Æo/Reprov Autom tica Cr‚dito"
+  ORDER 130
+
+ADD FIELD "user-aprov-auto" OF "dw-follow-up-ped" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Usu rio Aprov/Reprov Auto"
+  POSITION 15
+  MAX-WIDTH 16
+  COLUMN-LABEL "Usuar Aprov/Reprov Auto"
+  HELP "Usu rio Aprova‡Æo/Reprov Autom tica Cr‚dito"
+  ORDER 140
+
+ADD INDEX "ch-ped" ON "dw-follow-up-ped" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "nome-abrev" ASCENDING 
+  INDEX-FIELD "nr-pedcli" ASCENDING 
+
+.
+PSC
+cpstream=ibm850
+.
+0000314205
