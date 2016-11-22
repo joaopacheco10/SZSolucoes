@@ -1,0 +1,74 @@
+
+**  ProxyGen, Progress Version 10.2B
+
+** Checking for existence of .r files ...
+
+** Processing non-persistent procedures ...
+
+** Processing: C:\temp\Joao\app\getItemUniEstab.r ...
+   -- Parsing r-code ...
+       MAIN \\192.168.50.132\totvs\datasul\dts-11\especificos\linux\app\getItemUniEstab.p 
+          INPUT p-it-codigo CHARACTER
+          INPUT p-cod-estabel CHARACTER
+          OUTPUT tt-item TABLE
+       TABLE: tt-item
+          it-codigo character
+          cod-estabel character
+          lote-minimo decimal
+          lote-multipl decimal
+          lead-time integer
+   -- No customizations; Validation not necessary
+
+** Processing: C:\temp\Joao\app\getTitVencto.r ...
+   -- Parsing r-code ...
+       MAIN \\192.168.50.132\totvs\datasul\dts-11\especificos\linux\app\getTitVencto.p 
+          INPUT p-cdn-cliente INTEGER
+          OUTPUT tt-tit-venc TABLE
+       TABLE: tt-tit-venc
+          cod_estab character
+          cod_espec_docto character
+          cod_ser_docto character
+          cod_tit_acr character
+          cod_parcela character
+          cdn_cliente integer
+          nom_abrev character
+          dat_emis_docto date
+          dat_vencto_tit_acr date
+          val_sdo_tit_acr decimal
+   -- No customizations; Validation not necessary
+
+** Processing: C:\temp\Joao\app\getTrackingOrder.r ...
+   -- Parsing r-code ...
+       MAIN \\192.168.50.132\totvs\datasul\dts-11\especificos\linux\app\getTrackingOrder.p 
+          INPUT pnome-abrev CHARACTER
+          INPUT pnr-pedcli CHARACTER
+          OUTPUT tt-order-tracking TABLE
+       TABLE: tt-order-tracking
+          nr-pedcli character
+          nome-abrev character
+          cod-emitente integer
+          nome-emit character
+          dt-implant date
+          vl-tot-ped decimal
+          cdd-embarq character
+          dt-embarque character
+          des-sit-aval character
+          situacao-wms character
+          qtd-itens-tot character
+          qtd-itens-sep-conf character
+          user-sep-conf character
+          nr-nota-fis character
+          nfs-canceladas character
+   -- No customizations; Validation not necessary
+
+** Processing persistent procedures ...
+
+** Checking method and parameter names ...
+
+** Generating Web Services files ...
+   Creating wsm file ...
+   Generation of wsm file complete ...
+   Creating test wsdl file ...
+   Generation of test wsdl file complete ...
+
+** Generation complete

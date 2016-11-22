@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="wsCentelha" targetNamespace="urn:tempuri-org" xmlns:tns="urn:tempuri-org" xmlns:S2="urn:tempuri-org:wsCentelha" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:prodata="urn:schemas-progress-com:xml-prodata:0001" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:S1="urn:soap-fault:details" xmlns="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:documentation>Author=Joao Pacheco, EncodingType=DOC_LITERAL, Proxygen_Product=Progress Version 10.2B</wsdl:documentation>
+  <wsdl:types>
+<schema elementFormDefault="unqualified" targetNamespace="urn:soap-fault:details" xmlns="http://www.w3.org/2001/XMLSchema"><element name="FaultDetail"><complexType><sequence><element name="errorMessage" type="xsd:string"/><element name="requestID" type="xsd:string"/></sequence></complexType></element></schema>
+<schema elementFormDefault="qualified" targetNamespace="urn:tempuri-org:wsCentelha" xmlns="http://www.w3.org/2001/XMLSchema"><complexType name="getItemUniEstab_ttItemRow"><sequence><element name="it-codigo" nillable="true" type="xsd:string"/><element name="cod-estabel" nillable="true" type="xsd:string"/><element name="lote-minimo" nillable="true" type="xsd:decimal"/><element name="lote-multipl" nillable="true" type="xsd:decimal"/><element name="lead-time" nillable="true" type="xsd:int"/></sequence></complexType><complexType name="getItemUniEstab_ttItemParam"><sequence><element maxOccurs="unbounded" minOccurs="0" name="ttItemRow" type="S2:getItemUniEstab_ttItemRow"/></sequence></complexType><complexType name="getTitVencto_ttTitVencRow"><sequence><element name="cod_estab" nillable="true" type="xsd:string"/><element name="cod_espec_docto" nillable="true" type="xsd:string"/><element name="cod_ser_docto" nillable="true" type="xsd:string"/><element name="cod_tit_acr" nillable="true" type="xsd:string"/><element name="cod_parcela" nillable="true" type="xsd:string"/><element name="cdn_cliente" nillable="true" type="xsd:int"/><element name="nom_abrev" nillable="true" type="xsd:string"/><element name="dat_emis_docto" nillable="true" type="xsd:date"/><element name="dat_vencto_tit_acr" nillable="true" type="xsd:date"/><element name="val_sdo_tit_acr" nillable="true" type="xsd:decimal"/></sequence></complexType><complexType name="getTitVencto_ttTitVencParam"><sequence><element maxOccurs="unbounded" minOccurs="0" name="ttTitVencRow" type="S2:getTitVencto_ttTitVencRow"/></sequence></complexType><complexType name="getTrackingOrder_ttOrderTrackingRow"><sequence><element name="nr-pedcli" nillable="true" type="xsd:string"/><element name="nome-abrev" nillable="true" type="xsd:string"/><element name="cod-emitente" nillable="true" type="xsd:int"/><element name="nome-emit" nillable="true" type="xsd:string"/><element name="dt-implant" nillable="true" type="xsd:date"/><element name="vl-tot-ped" nillable="true" type="xsd:decimal"/><element name="cdd-embarq" nillable="true" type="xsd:string"/><element name="dt-embarque" nillable="true" type="xsd:string"/><element name="des-sit-aval" nillable="true" type="xsd:string"/><element name="situacao-wms" nillable="true" type="xsd:string"/><element name="qtd-itens-tot" nillable="true" type="xsd:string"/><element name="qtd-itens-sep-conf" nillable="true" type="xsd:string"/><element name="user-sep-conf" nillable="true" type="xsd:string"/><element name="nr-nota-fis" nillable="true" type="xsd:string"/><element name="nfs-canceladas" nillable="true" type="xsd:string"/></sequence></complexType><complexType name="getTrackingOrder_ttOrderTrackingParam"><sequence><element maxOccurs="unbounded" minOccurs="0" name="ttOrderTrackingRow" type="S2:getTrackingOrder_ttOrderTrackingRow"/></sequence></complexType><element name="getItemUniEstab"><complexType><sequence><element name="pItCodigo" nillable="true" type="xsd:string"/><element name="pCodEstabel" nillable="true" type="xsd:string"/></sequence></complexType></element><element name="getItemUniEstabResponse"><complexType><sequence><element name="result" nillable="true" type="xsd:string"/><element name="ttItem" nillable="true" type="S2:getItemUniEstab_ttItemParam"/></sequence></complexType></element><element name="getTitVencto"><complexType><sequence><element name="pCdnCliente" nillable="true" type="xsd:int"/></sequence></complexType></element><element name="getTitVenctoResponse"><complexType><sequence><element name="result" nillable="true" type="xsd:string"/><element name="ttTitVenc" nillable="true" type="S2:getTitVencto_ttTitVencParam"/></sequence></complexType></element><element name="getTrackingOrder"><complexType><sequence><element name="pnomeAbrev" nillable="true" type="xsd:string"/><element name="pnrPedcli" nillable="true" type="xsd:string"/></sequence></complexType></element><element name="getTrackingOrderResponse"><complexType><sequence><element name="result" nillable="true" type="xsd:string"/><element name="ttOrderTracking" nillable="true" type="S2:getTrackingOrder_ttOrderTrackingParam"/></sequence></complexType></element></schema>
+  </wsdl:types>
+  <wsdl:message name="wsCentelha_getItemUniEstabResponse">
+    <wsdl:part name="parameters" element="S2:getItemUniEstabResponse"/>
+  </wsdl:message>
+  <wsdl:message name="wsCentelha_getTitVencto">
+    <wsdl:part name="parameters" element="S2:getTitVencto"/>
+  </wsdl:message>
+  <wsdl:message name="wsCentelha_getTitVenctoResponse">
+    <wsdl:part name="parameters" element="S2:getTitVenctoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="wsCentelha_getTrackingOrderResponse">
+    <wsdl:part name="parameters" element="S2:getTrackingOrderResponse"/>
+  </wsdl:message>
+  <wsdl:message name="wsCentelha_getItemUniEstab">
+    <wsdl:part name="parameters" element="S2:getItemUniEstab"/>
+  </wsdl:message>
+  <wsdl:message name="FaultDetailMessage">
+    <wsdl:part name="FaultDetail" element="S1:FaultDetail"/>
+  </wsdl:message>
+  <wsdl:message name="wsCentelha_getTrackingOrder">
+    <wsdl:part name="parameters" element="S2:getTrackingOrder"/>
+  </wsdl:message>
+  <wsdl:portType name="wsCentelhaObj">
+    <wsdl:operation name="getItemUniEstab">
+      <wsdl:input message="tns:wsCentelha_getItemUniEstab"/>
+      <wsdl:output message="tns:wsCentelha_getItemUniEstabResponse"/>
+      <wsdl:fault name="wsCentelhaFault" message="tns:FaultDetailMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="getTitVencto">
+      <wsdl:input message="tns:wsCentelha_getTitVencto"/>
+      <wsdl:output message="tns:wsCentelha_getTitVenctoResponse"/>
+      <wsdl:fault name="wsCentelhaFault" message="tns:FaultDetailMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="getTrackingOrder">
+      <wsdl:input message="tns:wsCentelha_getTrackingOrder"/>
+      <wsdl:output message="tns:wsCentelha_getTrackingOrderResponse"/>
+      <wsdl:fault name="wsCentelhaFault" message="tns:FaultDetailMessage"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsCentelhaObj" type="tns:wsCentelhaObj">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getItemUniEstab">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="wsCentelhaFault">
+        <soap:fault name="wsCentelhaFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTitVencto">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="wsCentelhaFault">
+        <soap:fault name="wsCentelhaFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTrackingOrder">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="wsCentelhaFault">
+        <soap:fault name="wsCentelhaFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsCentelhaService">
+    <wsdl:port name="wsCentelhaObj" binding="tns:wsCentelhaObj">
+<wsdl:documentation></wsdl:documentation>
+      <soap:address location="http://192.168.50.149:8080/wsaProd/wsCentelha"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
